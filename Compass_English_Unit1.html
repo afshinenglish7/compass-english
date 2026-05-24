@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Compass English · Unit 1 · Alphabet & Pronunciation</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --green-dark:#3B6D11;--green-mid:#97C459;--green-light:#EAF3DE;--green-border:#C0DD97;
+  --pink:#D4537E;--blue:#2563EB;--cream:#F4FAF0;--white:#FFFFFF;
+  --text-dark:#27500A;--text-body:#374151;--text-gray:#6B7280;
+  --shadow:0 2px 12px rgba(59,109,17,.10);--radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--text-body);min-height:100vh;}
+
+/* ── HEADER ── */
+.site-header{background:var(--green-dark);padding:0;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.18);}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-icon{width:36px;height:36px;background:var(--green-mid);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.logo-text{color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.3px;}
+.logo-sub{color:var(--green-border);font-size:11px;font-weight:400;}
+.unit-badge{background:var(--green-mid);color:var(--text-dark);font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;padding:5px 14px;border-radius:30px;}
+.progress-bar-wrap{background:rgba(255,255,255,.15);height:4px;}
+.progress-bar-fill{background:var(--green-mid);height:4px;width:3.33%;transition:width .5s;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--green-dark) 60%,#5a9e1f 100%);padding:40px 24px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(151,196,89,.12);}
+.hero::after{content:'';position:absolute;left:-40px;bottom:-80px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.hero-label{color:var(--green-mid);font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.hero-title{color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(28px,4vw,42px);margin-bottom:8px;line-height:1.1;}
+.hero-sub{color:var(--green-border);font-size:15px;margin-bottom:20px;}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.hero-tag{background:rgba(255,255,255,.12);color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.2);}
+
+/* ── LAYOUT ── */
+.main{max-width:1100px;margin:0 auto;padding:32px 24px 60px;}
+.page-section{margin-bottom:40px;}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.section-icon{width:32px;height:32px;border-radius:10px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.section-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:18px;color:var(--text-dark);}
+.section-sub{font-size:12px;color:var(--text-gray);font-style:italic;margin-top:1px;}
+.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--green-border);padding:22px;box-shadow:var(--shadow);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+
+/* ── VOCAB ── */
+.vocab-pill{background:var(--green-light);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--green-border);transition:transform .15s,box-shadow .15s;}
+.vocab-pill:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(59,109,17,.15);}
+.vocab-en{font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:var(--green-dark);}
+.vocab-es{font-size:12px;color:var(--text-gray);}
+.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+
+/* ── GRAMMAR ── */
+.grammar-rule{background:var(--green-light);border-radius:10px;padding:14px 16px;margin-bottom:10px;border-left:4px solid var(--green-mid);}
+.grammar-rule:last-child{margin-bottom:0;}
+.rule-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--green-dark);margin-bottom:4px;}
+.rule-text{font-size:13.5px;color:var(--text-body);line-height:1.6;margin-bottom:4px;}
+.rule-example{font-size:12px;color:var(--green-dark);font-style:italic;font-weight:600;}
+.rule-es{font-size:11px;color:var(--text-gray);font-style:italic;margin-top:3px;}
+
+/* ── ALPHABET ── */
+.alpha-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
+.alpha-tile{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;border:1px solid var(--green-border);transition:transform .1s;}
+.alpha-tile:hover{transform:scale(1.12);}
+.alpha-tile.vowel{background:var(--green-mid);color:var(--text-dark);}
+.alpha-tile.cons{background:var(--green-light);color:var(--green-dark);}
+
+/* ── PHONICS ── */
+.phonics-card{background:var(--white);border:1px solid var(--green-border);border-radius:10px;padding:12px 8px;text-align:center;transition:transform .15s,box-shadow .15s;}
+.phonics-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(59,109,17,.12);}
+.ph-letter{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--green-dark);}
+.ph-word{font-size:11px;color:var(--text-gray);margin-top:2px;}
+.ph-ipa{font-size:11px;color:var(--green-mid);font-style:italic;margin-top:2px;}
+
+/* ── DRILL TABLE ── */
+.drill-table{width:100%;border-collapse:collapse;font-size:13px;}
+.drill-table th{background:var(--green-dark);color:#fff;padding:10px 14px;text-align:left;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;}
+.drill-table th:first-child{border-radius:8px 0 0 0;}
+.drill-table th:last-child{border-radius:0 8px 0 0;}
+.drill-table td{padding:10px 14px;border-bottom:1px solid var(--green-border);}
+.drill-table tr:nth-child(even) td{background:var(--green-light);}
+.drill-table input{border:none;border-bottom:2px dotted var(--green-mid);background:transparent;font-family:'Nunito Sans',sans-serif;font-size:13px;width:100%;outline:none;color:var(--text-body);padding:2px 0;}
+.drill-table input:focus{border-bottom-color:var(--green-dark);}
+
+/* ── FILL BLANK ── */
+.fill-section{margin-bottom:20px;}
+.fill-level{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--green-dark);margin-bottom:10px;padding:6px 12px;background:var(--green-light);border-radius:8px;display:inline-block;}
+.fill-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
+.fill-num{width:24px;height:24px;border-radius:50%;background:var(--green-dark);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.fill-content{flex:1;}
+.fill-sentence{font-size:14px;color:var(--text-body);line-height:1.7;}
+.fill-sentence input{border:none;border-bottom:2px dotted var(--green-mid);background:transparent;font-size:14px;font-family:'Nunito Sans',sans-serif;width:110px;outline:none;color:var(--green-dark);font-weight:700;text-align:center;}
+.fill-sentence input:focus{border-bottom-color:var(--green-dark);}
+.fill-hint{font-size:11px;color:var(--text-gray);font-style:italic;margin-top:2px;}
+
+/* ── DIALOGUE ── */
+.dialogue{display:flex;flex-direction:column;gap:12px;}
+.dlg-row{display:flex;align-items:flex-start;gap:12px;}
+.dlg-row.nadia-row{flex-direction:row-reverse;}
+.dlg-badge{font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;color:#fff;padding:4px 12px;border-radius:20px;white-space:nowrap;margin-top:4px;flex-shrink:0;}
+.dlg-badge.alex-b{background:var(--green-dark);}
+.dlg-badge.nadia-b{background:var(--pink);}
+.dlg-bubble{border-radius:14px;padding:12px 16px;max-width:75%;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.dlg-bubble.alex-bub{background:var(--green-light);border:1px solid var(--green-border);}
+.dlg-bubble.nadia-bub{background:#FCE8F0;border:1px solid #F0B8CC;}
+.dlg-text{font-size:14px;color:var(--text-body);line-height:1.5;}
+
+/* ── EXERCISES ── */
+.ex-list{display:flex;flex-direction:column;gap:14px;}
+.ex-item{display:flex;align-items:flex-start;gap:12px;}
+.ex-num{width:26px;height:26px;border-radius:50%;background:var(--green-dark);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.ex-content{flex:1;font-size:14px;color:var(--text-body);line-height:1.6;}
+.ex-input{border:none;border-bottom:2px dotted var(--green-mid);background:transparent;font-size:14px;font-family:'Nunito Sans',sans-serif;width:120px;outline:none;color:var(--green-dark);font-weight:700;text-align:center;}
+.ex-input:focus{border-bottom-color:var(--green-dark);}
+.ex-hint{font-size:11px;color:var(--text-gray);font-style:italic;display:block;margin-top:3px;}
+.scramble-word{background:var(--green-light);border-radius:6px;padding:3px 10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:var(--green-dark);letter-spacing:.5px;}
+.mistake-wrong{color:#E24B4A;text-decoration:underline;}
+
+/* ── WORD SEARCH ── */
+.ws-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-bottom:12px;}
+.ws-cell{background:var(--green-light);border-radius:6px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--green-dark);cursor:pointer;border:1px solid var(--green-border);transition:background .15s,color .15s,transform .1s;user-select:none;}
+.ws-cell:hover{background:var(--green-mid);color:var(--text-dark);transform:scale(1.08);}
+.ws-cell.selected{background:var(--green-mid);color:var(--text-dark);}
+.ws-cell.found{background:var(--green-dark);color:#fff;}
+.word-bank{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.wb-word{background:var(--green-light);border:1px solid var(--green-border);border-radius:20px;padding:4px 14px;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:var(--green-dark);transition:all .2s;}
+.wb-word.found-word{background:var(--green-dark);color:#fff;text-decoration:line-through;opacity:.7;}
+
+/* ── GAMES ── */
+.game-card{background:var(--green-dark);border-radius:var(--radius);padding:20px 24px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden;}
+.game-card::before{content:'';position:absolute;right:-20px;top:-20px;width:100px;height:100px;border-radius:50%;background:rgba(151,196,89,.15);}
+.game-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(59,109,17,.25);}
+.game-emoji{font-size:32px;flex-shrink:0;}
+.game-info{flex:1;}
+.game-label{color:var(--green-border);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;}
+.game-title{color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;margin-bottom:2px;}
+.game-desc{color:var(--green-border);font-size:12px;}
+.play-btn{background:var(--green-mid);color:var(--text-dark);font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:10px 20px;border-radius:30px;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .15s,transform .1s;white-space:nowrap;}
+.play-btn:hover{background:#a8d466;transform:scale(1.04);}
+
+/* ── READING ── */
+.reading-text{font-size:14.5px;color:var(--text-body);line-height:1.9;}
+.reading-text strong{color:var(--green-dark);}
+.did-you{background:var(--green-light);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-top:16px;border:1px solid var(--green-border);}
+.did-you-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.did-you-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--green-dark);margin-bottom:3px;}
+.did-you-text{font-size:13px;color:var(--text-body);line-height:1.5;}
+
+/* ── WRITING LINES ── */
+.writing-prompt{font-size:13px;color:var(--text-gray);font-style:italic;margin-bottom:12px;}
+.writing-lines{display:flex;flex-direction:column;gap:0;}
+.writing-line{border:none;border-bottom:1.5px dashed var(--green-border);padding:10px 0;font-family:'Nunito Sans',sans-serif;font-size:14px;outline:none;color:var(--text-body);background:transparent;width:100%;}
+.writing-line:focus{border-bottom-color:var(--green-dark);}
+
+/* ── ALEX TIP ── */
+.alex-tip{background:var(--green-light);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:flex-start;gap:16px;border:1px solid var(--green-border);}
+.alex-avatar{width:52px;height:52px;border-radius:50%;background:var(--green-mid);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.alex-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--green-dark);margin-bottom:4px;}
+.alex-text{font-size:13.5px;color:var(--text-body);line-height:1.6;}
+
+/* ── REVIEW ── */
+.review-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px dashed var(--green-border);}
+.review-item:last-child{border-bottom:none;}
+
+/* ── BOOKLET BANNER ── */
+.booklet-banner{background:var(--green-dark);border-radius:var(--radius);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:32px;}
+.booklet-text h3{color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;margin-bottom:3px;}
+.booklet-text p{color:var(--green-border);font-size:13px;}
+.booklet-btn{background:var(--green-mid);color:var(--text-dark);font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;padding:12px 24px;border-radius:30px;border:none;cursor:pointer;white-space:nowrap;transition:background .15s,transform .1s;}
+.booklet-btn:hover{background:#a8d466;transform:scale(1.04);}
+
+/* ── UNIT NAV ── */
+.unit-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--green-border);}
+.nav-btn{background:var(--white);border:1.5px solid var(--green-border);color:var(--green-dark);font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;padding:10px 22px;border-radius:30px;cursor:pointer;transition:all .15s;}
+.nav-btn:hover{background:var(--green-dark);color:#fff;border-color:var(--green-dark);}
+.nav-btn.next{background:var(--green-dark);color:#fff;border-color:var(--green-dark);}
+.nav-btn.next:hover{background:#2d5609;}
+.unit-info{font-size:12px;color:var(--text-gray);text-align:center;}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:6px;margin-bottom:20px;border-bottom:2px solid var(--green-border);padding-bottom:0;}
+.tab{font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;padding:10px 18px;border-radius:10px 10px 0 0;cursor:pointer;color:var(--text-gray);border:1px solid transparent;border-bottom:none;transition:all .15s;margin-bottom:-2px;}
+.tab.active{background:var(--white);color:var(--green-dark);border-color:var(--green-border);border-bottom-color:var(--white);}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* ── ANSWER REVEAL ── */
+.reveal-btn{background:transparent;border:1.5px solid var(--green-mid);color:var(--green-dark);font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;padding:4px 12px;border-radius:20px;cursor:pointer;margin-top:8px;transition:all .15s;}
+.reveal-btn:hover{background:var(--green-mid);color:var(--text-dark);}
+.answer-reveal{display:none;background:var(--green-dark);color:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;padding:4px 12px;border-radius:20px;margin-top:6px;display:inline-block;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .grid2,.grid4{grid-template-columns:1fr;}
+  .grid3{grid-template-columns:1fr 1fr;}
+  .booklet-banner{flex-direction:column;}
+  .dlg-bubble{max-width:90%;}
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.page-section{animation:fadeUp .4s ease both;}
+.page-section:nth-child(1){animation-delay:.05s;}
+.page-section:nth-child(2){animation-delay:.1s;}
+.page-section:nth-child(3){animation-delay:.15s;}
+.page-section:nth-child(4){animation-delay:.2s;}
+.page-section:nth-child(5){animation-delay:.25s;}
+.page-section:nth-child(6){animation-delay:.3s;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🧭</div>
+      <div>
+        <div class="logo-text">Compass English</div>
+        <div class="logo-sub">Navigate English with confidence</div>
+      </div>
+    </div>
+    <div class="unit-badge">Book 1 · Unit 1 of 30</div>
+  </div>
+  <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Unit 1 · A1 Level · Direct Progressive Method</div>
+    <h1 class="hero-title">Alphabet & Pronunciation</h1>
+    <p class="hero-sub">Learn the building blocks of English — letters, sounds, vowels & consonants</p>
+    <div class="hero-tags">
+      <span class="hero-tag">📚 8 vocabulary words</span>
+      <span class="hero-tag">💬 Dialogue</span>
+      <span class="hero-tag">✏️ Exercises</span>
+      <span class="hero-tag">🎮 2 mini games</span>
+      <span class="hero-tag">📖 Reading passage</span>
+    </div>
+  </div>
+</div>
+
+<main class="main">
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('content')">📘 Main Content</div>
+  <div class="tab" onclick="switchTab('exercises')">✏️ Exercises</div>
+  <div class="tab" onclick="switchTab('games')">🎮 Mini Games</div>
+  <div class="tab" onclick="switchTab('review')">📝 Review</div>
+</div>
+
+<!-- ══════════════════ TAB: CONTENT ══════════════════ -->
+<div id="tab-content" class="tab-content active">
+
+  <!-- PAGE 1: VOCAB + GRAMMAR -->
+  <div class="page-section">
+    <div class="grid2">
+      <div class="card">
+        <div class="section-header">
+          <div class="section-icon">📖</div>
+          <div><div class="section-title">Vocabulary — 8 words</div><div class="section-sub">Study these words before starting</div></div>
+        </div>
+        <div class="vocab-grid">
+          <div class="vocab-pill"><span class="vocab-en">Alphabet</span><span class="vocab-es">alfabeto</span></div>
+          <div class="vocab-pill"><span class="vocab-en">Letter</span><span class="vocab-es">letra</span></div>
+          <div class="vocab-pill"><span class="vocab-en">Vowel</span><span class="vocab-es">vocal</span></div>
+          <div class="vocab-pill"><span class="vocab-en">Consonant</span><span class="vocab-es">consonante</span></div>
+          <div class="vocab-pill"><span class="vocab-en">Sound</span><span class="vocab-es">sonido</span></div>
+          <div class="vocab-pill"><span class="vocab-en">Spell</span><span class="vocab-es">deletrear</span></div>
+          <div class="vocab-pill"><span class="vocab-en">Pronounce</span><span class="vocab-es">pronunciar</span></div>
+          <div class="vocab-pill"><span class="vocab-en">Capital</span><span class="vocab-es">mayúscula</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-header">
+          <div class="section-icon">📐</div>
+          <div><div class="section-title">Grammar Focus</div></div>
+        </div>
+        <div class="grammar-rule">
+          <div class="rule-label">Rule 1 — The Alphabet</div>
+          <div class="rule-text">The English alphabet has <strong>26 letters</strong>: 5 vowels and 21 consonants.</div>
+          <div class="rule-example">A · E · I · O · U = vowels</div>
+          <div class="rule-es">El alfabeto inglés tiene 26 letras: 5 vocales y 21 consonantes.</div>
+        </div>
+        <div class="grammar-rule">
+          <div class="rule-label">Rule 2 — "A" vs "AN"</div>
+          <div class="rule-text">Use <strong>"a"</strong> before consonant sounds, <strong>"an"</strong> before vowel sounds.</div>
+          <div class="rule-example">a book · an apple · an umbrella</div>
+          <div class="rule-es">Usa "a" antes de consonantes y "an" antes de vocales.</div>
+        </div>
+        <div class="grammar-rule">
+          <div class="rule-label">Rule 3 — Capital Letters</div>
+          <div class="rule-text">Names always start with a <strong>capital letter</strong>.</div>
+          <div class="rule-example">My name is Alex. / I am from Mexico.</div>
+          <div class="rule-es">Los nombres siempre empiezan con mayúscula.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALPHABET -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">🔤</div>
+        <div><div class="section-title">The English Alphabet</div><div class="section-sub">Vowels highlighted in green</div></div>
+      </div>
+      <div class="alpha-row" id="alpha-row"></div>
+      <div class="grid4" style="margin-top:18px;">
+        <div class="phonics-card"><div class="ph-letter">A a</div><div class="ph-word">apple</div><div class="ph-ipa">/æ/</div></div>
+        <div class="phonics-card"><div class="ph-letter">E e</div><div class="ph-word">egg</div><div class="ph-ipa">/ɛ/</div></div>
+        <div class="phonics-card"><div class="ph-letter">I i</div><div class="ph-word">igloo</div><div class="ph-ipa">/ɪ/</div></div>
+        <div class="phonics-card"><div class="ph-letter">N n</div><div class="ph-word">Nadia</div><div class="ph-ipa">/n/</div></div>
+        <div class="phonics-card"><div class="ph-letter">O o</div><div class="ph-word">orange</div><div class="ph-ipa">/ɒ/</div></div>
+        <div class="phonics-card"><div class="ph-letter">S s</div><div class="ph-word">sun</div><div class="ph-ipa">/s/</div></div>
+        <div class="phonics-card"><div class="ph-letter">U u</div><div class="ph-word">umbrella</div><div class="ph-ipa">/ʌ/</div></div>
+        <div class="phonics-card"><div class="ph-letter">Z z</div><div class="ph-word">zero</div><div class="ph-ipa">/z/</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIALOGUE -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">💬</div>
+        <div><div class="section-title">Dialogue — Alex meets Nadia at school</div></div>
+      </div>
+      <div class="dialogue">
+        <div class="dlg-row"><span class="dlg-badge alex-b">Alex</span><div class="dlg-bubble alex-bub"><div class="dlg-text">Hi! I'm Alex. What's your name?</div></div></div>
+        <div class="dlg-row nadia-row"><span class="dlg-badge nadia-b">Nadia</span><div class="dlg-bubble nadia-bub"><div class="dlg-text">I'm Nadia. Nice to meet you!</div></div></div>
+        <div class="dlg-row"><span class="dlg-badge alex-b">Alex</span><div class="dlg-bubble alex-bub"><div class="dlg-text">How do you spell Nadia?</div></div></div>
+        <div class="dlg-row nadia-row"><span class="dlg-badge nadia-b">Nadia</span><div class="dlg-bubble nadia-bub"><div class="dlg-text">N-A-D-I-A! Perfect spelling!</div></div></div>
+        <div class="dlg-row"><span class="dlg-badge alex-b">Alex</span><div class="dlg-bubble alex-bub"><div class="dlg-text">Are N and D vowels or consonants?</div></div></div>
+        <div class="dlg-row nadia-row"><span class="dlg-badge nadia-b">Nadia</span><div class="dlg-bubble nadia-bub"><div class="dlg-text">N and D are consonants! A and I are vowels!</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- READING -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">📄</div>
+        <div><div class="section-title">Reading Passage — The power of the alphabet</div></div>
+      </div>
+      <div class="reading-text">
+        <p style="margin-bottom:14px;">Every language has a writing system, and English uses the <strong>Latin alphabet</strong> — the same one used in Spanish, French, and many other languages. The English alphabet has <strong>26 letters</strong>, each with an uppercase and a lowercase form.</p>
+        <p style="margin-bottom:14px;">Some letters are called <strong>vowels</strong> (A, E, I, O, U) because they make open, flowing sounds. The other 21 letters are <strong>consonants</strong>, which make more closed or blocked sounds. Every English word must contain at least one vowel!</p>
+        <p>The letter <strong>"E"</strong> is the most common in English — it appears in more words than any other letter. The least common is <strong>"Z"</strong>, but it still appears in everyday words like "zero" and "zone."</p>
+      </div>
+      <div class="did-you">
+        <div class="did-you-icon">💡</div>
+        <div>
+          <div class="did-you-label">Did you know? / ¿Sabías que?</div>
+          <div class="did-you-text">The name "Nadia" has 5 letters — N, A, D, I, A. Can you identify which are vowels and which are consonants? <em style="color:var(--text-gray)">(¿Puedes identificar cuáles son vocales y cuáles consonantes?)</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end tab-content -->
+
+<!-- ══════════════════ TAB: EXERCISES ══════════════════ -->
+<div id="tab-exercises" class="tab-content">
+
+  <!-- Repetition Drill -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">🔁</div>
+        <div><div class="section-title">Repetition Drill — write each word 3 times</div></div>
+      </div>
+      <table class="drill-table">
+        <thead><tr><th>Word</th><th>1st time</th><th>2nd time</th><th>3rd time</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Vowel</strong></td><td><input placeholder="write..."/></td><td><input placeholder="write..."/></td><td><input placeholder="write..."/></td></tr>
+          <tr><td><strong>Consonant</strong></td><td><input placeholder="write..."/></td><td><input placeholder="write..."/></td><td><input placeholder="write..."/></td></tr>
+          <tr><td><strong>Alphabet</strong></td><td><input placeholder="write..."/></td><td><input placeholder="write..."/></td><td><input placeholder="write..."/></td></tr>
+          <tr><td><strong>Pronounce</strong></td><td><input placeholder="write..."/></td><td><input placeholder="write..."/></td><td><input placeholder="write..."/></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Fill in the blanks -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">✏️</div>
+        <div><div class="section-title">Fill in the blanks</div><div class="section-sub">Completa cada oración</div></div>
+      </div>
+      <div class="fill-section">
+        <span class="fill-level">🟢 Easy level</span>
+        <div class="fill-item"><div class="fill-num">1</div><div class="fill-content"><div class="fill-sentence">The English alphabet has <input class="fill-sentence" placeholder="____"/> letters.</div><div class="fill-hint">El alfabeto inglés tiene _________ letras.</div></div></div>
+        <div class="fill-item"><div class="fill-num">2</div><div class="fill-content"><div class="fill-sentence">A, E, I, O, U are called <input class="fill-sentence" placeholder="________"/> in English.</div><div class="fill-hint">Las letras A, E, I, O, U se llaman _________.</div></div></div>
+        <div class="fill-item"><div class="fill-num">3</div><div class="fill-content"><div class="fill-sentence">B, C, D, F are called <input class="fill-sentence" placeholder="________"/>.</div><div class="fill-hint">Las letras B, C, D, F se llaman _________.</div></div></div>
+        <div class="fill-item"><div class="fill-num">4</div><div class="fill-content"><div class="fill-sentence">We use "an" before a <input class="fill-sentence" placeholder="________"/> sound.</div><div class="fill-hint">Usamos "an" antes de un sonido de _________.</div></div></div>
+        <div class="fill-item"><div class="fill-num">5</div><div class="fill-content"><div class="fill-sentence">Names always start with a <input class="fill-sentence" placeholder="________"/> letter.</div><div class="fill-hint">Los nombres siempre empiezan con letra _________.</div></div></div>
+      </div>
+      <div class="fill-section" style="margin-top:20px;">
+        <span class="fill-level">🟡 Medium level</span>
+        <div class="fill-item"><div class="fill-num">1</div><div class="fill-content"><div class="fill-sentence">"Apple" starts with the vowel <input class="fill-sentence" placeholder="__"/>.</div></div></div>
+        <div class="fill-item"><div class="fill-num">2</div><div class="fill-content"><div class="fill-sentence">I have <input class="fill-sentence" placeholder="__"/> umbrella. <em style="color:var(--text-gray);font-size:12px;">(a / an)</em></div><div class="fill-hint">Tengo _________ sombrilla.</div></div></div>
+        <div class="fill-item"><div class="fill-num">3</div><div class="fill-content"><div class="fill-sentence">The letter "Z" is a <input class="fill-sentence" placeholder="________"/>. <em style="color:var(--text-gray);font-size:12px;">(vowel / consonant)</em></div></div></div>
+        <div class="fill-item"><div class="fill-num">4</div><div class="fill-content"><div class="fill-sentence">How do you <input class="fill-sentence" placeholder="________"/> your name?</div><div class="fill-hint">¿Cómo _________ tu nombre?</div></div></div>
+        <div class="fill-item"><div class="fill-num">5</div><div class="fill-content"><div class="fill-sentence">There are <input class="fill-sentence" placeholder="__"/> vowels in the English alphabet.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sentence Construction -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">🔀</div>
+        <div><div class="section-title">Sentence Construction</div><div class="section-sub">Ordena las palabras para formar oraciones correctas</div></div>
+      </div>
+      <div class="ex-list">
+        <div class="ex-item"><div class="ex-num">1</div><div class="ex-content"><span class="scramble-word">letters · 26 · has · alphabet · The</span><br/><input class="ex-input" style="width:100%;margin-top:8px;" placeholder="Write the correct sentence..."/></div></div>
+        <div class="ex-item"><div class="ex-num">2</div><div class="ex-content"><span class="scramble-word">umbrella · have · an · I</span><br/><input class="ex-input" style="width:100%;margin-top:8px;" placeholder="Write the correct sentence..."/></div></div>
+        <div class="ex-item"><div class="ex-num">3</div><div class="ex-content"><span class="scramble-word">vowel · A · is · a</span><br/><input class="ex-input" style="width:100%;margin-top:8px;" placeholder="Write the correct sentence..."/></div></div>
+        <div class="ex-item"><div class="ex-num">4</div><div class="ex-content"><span class="scramble-word">name · spell · you · How · do · your?</span><br/><input class="ex-input" style="width:100%;margin-top:8px;" placeholder="Write the correct sentence..."/></div></div>
+        <div class="ex-item"><div class="ex-num">5</div><div class="ex-content"><span class="scramble-word">capital · starts · letter · a · name · My</span><br/><input class="ex-input" style="width:100%;margin-top:8px;" placeholder="Write the correct sentence..."/></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Find the mistake -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">🐛</div>
+        <div><div class="section-title">Find the Mistake</div><div class="section-sub">Encuentra el error y escribe la corrección</div></div>
+      </div>
+      <div class="ex-list">
+        <div class="ex-item"><div class="ex-num">1</div><div class="ex-content">The alphabet <span class="mistake-wrong">have</span> 26 letter.<br/><input class="ex-input" style="width:100%;margin-top:6px;" placeholder="Correction..."/></div></div>
+        <div class="ex-item"><div class="ex-num">2</div><div class="ex-content">A, E, I, O, U are <span class="mistake-wrong">consonants</span>.<br/><input class="ex-input" style="width:100%;margin-top:6px;" placeholder="Correction..."/></div></div>
+        <div class="ex-item"><div class="ex-num">3</div><div class="ex-content">I have <span class="mistake-wrong">a</span> umbrella.<br/><input class="ex-input" style="width:100%;margin-top:6px;" placeholder="Correction..."/></div></div>
+        <div class="ex-item"><div class="ex-num">4</div><div class="ex-content"><span class="mistake-wrong">my name is alex.</span><br/><input class="ex-input" style="width:100%;margin-top:6px;" placeholder="Correction..."/><span class="ex-hint">¿Qué letras deben ir en mayúscula?</span></div></div>
+        <div class="ex-item"><div class="ex-num">5</div><div class="ex-content">How do you <span class="mistake-wrong">sound</span> your name?<br/><input class="ex-input" style="width:100%;margin-top:6px;" placeholder="Correction..."/><span class="ex-hint">¿Cómo se dice correctamente esta pregunta?</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Word Search -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">🔍</div>
+        <div><div class="section-title">Word Search — find the 6 hidden words</div><div class="section-sub">Sopa de letras — click the letters to select them</div></div>
+      </div>
+      <div class="ws-grid" id="ws-grid"></div>
+      <div class="word-bank" id="word-bank"></div>
+    </div>
+  </div>
+
+  <!-- Writing Practice -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">📝</div>
+        <div><div class="section-title">Writing Practice</div><div class="section-sub">Escribe sobre ti mismo</div></div>
+      </div>
+      <p class="writing-prompt">Write 3–5 sentences about yourself. Use: <em>My name is... · I am from... · My name has ___ vowels... · I have a/an...</em></p>
+      <div class="writing-lines">
+        <input class="writing-line" placeholder="Start writing here..."/>
+        <input class="writing-line" placeholder=""/>
+        <input class="writing-line" placeholder=""/>
+        <input class="writing-line" placeholder=""/>
+        <input class="writing-line" placeholder=""/>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end tab-exercises -->
+
+<!-- ══════════════════ TAB: GAMES ══════════════════ -->
+<div id="tab-games" class="tab-content">
+
+  <!-- GAME 1: Alphabet Scramble -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">🎯</div>
+        <div><div class="section-title">Game 1 — Alphabet Scramble</div><div class="section-sub">Put the letters in the correct A–Z order before time runs out!</div></div>
+      </div>
+      <div id="game1-area">
+        <div style="text-align:center;margin-bottom:16px;">
+          <div style="font-size:13px;color:var(--text-gray);margin-bottom:8px;">Click the letters in alphabetical order (A → Z)</div>
+          <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:22px;color:var(--green-dark);">⏱️ Time: <span id="g1-timer">30</span>s &nbsp;|&nbsp; ✅ Score: <span id="g1-score">0</span>/26</div>
+        </div>
+        <div id="g1-letters" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;"></div>
+        <div id="g1-progress" style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:16px;min-height:36px;"></div>
+        <div id="g1-message" style="text-align:center;font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;color:var(--green-dark);min-height:24px;"></div>
+        <div style="text-align:center;margin-top:16px;">
+          <button class="play-btn" onclick="startGame1()" style="margin:0 auto;">▶ Start Game</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME 2: Vowel or Consonant -->
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">🧠</div>
+        <div><div class="section-title">Game 2 — Vowel or Consonant?</div><div class="section-sub">Sort each letter as fast as you can!</div></div>
+      </div>
+      <div id="game2-area">
+        <div style="text-align:center;margin-bottom:20px;">
+          <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:22px;color:var(--green-dark);">⚡ Score: <span id="g2-score">0</span> &nbsp;|&nbsp; ❌ Errors: <span id="g2-errors">0</span></div>
+        </div>
+        <div id="g2-letter-display" style="text-align:center;margin-bottom:24px;">
+          <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:80px;color:var(--green-dark);line-height:1;min-height:90px;" id="g2-current">?</div>
+        </div>
+        <div style="display:flex;gap:16px;justify-content:center;margin-bottom:20px;">
+          <button onclick="answerGame2('vowel')" style="background:var(--green-mid);color:var(--text-dark);font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;padding:16px 40px;border-radius:14px;border:none;cursor:pointer;transition:transform .1s;box-shadow:0 4px 12px rgba(151,196,89,.3);">🅐 Vowel</button>
+          <button onclick="answerGame2('consonant')" style="background:var(--green-dark);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;padding:16px 40px;border-radius:14px;border:none;cursor:pointer;transition:transform .1s;box-shadow:0 4px 12px rgba(59,109,17,.3);">🅱 Consonant</button>
+        </div>
+        <div id="g2-feedback" style="text-align:center;font-family:'Nunito',sans-serif;font-weight:800;font-size:18px;min-height:28px;"></div>
+        <div style="text-align:center;margin-top:16px;">
+          <button class="play-btn" onclick="startGame2()" style="margin:0 auto;">▶ Start Game</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end tab-games -->
+
+<!-- ══════════════════ TAB: REVIEW ══════════════════ -->
+<div id="tab-review" class="tab-content">
+
+  <div class="page-section">
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon">📋</div>
+        <div><div class="section-title">Full Unit Review — mixed exercises</div><div class="section-sub">Repaso completo de la Unidad 1</div></div>
+      </div>
+      <div class="ex-list">
+        <div class="ex-item"><div class="ex-num">1</div><div class="ex-content">How many letters does the English alphabet have? <input class="ex-input" placeholder="____"/><br/><button class="reveal-btn" onclick="reveal(this,'26')">Check answer</button></div></div>
+        <div class="ex-item"><div class="ex-num">2</div><div class="ex-content">List all 5 vowels: <input class="ex-input" style="width:180px;" placeholder="A, ___, ___, ___, ___"/><br/><button class="reveal-btn" onclick="reveal(this,'A, E, I, O, U')">Check answer</button></div></div>
+        <div class="ex-item"><div class="ex-num">3</div><div class="ex-content">
+          Choose the correct article <em style="color:var(--text-gray);font-size:12px;">(Elige el artículo correcto)</em>:<br/>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+            <button class="reveal-btn" onclick="chooseArticle(this,'an','umbrella')">a umbrella</button>
+            <button class="reveal-btn" onclick="chooseArticle(this,'an','umbrella')" style="background:var(--green-light);border-color:var(--green-mid);">an umbrella ✓</button>
+            <button class="reveal-btn" onclick="chooseArticle(this,'a','egg')">a egg</button>
+            <button class="reveal-btn" style="background:var(--green-light);border-color:var(--green-mid);">an egg ✓</button>
+            <button class="reveal-btn" style="background:var(--green-light);border-color:var(--green-mid);">a book ✓</button>
+            <button class="reveal-btn">an book</button>
+          </div>
+        </div></div>
+        <div class="ex-item"><div class="ex-num">4</div><div class="ex-content">How many vowels are in the name "Nadia"? <input class="ex-input" placeholder="____"/><span class="ex-hint">¿Cuántas vocales hay en "Nadia"?</span><br/><button class="reveal-btn" onclick="reveal(this,'3 vowels: A, I, A')">Check answer</button></div></div>
+        <div class="ex-item"><div class="ex-num">5</div><div class="ex-content">True or false: Every English word has at least one vowel.<div style="display:flex;gap:10px;margin-top:8px;"><button class="reveal-btn" onclick="truefalse(this,true)" style="background:var(--green-light);">✅ True</button><button class="reveal-btn" onclick="truefalse(this,false)">❌ False</button></div><span class="ex-hint">Todo palabra en inglés tiene al menos una vocal.</span></div></div>
+        <div class="ex-item"><div class="ex-num">6</div><div class="ex-content">Write a sentence using the word "vowel":<br/><input class="ex-input" style="width:100%;margin-top:8px;" placeholder="Write your sentence here..."/></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alex tip -->
+  <div class="page-section">
+    <div class="alex-tip">
+      <div class="alex-avatar">😊</div>
+      <div>
+        <div class="alex-name">Alex says...</div>
+        <div class="alex-text">Don't rush to Unit 2 if something still feels unclear. The Direct Progressive Method works because you master each step before moving forward. Review, practice again, and then continue. <strong>¡Tú puedes!</strong></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end tab-review -->
+
+<!-- BOOKLET BANNER -->
+<div class="booklet-banner">
+  <div class="booklet-text">
+    <h3>📚 Unit complete? Check the Spanish Booklet</h3>
+    <p>All vocabulary translations, grammar explanations, dialogue translations & answer key</p>
+  </div>
+  <button class="booklet-btn">Open Guía en Español ↗</button>
+</div>
+
+<!-- UNIT NAV -->
+<div class="unit-nav">
+  <button class="nav-btn">← Previous Unit</button>
+  <div class="unit-info"><div style="font-weight:700;color:var(--green-dark);">Unit 1 of 30</div><div>Compass English · Book 1 · A1/A2</div></div>
+  <button class="nav-btn next">Next Unit →</button>
+</div>
+
+</main>
+
+<script>
+// ── TAB SWITCHING ──
+function switchTab(name){
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    const names=['content','exercises','games','review'];
+    t.classList.toggle('active',names[i]===name);
+  });
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  window.scrollTo({top:200,behavior:'smooth'});
+}
+
+// ── ALPHABET TILES ──
+const vowels=new Set('AEIOU');
+const alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const row=document.getElementById('alpha-row');
+alpha.forEach(l=>{
+  const d=document.createElement('div');
+  d.className='alpha-tile '+(vowels.has(l)?'vowel':'cons');
+  d.textContent=l;
+  row.appendChild(d);
+});
+
+// ── WORD SEARCH ──
+const wsGrid=[
+  ['V','O','W','E','L','S','K','P','Q','Z'],
+  ['A','L','P','H','A','B','E','T','X','M'],
+  ['C','E','T','T','E','R','J','N','F','W'],
+  ['S','P','E','L','L','K','B','Q','D','Y'],
+  ['O','S','O','U','N','D','G','R','H','T'],
+  ['U','C','A','P','I','T','A','L','V','N'],
+];
+const wsWords=['VOWEL','ALPHABET','LETTER','SPELL','SOUND','CAPITAL'];
+const wsAnswers={
+  VOWEL:[[0,0],[0,1],[0,2],[0,3],[0,4]],
+  ALPHABET:[[1,0],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[1,7]],
+  LETTER:[[2,1],[2,2],[2,3],[2,4],[2,5],[2,6]], // C-E-T-T-E-R hmm adjust
+  SPELL:[[3,0],[3,1],[3,2],[3,3],[3,4]],
+  SOUND:[[4,1],[4,2],[4,3],[4,4],[4,5]],
+  CAPITAL:[[5,1],[5,2],[5,3],[5,4],[5,5],[5,6],[5,7]],
+};
+let wsSelected=[];
+let wsFound=new Set();
+const wsGridEl=document.getElementById('ws-grid');
+wsGrid.forEach((row,r)=>row.forEach((cell,c)=>{
+  const d=document.createElement('div');
+  d.className='ws-cell';
+  d.textContent=cell;
+  d.dataset.r=r;d.dataset.c=c;
+  d.addEventListener('click',()=>wsClick(d,r,c));
+  wsGridEl.appendChild(d);
+}));
+const wbEl=document.getElementById('word-bank');
+wsWords.forEach(w=>{
+  const s=document.createElement('span');
+  s.className='wb-word';s.textContent=w;s.id='wb-'+w;
+  wbEl.appendChild(s);
+});
+function wsClick(el,r,c){
+  if(el.classList.contains('found'))return;
+  el.classList.toggle('selected');
+  const key=r+','+c;
+  if(el.classList.contains('selected')){wsSelected.push({el,r,c});}
+  else{wsSelected=wsSelected.filter(s=>!(s.r===r&&s.c===c));}
+  checkWsWord();
+}
+function checkWsWord(){
+  const sel=wsSelected.map(s=>s.r+','+s.c).sort().join('|');
+  for(const [word,coords] of Object.entries(wsAnswers)){
+    if(wsFound.has(word))continue;
+    const ans=coords.map(([r,c])=>r+','+c).sort().join('|');
+    if(sel===ans){
+      wsFound.add(word);
+      wsSelected.forEach(s=>{s.el.classList.remove('selected');s.el.classList.add('found');});
+      wsSelected=[];
+      document.getElementById('wb-'+word).classList.add('found-word');
+      if(wsFound.size===wsWords.length){setTimeout(()=>alert('🎉 You found all the words! Amazing!'),200);}
+      return;
+    }
+  }
+}
+
+// ── GAME 1: ALPHABET SCRAMBLE ──
+let g1Timer,g1Interval,g1Letters,g1Next,g1Score;
+function startGame1(){
+  clearInterval(g1Interval);
+  g1Score=0;g1Next=0;
+  document.getElementById('g1-score').textContent='0';
+  document.getElementById('g1-message').textContent='';
+  g1Letters=[...alpha].sort(()=>Math.random()-.5);
+  const el=document.getElementById('g1-letters');
+  el.innerHTML='';
+  g1Letters.forEach(l=>{
+    const b=document.createElement('button');
+    b.textContent=l;b.dataset.letter=l;
+    b.style.cssText='width:42px;height:42px;border-radius:10px;border:2px solid var(--green-border);background:var(--green-light);font-family:Nunito,sans-serif;font-weight:800;font-size:16px;color:var(--green-dark);cursor:pointer;transition:all .1s;';
+    b.onmouseover=()=>{b.style.background='var(--green-mid)';};
+    b.onmouseout=()=>{if(!b.disabled)b.style.background='var(--green-light)';};
+    b.addEventListener('click',()=>g1Click(b,l));
+    el.appendChild(b);
+  });
+  document.getElementById('g1-progress').innerHTML='';
+  g1Timer=30;
+  document.getElementById('g1-timer').textContent=g1Timer;
+  g1Interval=setInterval(()=>{
+    g1Timer--;
+    document.getElementById('g1-timer').textContent=g1Timer;
+    if(g1Timer<=0){clearInterval(g1Interval);document.getElementById('g1-message').textContent=`⏰ Time's up! You got ${g1Score}/26. Try again!`;}
+  },1000);
+}
+function g1Click(btn,letter){
+  if(letter===alpha[g1Next]){
+    btn.style.background='var(--green-dark)';btn.style.color='#fff';btn.style.borderColor='var(--green-dark)';btn.disabled=true;
+    g1Score++;g1Next++;
+    document.getElementById('g1-score').textContent=g1Score;
+    const p=document.getElementById('g1-progress');
+    const s=document.createElement('span');
+    s.textContent=letter;
+    s.style.cssText='background:var(--green-dark);color:#fff;font-family:Nunito,sans-serif;font-weight:800;font-size:14px;padding:4px 8px;border-radius:6px;';
+    p.appendChild(s);
+    document.getElementById('g1-message').textContent=g1Next<26?`✅ ${letter} is correct! Next: ${alpha[g1Next]}`:'🎉 Perfect! You completed the alphabet!';
+    if(g1Next===26){clearInterval(g1Interval);}
+  } else {
+    btn.style.background='#FCE8F0';btn.style.borderColor='#D4537E';
+    document.getElementById('g1-message').textContent=`❌ Not quite! The next letter should be: ${alpha[g1Next]}`;
+    setTimeout(()=>{btn.style.background='var(--green-light)';btn.style.borderColor='var(--green-border)';},600);
+  }
+}
+
+// ── GAME 2: VOWEL OR CONSONANT ──
+let g2Letters=[...alpha],g2Current,g2Score2=0,g2Errors=0,g2Active=false;
+function startGame2(){
+  g2Score2=0;g2Errors=0;g2Active=true;
+  document.getElementById('g2-score').textContent='0';
+  document.getElementById('g2-errors').textContent='0';
+  document.getElementById('g2-feedback').textContent='';
+  g2Letters=[...alpha].sort(()=>Math.random()-.5);
+  nextGame2();
+}
+function nextGame2(){
+  if(g2Letters.length===0){document.getElementById('g2-current').textContent='🎉';document.getElementById('g2-feedback').textContent=`Done! Score: ${g2Score2} | Errors: ${g2Errors}`;g2Active=false;return;}
+  g2Current=g2Letters.pop();
+  document.getElementById('g2-current').textContent=g2Current;
+  document.getElementById('g2-feedback').textContent='';
+}
+function answerGame2(ans){
+  if(!g2Active)return;
+  const correct=vowels.has(g2Current)?'vowel':'consonant';
+  if(ans===correct){
+    g2Score2++;document.getElementById('g2-score').textContent=g2Score2;
+    document.getElementById('g2-feedback').innerHTML=`<span style="color:var(--green-dark)">✅ Correct! "${g2Current}" is a ${correct}!</span>`;
+  } else {
+    g2Errors++;document.getElementById('g2-errors').textContent=g2Errors;
+    document.getElementById('g2-feedback').innerHTML=`<span style="color:#E24B4A">❌ "${g2Current}" is a ${correct}, not a ${ans}.</span>`;
+  }
+  setTimeout(nextGame2,900);
+}
+
+// ── ANSWER REVEAL ──
+function reveal(btn,answer){
+  const span=document.createElement('span');
+  span.style.cssText='background:var(--green-dark);color:#fff;font-family:Nunito,sans-serif;font-weight:700;font-size:12px;padding:4px 12px;border-radius:20px;margin-left:8px;';
+  span.textContent='✅ '+answer;
+  btn.parentNode.appendChild(span);
+  btn.remove();
+}
+function truefalse(btn,isTrue){
+  const correct=isTrue;
+  btn.style.background=correct?'var(--green-dark)':'#FCE8F0';
+  btn.style.color=correct?'#fff':'#E24B4A';
+}
+</script>
+</body>
+</html>
