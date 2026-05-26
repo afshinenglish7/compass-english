@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Compass English — Guía del Estudiante L1-10</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gd:#3B6D11;--gm:#97C459;--gl:#EAF3DE;--gb:#C0DD97;
+  --pink:#D4537E;--blue:#2563EB;--cream:#F4FAF0;--white:#fff;
+  --td:#27500A;--tb:#374151;--tg:#6B7280;
+  --sh:0 4px 24px rgba(59,109,17,.12);--r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--tb);min-height:100vh;}
+
+/* ── SITE HEADER ── */
+.site-header{background:var(--gd);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.25);}
+.header-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-icon{width:36px;height:36px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+.logo-icon img{width:100%;height:100%;object-fit:contain;}
+.logo-text{color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;line-height:1.1;}
+.logo-sub{color:var(--gb);font-size:10px;}
+.header-badge{background:var(--gm);color:var(--td);font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;padding:5px 14px;border-radius:30px;white-space:nowrap;}
+
+/* ── LESSON NAV SIDEBAR ── */
+.layout{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:28px;padding:28px 24px 60px;}
+.sidebar{position:sticky;top:70px;height:fit-content;max-height:calc(100vh - 90px);overflow-y:auto;}
+.sidebar::-webkit-scrollbar{width:4px;}
+.sidebar::-webkit-scrollbar-track{background:var(--gl);}
+.sidebar::-webkit-scrollbar-thumb{background:var(--gm);border-radius:2px;}
+.nav-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;color:var(--tg);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;padding:0 4px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;transition:all .15s;margin-bottom:4px;text-decoration:none;}
+.nav-item:hover{background:var(--gl);}
+.nav-item.active{background:var(--gd);color:#fff;}
+.nav-item.active .nav-num{background:var(--gm);color:var(--td);}
+.nav-num{width:24px;height:24px;border-radius:50%;background:var(--gl);color:var(--gd);font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1.5px solid var(--gb);}
+.nav-label{font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:var(--tb);line-height:1.3;}
+.nav-item.active .nav-label{color:#fff;}
+.nav-sep{height:1px;background:var(--gb);margin:8px 0;}
+
+/* ── MAIN CONTENT ── */
+.main-content{min-width:0;}
+
+/* ── GUIDE INTRO ── */
+.guide-hero{background:linear-gradient(135deg,var(--gd) 0%,#2d5609 60%,#4a8a1a 100%);border-radius:20px;padding:36px 32px;margin-bottom:32px;position:relative;overflow:hidden;}
+.guide-hero::before{content:'';position:absolute;right:-40px;bottom:-40px;width:220px;height:220px;border-radius:50%;background:rgba(151,196,89,.12);}
+.guide-hero::after{content:'';position:absolute;right:80px;top:-30px;width:120px;height:120px;border-radius:50%;background:rgba(151,196,89,.07);}
+.gh-label{color:var(--gm);font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+.gh-title{color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(22px,3vw,32px);margin-bottom:8px;line-height:1.15;}
+.gh-sub{color:var(--gb);font-size:13px;margin-bottom:20px;line-height:1.6;max-width:560px;}
+.gh-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.gh-tag{background:rgba(255,255,255,.13);color:#fff;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.2);}
+
+/* ── PHONETICS GUIDE BOX ── */
+.phon-guide{background:var(--white);border-radius:var(--r);border:1px solid var(--gb);padding:22px;box-shadow:var(--sh);margin-bottom:28px;}
+.phon-guide-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;color:var(--td);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.phon-guide-title::before{content:'🗣️';font-size:18px;}
+.phon-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.phon-row{background:var(--gl);border-radius:10px;padding:9px 12px;border:1px solid var(--gb);display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:center;}
+.phon-sym{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--blue);text-align:center;}
+.phon-desc{font-size:11px;color:var(--tb);line-height:1.4;}
+.phon-ex{font-size:10px;color:var(--gd);font-weight:600;margin-top:2px;}
+
+/* ── LESSON SECTION ── */
+.lesson-section{margin-bottom:48px;scroll-margin-top:80px;}
+.lesson-header{border-radius:16px;padding:0;margin-bottom:20px;overflow:hidden;box-shadow:var(--sh);}
+.lh-top{background:var(--gd);padding:18px 24px;display:flex;align-items:center;gap:16px;}
+.lh-num{background:var(--gm);color:var(--td);font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lh-info{flex:1;}
+.lh-title{color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;margin-bottom:3px;}
+.lh-sub{color:var(--gb);font-size:11px;}
+.lh-topics{background:var(--td);padding:10px 24px;display:flex;gap:8px;flex-wrap:wrap;}
+.lh-topic{background:rgba(151,196,89,.2);color:var(--gm);font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;border:1px solid rgba(151,196,89,.3);}
+
+/* ── CARDS ── */
+.card{background:var(--white);border-radius:14px;border:1px solid var(--gb);padding:20px;box-shadow:var(--sh);margin-bottom:16px;}
+.card-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--td);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.card-title .ct-icon{width:28px;height:28px;border-radius:8px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+
+/* ── PRONUNCIATION TABLE ── */
+.pron-table{width:100%;border-collapse:collapse;font-size:12px;}
+.pron-table thead th{background:var(--gd);color:#fff;padding:9px 12px;text-align:left;font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;}
+.pron-table thead th:first-child{border-radius:8px 0 0 0;}
+.pron-table thead th:last-child{border-radius:0 8px 0 0;}
+.pron-table tbody tr:nth-child(even) td{background:var(--gl);}
+.pron-table tbody tr:hover td{background:#d4edbe;}
+.pron-table td{padding:8px 12px;border-bottom:1px solid var(--gb);vertical-align:middle;}
+.pt-word{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--td);}
+.pt-phon{color:var(--blue);font-style:italic;font-size:12px;}
+.pt-hint{color:var(--tb);font-size:12px;}
+.pt-es{color:var(--tg);font-size:11px;}
+
+/* ── ALPHABET TABLE ── */
+.alpha-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
+.alpha-cell{background:var(--gl);border-radius:10px;padding:9px 4px;text-align:center;border:1px solid var(--gb);}
+.alpha-cell.vowel{background:var(--gm);border-color:var(--gd);}
+.alpha-letter{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--gd);}
+.alpha-cell.vowel .alpha-letter{color:var(--td);}
+.alpha-pron{font-size:10px;color:var(--blue);margin-top:2px;font-weight:600;}
+
+/* ── NUMBER TABLE ── */
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.num-cell{background:var(--gl);border-radius:10px;padding:10px 8px;text-align:center;border:1px solid var(--gb);}
+.num-digit{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;color:var(--gd);}
+.num-word{font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:var(--td);margin-top:1px;}
+.num-pron{font-size:10px;color:var(--blue);margin-top:2px;}
+
+/* ── TIP BOX ── */
+.tip-box{background:#FFF9E6;border:1.5px solid #FCD34D;border-radius:12px;padding:13px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start;}
+.tip-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.tip-text{font-size:12px;color:var(--tb);line-height:1.6;}
+.tip-text strong{color:var(--td);}
+
+.info-box{background:#EEF2FF;border:1.5px solid #C7D2FE;border-radius:12px;padding:13px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start;}
+.info-text{font-size:12px;color:var(--tb);line-height:1.6;}
+
+/* ── RULE TABLE ── */
+.rule-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px;}
+.rule-table th{background:var(--gd);color:#fff;padding:9px 12px;text-align:left;font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;}
+.rule-table td{padding:8px 12px;border-bottom:1px solid var(--gb);vertical-align:top;}
+.rule-table tr:nth-child(even) td{background:var(--gl);}
+.rt-key{font-family:'Nunito',sans-serif;font-weight:800;color:var(--gd);font-size:13px;}
+.rt-blue{color:var(--blue);font-weight:700;}
+
+/* ── SOUNDS SUMMARY ── */
+.sounds-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sound-card{background:var(--white);border:1.5px solid var(--gb);border-radius:12px;padding:13px 15px;}
+.sound-card:nth-child(odd){background:var(--gl);}
+.sc-sym{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;color:var(--gd);margin-bottom:4px;}
+.sc-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--td);margin-bottom:3px;}
+.sc-how{font-size:11px;color:var(--tb);line-height:1.5;margin-bottom:4px;}
+.sc-ex{font-size:10px;color:var(--blue);font-weight:600;}
+
+/* ── GREETING TABLE ── */
+.greet-table{width:100%;border-collapse:collapse;font-size:12px;}
+.greet-table th{background:var(--gd);color:#fff;padding:9px 12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;text-align:left;}
+.greet-table td{padding:9px 12px;border-bottom:1px solid var(--gb);}
+.greet-table tr:nth-child(even) td{background:var(--gl);}
+.greet-en{font-family:'Nunito',sans-serif;font-weight:800;color:var(--gd);font-size:13px;}
+.greet-time{font-size:11px;color:var(--blue);font-weight:600;}
+.greet-es{font-size:11px;color:var(--tg);}
+
+/* ── THANKS TABLE ── */
+.thanks-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.thanks-card{background:var(--gl);border-radius:10px;padding:11px 13px;border:1px solid var(--gb);}
+.tc-expr{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--gd);margin-bottom:3px;}
+.tc-reply{font-size:11px;color:var(--blue);font-weight:600;margin-bottom:2px;}
+.tc-pron{font-size:10px;color:var(--tg);font-style:italic;}
+
+/* ── FAMILY TABLE ── */
+.family-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.fam-card{background:var(--gl);border-radius:10px;padding:10px;text-align:center;border:1px solid var(--gb);}
+.fam-emoji{font-size:24px;margin-bottom:4px;}
+.fam-en{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--gd);}
+.fam-pron{font-size:10px;color:var(--blue);margin-top:2px;}
+.fam-es{font-size:10px;color:var(--tg);margin-top:1px;}
+
+/* ── CREDIT ── */
+.credit{text-align:center;padding:20px;border-top:1px solid var(--gb);margin-top:20px;}
+.credit-inner{display:inline-flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--gb);border-radius:30px;padding:10px 22px;box-shadow:var(--sh);}
+.credit-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;color:var(--gd);}
+.credit-sub{font-size:10px;color:var(--tg);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.lesson-section{animation:fadeUp .4s ease both;}
+
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .phon-grid,.sounds-grid,.thanks-grid{grid-template-columns:1fr;}
+  .num-grid{grid-template-columns:repeat(3,1fr);}
+  .alpha-grid{grid-template-columns:repeat(5,1fr);}
+  .family-grid{grid-template-columns:1fr 1fr;}
+}
+
+/* DIALOGUE TRANSLATION */
+.dlg-card{background:var(--white);border-radius:14px;border:1px solid var(--gb);padding:20px;box-shadow:var(--sh);margin-bottom:16px;}
+.dlg-table{width:100%;border-collapse:collapse;font-size:12px;}
+.dlg-table thead th{background:var(--gd);color:#fff;padding:9px 12px;text-align:left;font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;}
+.dlg-table thead th:first-child{border-radius:8px 0 0 0;}
+.dlg-table thead th:last-child{border-radius:0 8px 0 0;}
+.dlg-table tbody tr:nth-child(even) td{background:var(--gl);}
+.dlg-table td{padding:9px 12px;border-bottom:1px solid var(--gb);vertical-align:top;}
+.dlg-who-alex{display:inline-block;background:var(--gd);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:10px;padding:2px 10px;border-radius:20px;white-space:nowrap;}
+.dlg-who-nadia{display:inline-block;background:var(--pink);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:10px;padding:2px 10px;border-radius:20px;white-space:nowrap;}
+.dlg-en{font-size:12.5px;color:var(--td);font-weight:600;margin-bottom:2px;}
+.dlg-es{font-size:11px;color:var(--tg);font-style:italic;}
+.dlg-pron{font-size:10px;color:var(--blue);margin-top:2px;}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon"><img src="data:image/png;base64,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" alt="Compass"/></div>
+      <div><div class="logo-text">Compass English</div><div class="logo-sub">Navigate English with confidence</div></div>
+    </div>
+    <div class="header-badge">Guía del Estudiante · Lecciones 1–10</div>
+  </div>
+</header>
+
+<div class="layout">
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="nav-title">Lecciones</div>
+  <a class="nav-item active" href="#intro" onclick="setActive(this)">
+    <div class="nav-num">📖</div>
+    <div class="nav-label">Introducción</div>
+  </a>
+  <div class="nav-sep"></div>
+  <a class="nav-item" href="#l1" onclick="setActive(this)">
+    <div class="nav-num">1</div>
+    <div class="nav-label">Alfabeto · Vocabulario Básico</div>
+  </a>
+  <a class="nav-item" href="#l2" onclick="setActive(this)">
+    <div class="nav-num">2</div>
+    <div class="nav-label">Verb To Be · Saludos</div>
+  </a>
+  <a class="nav-item" href="#l3" onclick="setActive(this)">
+    <div class="nav-num">3</div>
+    <div class="nav-label">This/These · Números</div>
+  </a>
+  <a class="nav-item" href="#l4" onclick="setActive(this)">
+    <div class="nav-num">4</div>
+    <div class="nav-label">Partes de una habitación</div>
+  </a>
+  <a class="nav-item" href="#l5" onclick="setActive(this)">
+    <div class="nav-num">5</div>
+    <div class="nav-label">En la Escuela</div>
+  </a>
+  <a class="nav-item" href="#l6" onclick="setActive(this)">
+    <div class="nav-num">6</div>
+    <div class="nav-label">Colores · Ropa</div>
+  </a>
+  <a class="nav-item" href="#l7" onclick="setActive(this)">
+    <div class="nav-num">7</div>
+    <div class="nav-label">Adjetivos · Who/What/Which</div>
+  </a>
+  <a class="nav-item" href="#l8" onclick="setActive(this)">
+    <div class="nav-num">8</div>
+    <div class="nav-label">Profesiones</div>
+  </a>
+  <a class="nav-item" href="#l9" onclick="setActive(this)">
+    <div class="nav-num">9</div>
+    <div class="nav-label">Países · Nacionalidades</div>
+  </a>
+  <a class="nav-item" href="#l10" onclick="setActive(this)">
+    <div class="nav-num">10</div>
+    <div class="nav-label">La Familia · Agradecimientos</div>
+  </a>
+  <div class="nav-sep"></div>
+  <a class="nav-item" href="#sounds" onclick="setActive(this)">
+    <div class="nav-num">🔤</div>
+    <div class="nav-label">Resumen de Sonidos</div>
+  </a>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<main class="main-content">
+
+<!-- INTRO -->
+<section id="intro" class="lesson-section">
+  <div class="guide-hero">
+    <div class="gh-label">Compass English · Book 1 · A1/A2</div>
+    <h1 class="gh-title">Guía del Estudiante<br/>Lecciones 1 a 10</h1>
+    <p class="gh-sub">Esta guía te ayuda a pronunciar correctamente cada palabra nueva que aprendiste. Aprende a leer la pronunciación fonética y encuentra notas en español que explican las reglas más importantes.</p>
+    <div class="gh-tags">
+      <span class="gh-tag">Pronunciación Fonética</span>
+      <span class="gh-tag">Vocabulario</span>
+      <span class="gh-tag">Gramática</span>
+      <span class="gh-tag">Notas en Español</span>
+      <span class="gh-tag">Desarrollado por Teacher Afshin</span>
+    </div>
+  </div>
+
+  <!-- PHONETICS KEY -->
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🗣️</div>Cómo leer la pronunciación fonética</div>
+    <div class="phon-grid">
+      <div class="phon-row"><div class="phon-sym">ei</div><div><div class="phon-desc">Como la <strong>"e"</strong> larga</div><div class="phon-ex">name = /neim/, eight = /eit/</div></div></div>
+      <div class="phon-row"><div class="phon-sym">ou</div><div><div class="phon-desc">Como <strong>"o+u"</strong> suave</div><div class="phon-ex">go = /gou/, no = /nou/</div></div></div>
+      <div class="phon-row"><div class="phon-sym">ae</div><div><div class="phon-desc"><strong>"a"</strong> muy abierta</div><div class="phon-ex">apple = /aepel/, bag = /baeg/</div></div></div>
+      <div class="phon-row"><div class="phon-sym">th</div><div><div class="phon-desc">Lengua <strong>entre los dientes</strong></div><div class="phon-ex">this = /dis/ suave, three = /zri/</div></div></div>
+      <div class="phon-row"><div class="phon-sym">sh</div><div><div class="phon-desc">Como <strong>"shhh"</strong> suave</div><div class="phon-ex">she = /shi/, shoe = /shuu/</div></div></div>
+      <div class="phon-row"><div class="phon-sym">ch</div><div><div class="phon-desc">Como <strong>"ch"</strong> del español</div><div class="phon-ex">chair = /cher/, teacher = /tiicher/</div></div></div>
+      <div class="phon-row"><div class="phon-sym">ii</div><div><div class="phon-desc"><strong>"i"</strong> larga y prolongada</div><div class="phon-ex">see = /sii/, teacher = /tiicher/</div></div></div>
+      <div class="phon-row"><div class="phon-sym">uu</div><div><div class="phon-desc"><strong>"u"</strong> larga y prolongada</div><div class="phon-ex">school = /skuul/, blue = /bluu/</div></div></div>
+    </div>
+    <div class="tip-box" style="margin-top:14px;margin-bottom:0;">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text"><strong>Consejo:</strong> La letra mayúscula en la pronunciación indica la sílaba con más fuerza. Ejemplo: <strong>TEA-cher</strong> — la fuerza va en "TEA".</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LESSON 1 ══ -->
+<section id="l1" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">1</div>
+      <div class="lh-info">
+        <div class="lh-title">El Alfabeto · Vocabulario Básico</div>
+        <div class="lh-sub">Bebidas · Frutas · Alimentos · Pertenencias · Transporte · Singular y Plural</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Alphabet</span>
+      <span class="lh-topic">Vocabulary</span>
+      <span class="lh-topic">Singular & Plural</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🔤</div>El Alfabeto en Inglés — Pronunciación</div>
+    <div class="alpha-grid" id="alpha-grid"></div>
+    <div class="tip-box" style="margin-top:14px;margin-bottom:0;">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text"><strong>Vocales (verde):</strong> A=/ei/ · E=/i/ · I=/ai/ · O=/ou/ · U=/iu/ — Suenan muy diferente al español. Practica cantando el alfabeto en voz alta todos los días.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">📖</div>Pronunciación — Vocabulario Básico</div>
+    <table class="pron-table">
+      <thead><tr><th>Palabra</th><th>Pronunciación</th><th>Suena como...</th><th>Español</th></tr></thead>
+      <tbody id="l1-vocab"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">📐</div>Singular y Plural — Regla básica</div>
+    <table class="pron-table">
+      <thead><tr><th>Singular</th><th>Plural</th><th>Pronunciación plural</th><th>Español</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-word">Book</td><td class="pt-word">Books</td><td class="pt-phon">/buks/</td><td class="pt-es">libro / libros</td></tr>
+        <tr><td class="pt-word">Apple</td><td class="pt-word">Apples</td><td class="pt-phon">/aepe(l)z/</td><td class="pt-es">manzana / manzanas</td></tr>
+        <tr><td class="pt-word">Car</td><td class="pt-word">Cars</td><td class="pt-phon">/karz/</td><td class="pt-es">carro / carros</td></tr>
+        <tr><td class="pt-word">Bus</td><td class="pt-word">Buses</td><td class="pt-phon">/basiz/</td><td class="pt-es">autobús / autobuses</td></tr>
+        <tr><td class="pt-word">Box</td><td class="pt-word">Boxes</td><td class="pt-phon">/boksiz/</td><td class="pt-es">caja / cajas</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box" style="margin-bottom:0;">
+      <div class="tip-icon">📌</div>
+      <div class="tip-text"><strong>Regla:</strong> Añade <strong>"s"</strong> para el plural. Si termina en s, x, ch, sh → añade <strong>"es"</strong>. Ejemplo: bus → buses, box → boxes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LESSON 2 ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Hi! I am Alex.</div><div class="dlg-pron">/hai! ai AEM Alex/</div></td>
+          <td><div class="dlg-es">¡Hola! Soy Alex.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Hi! I am Nadia.</div><div class="dlg-pron">/hai! ai AEM Nadia/</div></td>
+          <td><div class="dlg-es">¡Hola! Soy Nadia.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Nice to meet you, Nadia.</div><div class="dlg-pron">/NAIS tu MIT iu, Nadia/</div></td>
+          <td><div class="dlg-es">Mucho gusto, Nadia.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Nice to meet you, Alex.</div><div class="dlg-pron">/NAIS tu MIT iu, Alex/</div></td>
+          <td><div class="dlg-es">Mucho gusto, Alex.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">What is this?</div><div class="dlg-pron">/uot IZ DIS/</div></td>
+          <td><div class="dlg-es">¿Qué es esto?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">It is an apple.</div><div class="dlg-pron">/it IZ aen AE-pel/</div></td>
+          <td><div class="dlg-es">Es una manzana.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">And this?</div><div class="dlg-pron">/aend DIS/</div></td>
+          <td><div class="dlg-es">¿Y esto?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">It is a book.</div><div class="dlg-pron">/it IZ a BUK/</div></td>
+          <td><div class="dlg-es">Es un libro.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">How do you spell "apple"?</div><div class="dlg-pron">/hau du iu SPEL apple/</div></td>
+          <td><div class="dlg-es">¿Cómo se deletrea "apple"?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">A - P - P - L - E!</div><div class="dlg-pron">/ei - pi - pi - el - i/</div></td>
+          <td><div class="dlg-es">A - P - P - L - E</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="l2" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">2</div>
+      <div class="lh-info">
+        <div class="lh-title">Verb To Be · Saludos · Presentarse</div>
+        <div class="lh-sub">am · is · are · Hello · Goodbye · Nice to meet you</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Verb To Be</span><span class="lh-topic">Greetings</span><span class="lh-topic">Introductions</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">📖</div>Pronunciación — Saludos y Frases</div>
+    <table class="pron-table">
+      <thead><tr><th>Expresión</th><th>Pronunciación</th><th>Suena como...</th><th>Español</th></tr></thead>
+      <tbody id="l2-vocab"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">📐</div>Verb To Be — Pronunciación completa</div>
+    <table class="pron-table">
+      <thead><tr><th>Forma completa</th><th>Contracción</th><th>Pronunciación</th><th>Español</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-word">I am</td><td class="rt-blue">I'm</td><td class="pt-phon">/aim/</td><td class="pt-es">yo soy / estoy</td></tr>
+        <tr><td class="pt-word">You are</td><td class="rt-blue">You're</td><td class="pt-phon">/iur/</td><td class="pt-es">tú eres / estás</td></tr>
+        <tr><td class="pt-word">He is</td><td class="rt-blue">He's</td><td class="pt-phon">/hiz/</td><td class="pt-es">él es / está</td></tr>
+        <tr><td class="pt-word">She is</td><td class="rt-blue">She's</td><td class="pt-phon">/shiz/</td><td class="pt-es">ella es / está</td></tr>
+        <tr><td class="pt-word">We are</td><td class="rt-blue">We're</td><td class="pt-phon">/uir/</td><td class="pt-es">nosotros somos</td></tr>
+        <tr><td class="pt-word">They are</td><td class="rt-blue">They're</td><td class="pt-phon">/deir/</td><td class="pt-es">ellos son</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🌅</div>Saludos — ¿Cuándo usarlos?</div>
+    <table class="greet-table">
+      <thead><tr><th>Saludo</th><th>Pronunciación</th><th>Horario</th><th>Español</th></tr></thead>
+      <tbody>
+        <tr><td class="greet-en">Good morning!</td><td class="pt-phon">/gud MOR-ning/</td><td class="greet-time">🌅 5am – 12pm</td><td class="greet-es">Buenos días</td></tr>
+        <tr><td class="greet-en">Good afternoon!</td><td class="pt-phon">/gud AF-ter-nuun/</td><td class="greet-time">☀️ 12pm – 6pm</td><td class="greet-es">Buenas tardes</td></tr>
+        <tr><td class="greet-en">Good evening!</td><td class="pt-phon">/gud IIV-ning/</td><td class="greet-time">🌙 6pm – 12am</td><td class="greet-es">Buenas noches (al llegar)</td></tr>
+        <tr><td class="greet-en">Good night!</td><td class="pt-phon">/gud NAIT/</td><td class="greet-time">🌚 Al despedirse</td><td class="greet-es">Buenas noches (al irse)</td></tr>
+        <tr><td class="greet-en">Goodbye!</td><td class="pt-phon">/gud-BAI/</td><td class="greet-time">⏰ Cualquier hora</td><td class="greet-es">Adiós</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box" style="margin-bottom:0;margin-top:12px;">
+      <div class="tip-icon">🗣️</div>
+      <div class="tip-text"><strong>"th" en inglés:</strong> pon la lengua suavemente entre los dientes y sopla. "The" suena /de/ pero muy suave. Practica: <strong>this, that, the, they, these, those</strong>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LESSON 3 ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Good morning!</div><div class="dlg-pron">/gud MOR-ning/</div></td>
+          <td><div class="dlg-es">¡Buenos días!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Good morning! What is your name?</div><div class="dlg-pron">/gud MOR-ning! uot IZ ior NEIM/</div></td>
+          <td><div class="dlg-es">¡Buenos días! ¿Cómo te llamas?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">My name is Alex. I am a student.</div><div class="dlg-pron">/mai NEIM iz Alex. ai AEM a STIU-dent/</div></td>
+          <td><div class="dlg-es">Me llamo Alex. Soy estudiante.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">I am Nadia. I am a student too.</div><div class="dlg-pron">/ai AEM Nadia. ai AEM a STIU-dent tuu/</div></td>
+          <td><div class="dlg-es">Soy Nadia. Yo también soy estudiante.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Are you from Mexico?</div><div class="dlg-pron">/ar iu FROM Mek-si-kou/</div></td>
+          <td><div class="dlg-es">¿Eres de México?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">No, I am not. I am from India.</div><div class="dlg-pron">/nou, ai AEM not. ai AEM from IN-dia/</div></td>
+          <td><div class="dlg-es">No, no lo soy. Soy de India.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Nice to meet you, Nadia!</div><div class="dlg-pron">/NAIS tu MIT iu, Nadia/</div></td>
+          <td><div class="dlg-es">¡Mucho gusto, Nadia!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Nice to meet you too! Goodbye!</div><div class="dlg-pron">/NAIS tu MIT iu tuu! gud-BAI/</div></td>
+          <td><div class="dlg-es">¡Igualmente! ¡Adiós!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Goodbye! See you tomorrow!</div><div class="dlg-pron">/gud-BAI! sii iu tu-MO-rou/</div></td>
+          <td><div class="dlg-es">¡Adiós! ¡Hasta mañana!</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="l3" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">3</div>
+      <div class="lh-info">
+        <div class="lh-title">This, These · That, Those · Números</div>
+        <div class="lh-sub">Demostrativos · Near & Far · Numbers 1–20</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Demonstratives</span><span class="lh-topic">Numbers 1–20</span><span class="lh-topic">Near & Far</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">👉</div>Demostrativos — Pronunciación</div>
+    <table class="pron-table">
+      <thead><tr><th>Palabra</th><th>Pronunciación</th><th>Suena como...</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-word">This</td><td class="pt-phon">/dis/</td><td class="pt-hint">DIS (th suave)</td><td class="pt-es">este/esta — cerca, singular</td></tr>
+        <tr><td class="pt-word">These</td><td class="pt-phon">/diiz/</td><td class="pt-hint">DIIZ (th suave)</td><td class="pt-es">estos/estas — cerca, plural</td></tr>
+        <tr><td class="pt-word">That</td><td class="pt-phon">/daet/</td><td class="pt-hint">DAET (th suave)</td><td class="pt-es">ese/aquel — lejos, singular</td></tr>
+        <tr><td class="pt-word">Those</td><td class="pt-phon">/douz/</td><td class="pt-hint">DOUZ (th suave)</td><td class="pt-es">esos/aquellos — lejos, plural</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box" style="margin-bottom:0;margin-top:12px;">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text"><strong>Cerca o lejos:</strong> THIS y THESE = cerca de ti. THAT y THOSE = lejos de ti. En español: Este/Estos vs Ese/Esos.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🔢</div>Números 1–20 — Pronunciación</div>
+    <div class="num-grid" id="num-grid"></div>
+    <div class="tip-box" style="margin-top:12px;margin-bottom:0;">
+      <div class="tip-icon">🔢</div>
+      <div class="tip-text"><strong>13–19 terminan en "-teen" = /tiin/.</strong> Ojo con la diferencia: THIRTEEN /13/ vs THIRTY /30/. La fuerza cambia: thirTEEN vs THIRty.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LESSON 4 ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">What is this?</div><div class="dlg-pron">/uot IZ DIS/</div></td>
+          <td><div class="dlg-es">¿Qué es esto?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">This is a book.</div><div class="dlg-pron">/DIS iz a BUK/</div></td>
+          <td><div class="dlg-es">Esto es un libro.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">And what is that?</div><div class="dlg-pron">/aend uot IZ DAET/</div></td>
+          <td><div class="dlg-es">¿Y qué es eso?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">That is a car.</div><div class="dlg-pron">/DAET iz a KAR/</div></td>
+          <td><div class="dlg-es">Eso es un carro.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">What are these?</div><div class="dlg-pron">/uot AR DIIZ/</div></td>
+          <td><div class="dlg-es">¿Qué son estos?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">These are apples.</div><div class="dlg-pron">/DIIZ ar AE-pelz/</div></td>
+          <td><div class="dlg-es">Estos son manzanas.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">How many apples?</div><div class="dlg-pron">/hau ME-ni AE-pelz/</div></td>
+          <td><div class="dlg-es">¿Cuántas manzanas?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Three apples!</div><div class="dlg-pron">/ZRI AE-pelz/</div></td>
+          <td><div class="dlg-es">¡Tres manzanas!</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="l4" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">4</div>
+      <div class="lh-info">
+        <div class="lh-title">Partes de una habitación · Alfabeto · Números</div>
+        <div class="lh-sub">Room vocabulary · There is / There are</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Room Parts</span><span class="lh-topic">There is / There are</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🏠</div>Pronunciación — Partes de una habitación</div>
+    <table class="pron-table">
+      <thead><tr><th>Palabra</th><th>Pronunciación</th><th>Suena como...</th><th>Español</th></tr></thead>
+      <tbody id="l4-vocab"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">📐</div>There is / There are — Gramática y Pronunciación</div>
+    <table class="pron-table">
+      <thead><tr><th>Forma</th><th>Pronunciación</th><th>Uso</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-word">There is</td><td class="pt-phon">/DER iz/</td><td class="pt-hint">1 objeto (singular)</td><td class="pt-es">There is a table.</td></tr>
+        <tr><td class="pt-word">There are</td><td class="pt-phon">/DER ar/</td><td class="pt-hint">2+ objetos (plural)</td><td class="pt-es">There are two chairs.</td></tr>
+        <tr><td class="pt-word">Is there...?</td><td class="pt-phon">/iz DER/</td><td class="pt-hint">Pregunta singular</td><td class="pt-es">Is there a door?</td></tr>
+        <tr><td class="pt-word">Are there...?</td><td class="pt-phon">/ar DER/</td><td class="pt-hint">Pregunta plural</td><td class="pt-es">Are there chairs?</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box" style="margin-bottom:0;margin-top:12px;">
+      <div class="tip-icon">🗣️</div>
+      <div class="tip-text"><strong>"There"</strong> se pronuncia <strong>/der/</strong> — NO como "seer". La "th" es suave. Di: "There is a door" = /DER iz a DOR/.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LESSON 5 ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Nadia, what is that?</div><div class="dlg-pron">/Nadia, uot IZ DAET/</div></td>
+          <td><div class="dlg-es">Nadia, ¿qué es eso?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">That is a window.</div><div class="dlg-pron">/DAET iz a UIN-dou/</div></td>
+          <td><div class="dlg-es">Eso es una ventana.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">And this is a door.</div><div class="dlg-pron">/aend DIS iz a DOR/</div></td>
+          <td><div class="dlg-es">Y esto es una puerta.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Yes! There is one door.</div><div class="dlg-pron">/ies! DER iz uan DOR/</div></td>
+          <td><div class="dlg-es">¡Sí! Hay una puerta.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">How many chairs are there?</div><div class="dlg-pron">/hau ME-ni CHERZ ar DER/</div></td>
+          <td><div class="dlg-es">¿Cuántas sillas hay?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">There are four chairs.</div><div class="dlg-pron">/DER ar FOR CHERZ/</div></td>
+          <td><div class="dlg-es">Hay cuatro sillas.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Four! One, two, three, four!</div><div class="dlg-pron">/FOR! uan, tuu, ZRI, FOR/</div></td>
+          <td><div class="dlg-es">¡Cuatro! ¡Uno, dos, tres, cuatro!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Great! You are good at numbers!</div><div class="dlg-pron">/greit! iu ar gud aet NAM-berz/</div></td>
+          <td><div class="dlg-es">¡Bien! ¡Eres bueno con los números!</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="l5" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">5</div>
+      <div class="lh-info">
+        <div class="lh-title">En la Escuela · El Alfabeto</div>
+        <div class="lh-sub">School objects · Classroom vocabulary · A / An</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">School</span><span class="lh-topic">Classroom</span><span class="lh-topic">A / An</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🏫</div>Pronunciación — Vocabulario Escolar</div>
+    <table class="pron-table">
+      <thead><tr><th>Palabra</th><th>Pronunciación</th><th>Suena como...</th><th>Español</th></tr></thead>
+      <tbody id="l5-vocab"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">📐</div>A / An — La regla más importante</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+      <div style="background:var(--gl);border-radius:12px;padding:14px;border:1.5px solid var(--gb);">
+        <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--gd);margin-bottom:6px;">A &nbsp;<span style="font-size:12px;color:var(--blue);">/ei/</span></div>
+        <div style="font-size:12px;color:var(--tb);margin-bottom:6px;">Antes de <strong>consonante</strong></div>
+        <div style="font-size:11px;color:var(--gd);line-height:1.8;">a book /ei buk/<br/>a desk /ei desk/<br/>a pencil /ei pensel/<br/>a school /ei skuul/</div>
+      </div>
+      <div style="background:#EEF2FF;border-radius:12px;padding:14px;border:1.5px solid #C7D2FE;">
+        <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--blue);margin-bottom:6px;">AN &nbsp;<span style="font-size:12px;color:var(--blue);">/aen/</span></div>
+        <div style="font-size:12px;color:var(--tb);margin-bottom:6px;">Antes de <strong>vocal</strong> (a,e,i,o,u)</div>
+        <div style="font-size:11px;color:var(--blue);line-height:1.8;">an eraser /aen ireiser/<br/>an apple /aen aepel/<br/>an orange /aen orinch/<br/>an engineer /aen enchinier/</div>
+      </div>
+    </div>
+    <div class="tip-box" style="margin-bottom:0;">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text"><strong>La regla es para el SONIDO, no la letra.</strong> "An hour" usa "an" porque "hour" empieza con sonido vocal /au/. "A university" usa "a" porque suena /iu/.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LESSON 6 ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Good morning, Nadia!</div><div class="dlg-pron">/gud MOR-ning, Nadia/</div></td>
+          <td><div class="dlg-es">¡Buenos días, Nadia!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Good morning, Alex!</div><div class="dlg-pron">/gud MOR-ning, Alex/</div></td>
+          <td><div class="dlg-es">¡Buenos días, Alex!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Where is the teacher?</div><div class="dlg-pron">/UER iz de TII-cher/</div></td>
+          <td><div class="dlg-es">¿Dónde está el maestro?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">The teacher is in the classroom.</div><div class="dlg-pron">/de TII-cher iz in de KLAES-rum/</div></td>
+          <td><div class="dlg-es">El maestro está en el salón.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Is there a board?</div><div class="dlg-pron">/iz DER a BORD/</div></td>
+          <td><div class="dlg-es">¿Hay un pizarrón?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Yes! There is a big board.</div><div class="dlg-pron">/ies! DER iz a BIG BORD/</div></td>
+          <td><div class="dlg-es">¡Sí! Hay un pizarrón grande.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">I have a pencil and an eraser.</div><div class="dlg-pron">/ai HAEV a PEN-sel aend aen i-REI-ser/</div></td>
+          <td><div class="dlg-es">Tengo un lápiz y un borrador.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Good! Now we are ready!</div><div class="dlg-pron">/gud! nau ui ar RE-di/</div></td>
+          <td><div class="dlg-es">¡Bien! ¡Ahora estamos listos!</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="l6" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">6</div>
+      <div class="lh-info">
+        <div class="lh-title">Colores · Ropa y Accesorios</div>
+        <div class="lh-sub">Colors · Clothing · Accessories · Describing outfits</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Colors</span><span class="lh-topic">Clothing</span><span class="lh-topic">I am wearing</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🎨</div>Colores — Pronunciación</div>
+    <table class="pron-table">
+      <thead><tr><th>Color</th><th>Pronunciación</th><th>Suena como...</th><th>Español</th></tr></thead>
+      <tbody id="l6-colors"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">👕</div>Ropa y Accesorios — Pronunciación</div>
+    <table class="pron-table">
+      <thead><tr><th>Prenda</th><th>Pronunciación</th><th>Suena como...</th><th>Español</th></tr></thead>
+      <tbody id="l6-clothes"></tbody>
+    </table>
+    <div class="tip-box" style="margin-bottom:0;margin-top:12px;">
+      <div class="tip-icon">👗</div>
+      <div class="tip-text"><strong>Regla clave:</strong> En inglés el color va <strong>ANTES</strong> del objeto. Decimos "a <strong>red</strong> dress" (un vestido rojo) — al revés del español. Practica: a blue shirt, red shoes, a green jacket.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LESSON 7 ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Nadia, what color is your shirt?</div><div class="dlg-pron">/Nadia, uot KA-ler iz ior SHERT/</div></td>
+          <td><div class="dlg-es">Nadia, ¿de qué color es tu camisa?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">My shirt is pink. And yours?</div><div class="dlg-pron">/mai SHERT iz PINK. aend iorz/</div></td>
+          <td><div class="dlg-es">Mi camisa es rosa. ¿Y la tuya?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">I am wearing a blue shirt.</div><div class="dlg-pron">/ai AEM UER-ing a BLUU SHERT/</div></td>
+          <td><div class="dlg-es">Estoy usando una camisa azul.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">I like blue! Is that a new jacket?</div><div class="dlg-pron">/ai LAIK BLUU! iz DAET a NIU CHA-ket/</div></td>
+          <td><div class="dlg-es">¡Me gusta el azul! ¿Eso es una chaqueta nueva?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Yes! It is a green jacket.</div><div class="dlg-pron">/ies! it IZ a GRIIN CHA-ket/</div></td>
+          <td><div class="dlg-es">¡Sí! Es una chaqueta verde.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Nice! Green is my favorite color!</div><div class="dlg-pron">/nais! GRIIN iz mai FEI-vo-rit KA-ler/</div></td>
+          <td><div class="dlg-es">¡Bonito! ¡El verde es mi color favorito!</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="l7" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">7</div>
+      <div class="lh-info">
+        <div class="lh-title">Adjetivos — Opuestos · Who? What? Which?</div>
+        <div class="lh-sub">Adjective pairs · Question words · Describing things</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Adjectives</span><span class="lh-topic">Opposites</span><span class="lh-topic">Question Words</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🔄</div>Adjetivos Opuestos — Pronunciación</div>
+    <table class="pron-table">
+      <thead><tr><th>Adjetivo</th><th>Pronunciación</th><th>Opuesto</th><th>Pronunciación</th><th>Español</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-word">Big</td><td class="pt-phon">/big/</td><td class="pt-word">Small</td><td class="pt-phon">/smol/</td><td class="pt-es">grande / pequeño</td></tr>
+        <tr><td class="pt-word">Hot</td><td class="pt-phon">/hot/</td><td class="pt-word">Cold</td><td class="pt-phon">/kould/</td><td class="pt-es">caliente / frío</td></tr>
+        <tr><td class="pt-word">Fast</td><td class="pt-phon">/faest/</td><td class="pt-word">Slow</td><td class="pt-phon">/slou/</td><td class="pt-es">rápido / lento</td></tr>
+        <tr><td class="pt-word">Happy</td><td class="pt-phon">/HAE-pi/</td><td class="pt-word">Sad</td><td class="pt-phon">/saed/</td><td class="pt-es">feliz / triste</td></tr>
+        <tr><td class="pt-word">Old</td><td class="pt-phon">/ould/</td><td class="pt-word">New</td><td class="pt-phon">/niu/</td><td class="pt-es">viejo / nuevo</td></tr>
+        <tr><td class="pt-word">Dark</td><td class="pt-phon">/dark/</td><td class="pt-word">Light</td><td class="pt-phon">/lait/</td><td class="pt-es">oscuro / claro</td></tr>
+        <tr><td class="pt-word">Hard</td><td class="pt-phon">/hard/</td><td class="pt-word">Easy</td><td class="pt-phon">/II-zi/</td><td class="pt-es">difícil / fácil</td></tr>
+        <tr><td class="pt-word">Tall</td><td class="pt-phon">/tol/</td><td class="pt-word">Short</td><td class="pt-phon">/short/</td><td class="pt-es">alto / bajo</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">❓</div>Palabras de Pregunta — Who? What? Which?</div>
+    <table class="pron-table">
+      <thead><tr><th>Palabra</th><th>Pronunciación</th><th>Usar para...</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-word">Who</td><td class="pt-phon">/huu/</td><td class="pt-hint">👤 Personas</td><td class="pt-es">Who is she? ¿Quién es ella?</td></tr>
+        <tr><td class="pt-word">What</td><td class="pt-phon">/uot/</td><td class="pt-hint">📦 Cosas / información</td><td class="pt-es">What is this? ¿Qué es esto?</td></tr>
+        <tr><td class="pt-word">Which</td><td class="pt-phon">/uich/</td><td class="pt-hint">🔀 Elegir entre opciones</td><td class="pt-es">Which one? ¿Cuál?</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box" style="margin-bottom:0;margin-top:12px;">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text"><strong>Truco:</strong> WHO = 👤 persona, WHAT = 📦 cosa, WHICH = 🔀 elegir. La "wh" se pronuncia solo como /u/ en la mayoría de los casos.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LESSON 8 ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">What is that animal?</div><div class="dlg-pron">/uot IZ DAET AE-ni-mel/</div></td>
+          <td><div class="dlg-es">¿Qué es ese animal?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">It is a dog. It is big!</div><div class="dlg-pron">/it IZ a DOG. it IZ BIG/</div></td>
+          <td><div class="dlg-es">Es un perro. ¡Es grande!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Is it fast or slow?</div><div class="dlg-pron">/iz it FAEST or SLOU/</div></td>
+          <td><div class="dlg-es">¿Es rápido o lento?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">It is very fast!</div><div class="dlg-pron">/it IZ VE-ri FAEST/</div></td>
+          <td><div class="dlg-es">¡Es muy rápido!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Which dog is yours?</div><div class="dlg-pron">/uich DOG iz iorz/</div></td>
+          <td><div class="dlg-es">¿Cuál perro es el tuyo?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">The small brown one!</div><div class="dlg-pron">/de SMOL BRAUN uan/</div></td>
+          <td><div class="dlg-es">¡El pequeño café!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Who is that with the dog?</div><div class="dlg-pron">/huu IZ DAET uid de DOG/</div></td>
+          <td><div class="dlg-es">¿Quién es ese con el perro?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">That is my brother!</div><div class="dlg-pron">/DAET iz mai BRO-ther/</div></td>
+          <td><div class="dlg-es">¡Ese es mi hermano!</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="l8" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">8</div>
+      <div class="lh-info">
+        <div class="lh-title">Profesiones y Ocupaciones · Verb To Be</div>
+        <div class="lh-sub">Jobs · Occupations · Affirmative · Contractions · Numbers</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Professions</span><span class="lh-topic">Verb To Be</span><span class="lh-topic">A / An + Jobs</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">💼</div>Pronunciación — Profesiones</div>
+    <table class="pron-table">
+      <thead><tr><th>Profesión</th><th>Pronunciación</th><th>Suena como...</th><th>Español</th></tr></thead>
+      <tbody id="l8-vocab"></tbody>
+    </table>
+    <div class="tip-box" style="margin-bottom:0;margin-top:12px;">
+      <div class="tip-icon">💼</div>
+      <div class="tip-text"><strong>Muy importante:</strong> En inglés SIEMPRE usas "a" o "an" antes de la profesión. "I am <strong>a</strong> doctor." En español decimos "Soy médico" (sin artículo), pero en inglés siempre va el artículo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LESSON 9 ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Nadia, what does your mother do?</div><div class="dlg-pron">/Nadia, uot DAZ ior MO-ther duu/</div></td>
+          <td><div class="dlg-es">Nadia, ¿a qué se dedica tu madre?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">She is a doctor. And your father?</div><div class="dlg-pron">/shi IZ a DOK-ter. aend ior FA-ther/</div></td>
+          <td><div class="dlg-es">Ella es médica. ¿Y tu padre?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">My father is a pilot!</div><div class="dlg-pron">/mai FA-ther IZ a PAI-lot/</div></td>
+          <td><div class="dlg-es">¡Mi padre es piloto!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Wow! That is a great job!</div><div class="dlg-pron">/uau! DAET iz a GREIT CHOB/</div></td>
+          <td><div class="dlg-es">¡Guau! ¡Ese es un trabajo genial!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Are you a student?</div><div class="dlg-pron">/ar iu a STIU-dent/</div></td>
+          <td><div class="dlg-es">¿Eres estudiante?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Yes, I am. We are both students!</div><div class="dlg-pron">/ies, ai AEM. ui ar BOUTH STIU-dents/</div></td>
+          <td><div class="dlg-es">Sí, lo soy. ¡Los dos somos estudiantes!</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="l9" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">9</div>
+      <div class="lh-info">
+        <div class="lh-title">Países y Nacionalidades · En el vuelo a Boston</div>
+        <div class="lh-sub">Countries · Nationalities · Flight vocabulary</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Countries</span><span class="lh-topic">Nationalities</span><span class="lh-topic">Where are you from?</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🌍</div>Países y Nacionalidades — Pronunciación</div>
+    <table class="pron-table">
+      <thead><tr><th>País</th><th>Pronunciación</th><th>Nacionalidad</th><th>Pronunciación</th></tr></thead>
+      <tbody id="l9-vocab"></tbody>
+    </table>
+    <div class="tip-box" style="margin-bottom:0;margin-top:12px;">
+      <div class="tip-icon">🌍</div>
+      <div class="tip-text"><strong>Regla:</strong> Las nacionalidades en inglés siempre empiezan con <strong>letra MAYÚSCULA</strong>. Decimos "She is Mexican" — no "mexican". Además, nunca usas "the" antes del nombre del país: "I am from Mexico" (NO "from the Mexico").</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">✈️</div>Frases útiles en el vuelo — Pronunciación</div>
+    <table class="pron-table">
+      <thead><tr><th>Frase</th><th>Pronunciación</th><th>Español</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-word">Where are you from?</td><td class="pt-phon">/UER ar iu FROM/</td><td class="pt-es">¿De dónde eres?</td></tr>
+        <tr><td class="pt-word">I am from Mexico.</td><td class="pt-phon">/ai AEM from MEK-si-kou/</td><td class="pt-es">Soy de México.</td></tr>
+        <tr><td class="pt-word">Excuse me.</td><td class="pt-phon">/eks-KIUZ mi/</td><td class="pt-es">Disculpe.</td></tr>
+        <tr><td class="pt-word">Is this seat free?</td><td class="pt-phon">/iz DIS siit FRI/</td><td class="pt-es">¿Está libre este asiento?</td></tr>
+        <tr><td class="pt-word">Nice to meet you!</td><td class="pt-phon">/NAIS tu MIT iu/</td><td class="pt-es">¡Mucho gusto!</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ LESSON 10 ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Excuse me. Is this seat free?</div><div class="dlg-pron">/eks-KIUZ mi. iz DIS SIIT FRII/</div></td>
+          <td><div class="dlg-es">Disculpe. ¿Está libre este asiento?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Yes! Please sit down.</div><div class="dlg-pron">/ies! PLIIZ SIT daun/</div></td>
+          <td><div class="dlg-es">¡Sí! Por favor siéntate.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Thank you! I am Alex. Nice to meet you!</div><div class="dlg-pron">/ZAENK iu! ai AEM Alex. NAIS tu MIT iu/</div></td>
+          <td><div class="dlg-es">¡Gracias! Soy Alex. ¡Mucho gusto!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Nice to meet you too! I am Nadia.</div><div class="dlg-pron">/NAIS tu MIT iu tuu! ai AEM Nadia/</div></td>
+          <td><div class="dlg-es">¡Igualmente! Soy Nadia.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Where are you from, Nadia?</div><div class="dlg-pron">/UER ar iu FROM, Nadia/</div></td>
+          <td><div class="dlg-es">¿De dónde eres, Nadia?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">I am from India. I am Indian. And you?</div><div class="dlg-pron">/ai AEM from IN-dia. ai AEM IN-dian. aend iu/</div></td>
+          <td><div class="dlg-es">Soy de India. Soy india. ¿Y tú?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">I am from Mexico. I am Mexican.</div><div class="dlg-pron">/ai AEM from MEK-si-kou. ai AEM MEK-si-ken/</div></td>
+          <td><div class="dlg-es">Soy de México. Soy mexicano.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Are you going to Boston for work?</div><div class="dlg-pron">/ar iu GOU-ing tu BOS-ton for UERK/</div></td>
+          <td><div class="dlg-es">¿Vas a Boston por trabajo?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">No, I am going to study English!</div><div class="dlg-pron">/nou, ai AEM GOU-ing tu STA-di ING-lish/</div></td>
+          <td><div class="dlg-es">No, ¡voy a estudiar inglés!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Me too! This is so exciting!</div><div class="dlg-pron">/mi tuu! DIS iz sou eks-SAI-ting/</div></td>
+          <td><div class="dlg-es">¡Yo también! ¡Esto es muy emocionante!</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="l10" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num">10</div>
+      <div class="lh-info">
+        <div class="lh-title">La Familia Stephenson · Agradecimientos</div>
+        <div class="lh-sub">Family members · Possessives · Thanks expressions</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Family</span><span class="lh-topic">Possessives</span><span class="lh-topic">Thanks</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">👨‍👩‍👧‍👦</div>Miembros de la familia — Pronunciación</div>
+    <div class="family-grid" id="family-grid"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🙏</div>Agradecimientos — Pronunciación y Respuestas</div>
+    <div class="thanks-grid" id="thanks-grid"></div>
+    <div class="tip-box" style="margin-bottom:0;margin-top:14px;">
+      <div class="tip-icon">🙏</div>
+      <div class="tip-text"><strong>"Thank"</strong> se pronuncia <strong>/zaenk/</strong> — la "th" inicial es fuerte (sin voz). Practica: "Thank you!" = /ZAENK iu/. Los hablantes de inglés usan estas expresiones muchas veces al día.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">📐</div>Posesivos — Pronunciación</div>
+    <table class="pron-table">
+      <thead><tr><th>Posesivo</th><th>Pronunciación</th><th>Español</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-word">My</td><td class="pt-phon">/mai/</td><td class="pt-es">mi / mis</td><td class="pt-hint">My name is Alex.</td></tr>
+        <tr><td class="pt-word">Your</td><td class="pt-phon">/ior/</td><td class="pt-es">tu / tus</td><td class="pt-hint">Your book is here.</td></tr>
+        <tr><td class="pt-word">His</td><td class="pt-phon">/hiz/</td><td class="pt-es">su (de él)</td><td class="pt-hint">His sister is Lucy.</td></tr>
+        <tr><td class="pt-word">Her</td><td class="pt-phon">/her/</td><td class="pt-es">su (de ella)</td><td class="pt-hint">Her name is Susan.</td></tr>
+        <tr><td class="pt-word">Our</td><td class="pt-phon">/aur/</td><td class="pt-es">nuestro/a(s)</td><td class="pt-hint">Our family is big.</td></tr>
+        <tr><td class="pt-word">Their</td><td class="pt-phon">/deir/</td><td class="pt-es">su/sus (de ellos)</td><td class="pt-hint">Their children are Tom and Lucy.</td></tr>
+        <tr><td class="pt-word">Robert's</td><td class="pt-phon">/RO-berts/</td><td class="pt-es">de Robert</td><td class="pt-hint">Robert's wife is Susan.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ SOUNDS SUMMARY ══ -->
+<div class="dlg-card">
+    <div class="card-title"><div class="ct-icon">💬</div>Diálogo — Traducción y Pronunciación</div>
+    <table class="dlg-table">
+      <thead><tr><th style="width:70px;">Personaje</th><th>Inglés + Pronunciación</th><th>Español</th></tr></thead>
+      <tbody><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">Nadia, this is the Stephenson family!</div><div class="dlg-pron">/Nadia, DIS iz de STE-fen-son FAE-mi-li/</div></td>
+          <td><div class="dlg-es">Nadia, ¡esta es la familia Stephenson!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Hello! Nice to meet you all!</div><div class="dlg-pron">/he-LOU! NAIS tu MIT iu ol/</div></td>
+          <td><div class="dlg-es">¡Hola! ¡Mucho gusto a todos!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">This is Robert. He is the father.</div><div class="dlg-pron">/DIS iz RO-bert. hi IZ de FA-ther/</div></td>
+          <td><div class="dlg-es">Este es Robert. Él es el padre.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">And who is she?</div><div class="dlg-pron">/aend HUU iz shi/</div></td>
+          <td><div class="dlg-es">¿Y quién es ella?</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">She is Susan, Robert's wife and the mother.</div><div class="dlg-pron">/shi IZ Su-zen, RO-berts UAIF aend de MO-ther/</div></td>
+          <td><div class="dlg-es">Ella es Susan, la esposa de Robert y la madre.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">Thank you for introducing them, Alex!</div><div class="dlg-pron">/ZAENK iu for in-tro-DIU-sing dem, Alex/</div></td>
+          <td><div class="dlg-es">¡Gracias por presentarlos, Alex!</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-alex">Alex</span></td>
+          <td><div class="dlg-en">You're welcome! Their children are Tom, Lucy and Baby Sam.</div><div class="dlg-pron">/iur UEL-kam! deir CHIL-dren ar Tom, Lu-si aend BEI-bi Saem/</div></td>
+          <td><div class="dlg-es">¡De nada! Sus hijos son Tom, Lucy y el bebé Sam.</div></td>
+        </tr><tr>
+          <td><span class="dlg-who-nadia">Nadia</span></td>
+          <td><div class="dlg-en">What a lovely family! Thanks a lot!</div><div class="dlg-pron">/uot a LAV-li FAE-mi-li! ZAENKS a LOT/</div></td>
+          <td><div class="dlg-es">¡Qué familia tan bonita! ¡Muchas gracias!</div></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+<section id="sounds" class="lesson-section">
+  <div class="lesson-header">
+    <div class="lh-top">
+      <div class="lh-num" style="font-size:20px;">🔤</div>
+      <div class="lh-info">
+        <div class="lh-title">Resumen — Los Sonidos Difíciles del Inglés</div>
+        <div class="lh-sub">Guía de pronunciación para hablantes de español</div>
+      </div>
+    </div>
+    <div class="lh-topics">
+      <span class="lh-topic">Pronunciation Guide</span><span class="lh-topic">Difficult Sounds</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🔊</div>Sonidos que no existen en español</div>
+    <div class="sounds-grid" id="sounds-grid"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="ct-icon">🎯</div>Ejercicio de pronunciación diario</div>
+    <div style="background:var(--gl);border-radius:12px;padding:16px;border:1px solid var(--gb);margin-bottom:12px;">
+      <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--gd);margin-bottom:10px;">Practica estas frases todos los días en voz alta:</div>
+      <div style="display:flex;flex-direction:column;gap:8px;" id="practice-phrases"></div>
+    </div>
+    <div class="tip-box" style="margin-bottom:0;">
+      <div class="tip-icon">🎤</div>
+      <div class="tip-text"><strong>Consejo de Teacher Afshin:</strong> Grábate con tu teléfono pronunciando estas frases. Escúchate y compara. No tengas miedo de equivocarte — así es como todos aprendemos. <strong>¡Practica 5 minutos al día y verás grandes cambios!</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIT -->
+<div class="credit">
+  <div class="credit-inner">
+    <img src="data:image/png;base64,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" style="width:26px;height:26px;object-fit:contain;" alt=""/>
+    <div>
+      <div class="credit-name">Desarrollado por Teacher Afshin</div>
+      <div class="credit-sub">Compass English · Book 1 · Todos los derechos reservados 2025</div>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+// SIDEBAR ACTIVE
+function setActive(el){
+  document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
+  el.classList.add('active');
+}
+
+// ALPHABET
+var vowels=new Set('AEIOU');
+var alpha=[
+  ['A','ei'],['B','bi'],['C','si'],['D','di'],['E','i'],['F','ef'],['G','chi'],
+  ['H','eich'],['I','ai'],['J','chei'],['K','kei'],['L','el'],['M','em'],
+  ['N','en'],['O','ou'],['P','pi'],['Q','kiu'],['R','ar'],['S','es'],['T','ti'],
+  ['U','iu'],['V','vi'],['W','dabeliu'],['X','eks'],['Y','uai'],['Z','zi'],
+];
+var ag=document.getElementById('alpha-grid');
+alpha.forEach(function(a){
+  var div=document.createElement('div');
+  div.className='alpha-cell'+(vowels.has(a[0])?' vowel':'');
+  div.innerHTML='<div class="alpha-letter">'+a[0]+'</div><div class="alpha-pron">/'+a[1]+'/'+'</div>';
+  ag.appendChild(div);
+});
+
+// NUMBERS
+var nums=[
+  [1,'One','uan'],[2,'Two','tu'],[3,'Three','zri'],[4,'Four','for'],
+  [5,'Five','faiv'],[6,'Six','siks'],[7,'Seven','se-ven'],[8,'Eight','eit'],
+  [9,'Nine','nain'],[10,'Ten','ten'],[11,'Eleven','i-le-ven'],[12,'Twelve','tuelv'],
+  [13,'Thirteen','zer-TIIIN'],[14,'Fourteen','for-TIIIN'],[15,'Fifteen','fif-TIIIN'],
+  [16,'Sixteen','siks-TIIIN'],[17,'Seventeen','se-ven-TIIIN'],[18,'Eighteen','eit-TIIIN'],
+  [19,'Nineteen','nain-TIIIN'],[20,'Twenty','TUEN-ti'],
+];
+var ng=document.getElementById('num-grid');
+nums.forEach(function(n){
+  var div=document.createElement('div');div.className='num-cell';
+  div.innerHTML='<div class="num-digit">'+n[0]+'</div><div class="num-word">'+n[1]+'</div><div class="num-pron">/'+n[2]+'/'+'</div>';
+  ng.appendChild(div);
+});
+
+// VOCAB TABLES
+function buildTable(id, rows){
+  var tbody=document.getElementById(id);
+  rows.forEach(function(r){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td class="pt-word">'+r[0]+'</td><td class="pt-phon">/'+r[1]+'/'+'</td><td class="pt-hint">'+r[2]+'</td><td class="pt-es">'+r[3]+'</td>';
+    tbody.appendChild(tr);
+  });
+}
+
+buildTable('l1-vocab',[
+  ['Hello',   'he-LOU',   'heh-LOU',        'hola'],
+  ['Apple',   'AE-pel',   'AE-pel',          'manzana'],
+  ['Book',    'buk',      'BUK',             'libro'],
+  ['Pen',     'pen',      'PEN',             'bolígrafo'],
+  ['Car',     'kar',      'KAR',             'carro'],
+  ['Bus',     'bas',      'BAS',             'autobús'],
+  ['Bag',     'baeg',     'BAEG',            'bolsa'],
+  ['Water',   'UO-ter',   'UO-ter',          'agua'],
+  ['Juice',   'chuus',    'CHUUS',           'jugo'],
+  ['Milk',    'milk',     'MILK',            'leche'],
+]);
+
+buildTable('l2-vocab',[
+  ['Hello',         'he-LOU',         'heh-LOU',          'hola'],
+  ['Goodbye',       'gud-BAI',        'gud-BAI',           'adiós'],
+  ['My name is',    'mai NEIM iz',    'mai NEIM iz',       'mi nombre es'],
+  ['Nice to meet you','NAIS tu MIT iu','NAIS tu MIT iu',  'mucho gusto'],
+  ['I am a student','ai AEM a STIU-dent','ai AEM a STIU-dent','soy estudiante'],
+  ['Where are you from?','UER ar iu FROM','UER ar iu FROM','¿de dónde eres?'],
+]);
+
+buildTable('l4-vocab',[
+  ['Door',      'dor',       'DOR',         'puerta'],
+  ['Window',    'UIN-dou',   'UIN-dou',     'ventana'],
+  ['Floor',     'flor',      'FLOR',        'piso'],
+  ['Wall',      'uol',       'UOL',         'pared'],
+  ['Table',     'TEI-bel',   'TEI-bel',     'mesa'],
+  ['Chair',     'cher',      'CHER',        'silla'],
+  ['Lamp',      'laemp',     'LAEMP',       'lámpara'],
+  ['Bed',       'bed',       'BED',         'cama'],
+  ['Bookshelf', 'BUK-shelf', 'BUK-shelf',  'estante'],
+]);
+
+buildTable('l5-vocab',[
+  ['School',    'skuul',     'SKUUL',        'escuela'],
+  ['Teacher',   'TII-cher',  'TII-cher',     'maestro/a'],
+  ['Student',   'STIU-dent', 'STIU-dent',   'estudiante'],
+  ['Classroom', 'KLAES-rum', 'KLAES-rum',   'salón de clases'],
+  ['Desk',      'desk',      'DESK',         'escritorio'],
+  ['Board',     'bord',      'BORD',         'pizarrón'],
+  ['Pencil',    'PEN-sel',   'PEN-sel',      'lápiz'],
+  ['Eraser',    'i-REI-ser', 'i-REI-ser',   'borrador'],
+  ['Ruler',     'RU-ler',    'RU-ler',       'regla'],
+  ['Notebook',  'NOUT-buk',  'NOUT-buk',    'cuaderno'],
+]);
+
+buildTable('l6-colors',[
+  ['Red',    'red',      'RED',          'rojo'],
+  ['Blue',   'bluu',     'BLUU',         'azul'],
+  ['Green',  'griin',    'GRIIN',        'verde'],
+  ['Yellow', 'IEL-ou',   'IEL-ou',       'amarillo'],
+  ['White',  'uait',     'UAIT',         'blanco'],
+  ['Black',  'blaek',    'BLAEK',        'negro'],
+  ['Orange', 'O-rinch',  'O-rinch',      'naranja'],
+  ['Pink',   'pink',     'PINK',         'rosa'],
+  ['Brown',  'braun',    'BRAUN',        'café'],
+  ['Purple', 'PER-pl',   'PER-pl',       'morado'],
+]);
+
+buildTable('l6-clothes',[
+  ['Shirt',   'shert',     'SHERT',       'camisa'],
+  ['Dress',   'dres',      'DRES',        'vestido'],
+  ['Pants',   'paents',    'PAENTS',      'pantalones'],
+  ['Shoes',   'shuuz',     'SHUUZ',       'zapatos'],
+  ['Jacket',  'CHA-ket',   'CHA-ket',     'chaqueta'],
+  ['Hat',     'haet',      'HAET',        'sombrero'],
+  ['Scarf',   'skarf',     'SKARF',       'bufanda'],
+  ['Bag',     'baeg',      'BAEG',        'bolso'],
+]);
+
+buildTable('l8-vocab',[
+  ['Doctor',    'DOK-ter',      'DOK-ter',      'médico/a'],
+  ['Nurse',     'ners',         'NERS',         'enfermero/a'],
+  ['Pilot',     'PAI-lot',      'PAI-lot',      'piloto'],
+  ['Cook',      'kuk',          'KUK',          'cocinero/a'],
+  ['Police',    'po-LIIS',      'po-LIIS',      'policía'],
+  ['Teacher',   'TII-cher',     'TII-cher',     'maestro/a'],
+  ['Engineer',  'en-chi-NIIR',  'en-chi-NIIR',  'ingeniero/a'],
+  ['Manager',   'MAE-ni-cher',  'MAE-ni-cher',  'gerente'],
+]);
+
+buildTable('l9-vocab',[
+  ['Mexico',    'MEK-si-kou',  'Mexican',   'MEK-si-ken'],
+  ['USA',       'iu-ES-ei',    'American',  'a-MER-i-ken'],
+  ['France',    'FRAENS',      'French',    'FRENCH'],
+  ['Japan',     'cha-PAEN',    'Japanese',  'cha-pa-NIIZ'],
+  ['China',     'CHAI-na',     'Chinese',   'chai-NIIZ'],
+  ['India',     'IN-dia',      'Indian',    'IN-dian'],
+  ['Brazil',    'bra-ZIL',     'Brazilian', 'bra-ZI-lian'],
+  ['Nigeria',   'nai-CHE-ria', 'Nigerian',  'nai-CHE-rian'],
+]);
+
+// FAMILY GRID
+var famData=[
+  {e:'👴',n:'Grandfather',p:'/GRAEN-fa-ther/',s:'abuelo'},
+  {e:'👵',n:'Grandmother',p:'/GRAEN-mo-ther/',s:'abuela'},
+  {e:'👨',n:'Father',p:'/FA-ther/',s:'padre'},
+  {e:'👩',n:'Mother',p:'/MO-ther/',s:'madre'},
+  {e:'👦',n:'Son',p:'/san/',s:'hijo'},
+  {e:'👧',n:'Daughter',p:'/DO-ter/',s:'hija'},
+  {e:'👦',n:'Brother',p:'/BRO-ther/',s:'hermano'},
+  {e:'👧',n:'Sister',p:'/SIS-ter/',s:'hermana'},
+  {e:'👶',n:'Baby',p:'/BEI-bi/',s:'bebé'},
+  {e:'👨‍👩‍👧‍👦',n:'Family',p:'/FAE-mi-li/',s:'familia'},
+  {e:'🧑',n:'Uncle',p:'/AN-kel/',s:'tío'},
+  {e:'👩',n:'Aunt',p:'/aent/',s:'tía'},
+];
+var fg=document.getElementById('family-grid');
+famData.forEach(function(f){
+  var div=document.createElement('div');div.className='fam-card';
+  div.innerHTML='<div class="fam-emoji">'+f.e+'</div><div class="fam-en">'+f.n+'</div><div class="fam-pron">'+f.p+'</div><div class="fam-es">'+f.s+'</div>';
+  fg.appendChild(div);
+});
+
+// THANKS GRID
+var thanksData=[
+  {expr:'Thank you!',       reply:"You're welcome!",  pron:'/ZAENK iu/'},
+  {expr:'Thanks!',          reply:'No problem!',       pron:'/ZAENKS/'},
+  {expr:'Thank you very much!', reply:'My pleasure!', pron:'/ZAENK iu VE-ri MACH/'},
+  {expr:"Thanks a lot!",    reply:"Don't mention it!", pron:'/ZAENKS a LOT/'},
+  {expr:'I appreciate it!', reply:'Anytime!',          pron:'/ai a-PRII-shiet it/'},
+  {expr:"That's very kind!",reply:'Happy to help!',    pron:'/daets VE-ri KAIND/'},
+];
+var tg2=document.getElementById('thanks-grid');
+thanksData.forEach(function(t){
+  var div=document.createElement('div');div.className='thanks-card';
+  div.innerHTML='<div class="tc-expr">'+t.expr+'</div><div class="tc-reply">→ '+t.reply+'</div><div class="tc-pron">'+t.pron+'</div>';
+  tg2.appendChild(div);
+});
+
+// SOUNDS GRID
+var soundsData=[
+  {sym:'TH',name:'TH suave (con voz)',how:'Lengua entre los dientes y vibra. Como /d/ pero más suave.',ex:'this, that, the, they, these, those'},
+  {sym:'TH',name:'TH fuerte (sin voz)',how:'Lengua entre los dientes y sopla sin vibrar.',ex:'three, thank, think, thirty, thin'},
+  {sym:'SH',name:'SH = "shhh"',how:'Labios redondeados y sopla suave. Como "chhh" pero sin "ch".',ex:'she, shirt, shoe, school, fish'},
+  {sym:'CH',name:'CH = como español',how:'Igual que "ch" en "muchacho". Es fácil para hispanohablantes.',ex:'chair, teacher, lunch, church'},
+  {sym:'W',name:'W = "u" rápida',how:'Labios muy redondeados, como decir "u" muy rápido.',ex:'water, what, where, window, we'},
+  {sym:'V',name:'V = dientes-labio',how:'Dientes superiores sobre labio inferior y vibra. NO es "b".',ex:'very, verb, vowel, vocabulary'},
+  {sym:'R',name:'R americana',how:'Lengua curva hacia atrás, sin tocar nada, sin vibrar.',ex:'read, red, right, room, ruler'},
+  {sym:'AE',name:'"A" muy abierta',how:'Como si el dentista te dice "abre la boca". /æ/',ex:'apple, bag, cat, happy, black'},
+];
+var sg=document.getElementById('sounds-grid');
+soundsData.forEach(function(s){
+  var div=document.createElement('div');div.className='sound-card';
+  div.innerHTML='<div class="sc-sym">'+s.sym+'</div><div class="sc-name">'+s.name+'</div><div class="sc-how">'+s.how+'</div><div class="sc-ex">Ejemplos: '+s.ex+'</div>';
+  sg.appendChild(div);
+});
+
+// PRACTICE PHRASES
+var phrases=[
+  {en:'The teacher is in the classroom.',pron:'/de TII-cher iz in de KLAES-rum/'},
+  {en:'I am from Mexico. I am Mexican.',pron:'/ai AEM from MEK-si-kou. ai AEM MEK-si-ken/'},
+  {en:'She is wearing a blue shirt.',pron:'/shi iz UER-ing a BLUU shert/'},
+  {en:'There are three chairs and a table.',pron:'/DER ar ZRI CHERZ aend a TEI-bel/'},
+  {en:"My father's name is Robert.",pron:'/mai FA-thers NEIM iz RO-bert/'},
+  {en:'Thank you very much! You are welcome!',pron:'/ZAENK iu VE-ri MACH! iu ar UEL-kam/'},
+];
+var pp=document.getElementById('practice-phrases');
+phrases.forEach(function(p){
+  var div=document.createElement('div');
+  div.style.cssText='background:var(--white);border:1px solid var(--gb);border-radius:10px;padding:10px 14px;';
+  div.innerHTML='<div style="font-family:Nunito,sans-serif;font-weight:700;font-size:13px;color:var(--td);margin-bottom:3px;">'+p.en+'</div><div style="font-size:11px;color:var(--blue);">'+p.pron+'</div>';
+  pp.appendChild(div);
+});
+
+// SCROLL SPY
+var sections=document.querySelectorAll('.lesson-section');
+var navItems=document.querySelectorAll('.nav-item');
+window.addEventListener('scroll',function(){
+  var current='';
+  sections.forEach(function(s){
+    if(window.scrollY>=s.offsetTop-120)current=s.id;
+  });
+  navItems.forEach(function(n){
+    n.classList.remove('active');
+    if(n.getAttribute('href')==='#'+current)n.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
