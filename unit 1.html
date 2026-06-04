@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 Exam — Jobs</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f2044; --oxford: #001a3a; --gold: #c8963e; --gold-light: #fef3dc;
+  --cream: #f8f6f1; --white: #fff; --gray: #6b7280; --light-gray: #e8e4dc;
+  --text: #1a1a2e; --border: #d4cfc4;
+  --green: #16a34a; --green-bg: #dcfce7; --green-border: #86efac;
+  --red: #dc2626; --red-bg: #fee2e2;
+  --blue-bg: #eff6ff; --amber: #d97706; --amber-bg: #fffbeb;
+  --purple: #7c3aed; --purple-bg: #f5f3ff; --purple-border: #c4b5fd;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); font-size: 14px; line-height: 1.7; min-height: 100vh; }
+
+/* STICKY */
+.sticky-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--oxford); padding: 0 24px; height: 52px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+.sticky-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); }
+.sticky-title span { color: var(--gold); }
+.sticky-right { display: flex; align-items: center; gap: 12px; }
+.progress-track { width: 130px; height: 5px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 5px; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+.progress-label { font-size: 12px; color: rgba(255,255,255,0.55); }
+.timer { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 4px 12px; font-size: 13px; font-weight: 600; color: white; font-variant-numeric: tabular-nums; }
+.timer.warn { background: rgba(220,38,38,0.3); border-color: rgba(220,38,38,0.5); color: #fca5a5; }
+
+/* LAYOUT */
+.main { max-width: 740px; margin: 0 auto; padding: 72px 18px 60px; }
+
+/* HEADER */
+.exam-header { background: var(--navy); border-radius: 16px; overflow: hidden; margin-bottom: 22px; box-shadow: 0 8px 28px rgba(15,32,68,0.22); }
+.header-stripe { background: var(--gold); height: 5px; }
+.header-body { padding: 26px 30px; display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; }
+.unit-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+.exam-title { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: white; line-height: 1.1; }
+.exam-sub { font-size: 12.5px; color: rgba(255,255,255,0.45); margin-top: 5px; }
+.header-pills { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; flex-shrink: 0; }
+.pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.13); border-radius: 7px; padding: 5px 13px; font-size: 12px; color: rgba(255,255,255,0.65); white-space: nowrap; }
+.pill strong { color: white; }
+
+/* INFO */
+.info-card { background: white; border-radius: 12px; border: 1px solid var(--border); padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.info-card h3 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 14px; }
+.info-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
+.field label { display: block; font-size: 11px; font-weight: 600; color: var(--gray); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 5px; }
+.req-star { color: #ef4444; }
+.field input { width: 100%; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--cream); transition: border-color 0.2s; outline: none; }
+.field input:focus { border-color: var(--navy); background: white; }
+.field input.err { border-color: #ef4444; background: #fef2f2; }
+.err-msg { font-size: 11px; color: #ef4444; margin-top: 4px; display: none; }
+.err-msg.show { display: block; }
+
+/* INSTR */
+.instr { background: var(--blue-bg); border: 1px solid #bfdbfe; border-radius: 10px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; color: #1e3a6e; display: flex; gap: 10px; }
+.instr .ico { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+
+/* SECTION */
+.section { background: white; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.sec-head { background: var(--navy); padding: 13px 20px; display: flex; align-items: center; gap: 13px; }
+.sec-badge { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: var(--oxford); font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sec-info { flex: 1; }
+.sec-type { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1px; }
+.sec-title { font-family: 'Playfair Display', serif; font-size: 15px; color: white; }
+.sec-pts { font-size: 11px; color: rgba(255,255,255,0.4); text-align: right; }
+.sec-pts strong { color: var(--gold); font-size: 15px; display: block; }
+.sec-body { padding: 18px 20px; }
+
+/* QUESTION */
+.q { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--light-gray); }
+.q:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.q-row { display: flex; gap: 11px; align-items: flex-start; margin-bottom: 10px; }
+.q-num { width: 23px; height: 23px; border-radius: 50%; background: var(--gold-light); color: var(--oxford); font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.q-text { font-size: 14px; color: var(--text); line-height: 1.65; flex: 1; }
+.q-text em { color: var(--gray); font-size: 12.5px; }
+
+/* MULTIPLE CHOICE */
+.mc { display: flex; flex-direction: column; gap: 6px; padding-left: 34px; }
+.mc-opt { display: flex; align-items: center; gap: 9px; padding: 8px 13px; border: 1.5px solid var(--border); border-radius: 9px; cursor: pointer; transition: all 0.15s; font-size: 13.5px; background: var(--cream); user-select: none; }
+.mc-opt:hover { border-color: var(--navy); background: white; }
+.mc-opt.sel { border-color: var(--navy); background: #f0f4ff; }
+.radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; transition: all 0.15s; position: relative; }
+.mc-opt.sel .radio { border-color: var(--navy); background: var(--navy); }
+.mc-opt.sel .radio::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:5px; height:5px; border-radius:50%; background:white; }
+
+/* FILL */
+.fill-wrap { padding-left: 34px; }
+.fill-input { width: 100%; max-width: 240px; padding: 8px 13px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--cream); outline: none; transition: border-color 0.2s; }
+.fill-input:focus { border-color: var(--navy); background: white; }
+.fill-hint { font-size: 11px; color: var(--gray); margin-top: 5px; font-style: italic; }
+
+/* MATCHING */
+.match-wrap { padding-left: 34px; }
+.match-instruct { font-size: 12px; color: var(--gray); font-style: italic; margin-bottom: 12px; }
+.match-table { width: 100%; border-collapse: separate; border-spacing: 0 6px; }
+.match-table td { vertical-align: middle; }
+.match-left { background: var(--purple-bg); border: 1px solid var(--purple-border); border-radius: 8px; padding: 7px 12px; font-size: 13px; color: var(--purple); font-weight: 500; width: 42%; }
+.match-arrow { text-align: center; color: var(--gray); font-size: 16px; width: 8%; }
+.match-select { width: 50%; padding: 8px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); background: var(--cream); outline: none; cursor: pointer; transition: border-color 0.2s; }
+.match-select:focus { border-color: var(--navy); background: white; }
+
+/* OPEN */
+.open-wrap { padding-left: 34px; }
+.open-textarea { width: 100%; min-height: 105px; padding: 10px 13px; border: 1.5px solid var(--border); border-radius: 9px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--cream); resize: vertical; line-height: 1.7; outline: none; transition: border-color 0.2s; }
+.open-textarea:focus { border-color: var(--navy); background: white; }
+.word-count { font-size: 11px; color: var(--gray); margin-top: 5px; }
+
+/* CTX */
+.ctx { background: var(--amber-bg); border: 1px solid #fde68a; border-radius: 8px; padding: 11px 15px; font-size: 12.5px; color: #78350f; margin-bottom: 14px; line-height: 1.8; }
+.ctx-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 4px; }
+
+/* SUBMIT */
+.submit-zone { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 26px 24px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.submit-zone p { font-size: 13px; color: var(--gray); margin-bottom: 16px; line-height: 1.6; }
+.submit-btn { background: var(--navy); color: white; border: none; padding: 13px 44px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 9px; }
+.submit-btn:hover { background: var(--oxford); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(15,32,68,0.28); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* SUCCESS */
+.success { display: none; text-align: center; padding: 56px 28px; background: white; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
+.success-icon { font-size: 58px; margin-bottom: 18px; }
+.success h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 8px; }
+.success p { font-size: 13.5px; color: var(--gray); max-width: 380px; margin: 0 auto; line-height: 1.8; }
+
+@media (max-width: 560px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .header-body { flex-direction: column; }
+  .mc, .fill-wrap, .match-wrap, .open-wrap { padding-left: 0; }
+  .progress-track { width: 80px; }
+  .match-left { width: 38%; font-size: 12px; }
+  .match-select { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="sticky-bar">
+  <div class="sticky-title">Unit 1 · <span>Jobs Exam</span></div>
+  <div class="sticky-right">
+    <div class="progress-track"><div class="progress-fill" id="pFill"></div></div>
+    <div class="progress-label" id="pLabel">0 / 25</div>
+    <div class="timer" id="timer">45:00</div>
+  </div>
+</div>
+
+<div class="main" id="examMain">
+
+  <!-- HEADER -->
+  <div class="exam-header">
+    <div class="header-stripe"></div>
+    <div class="header-body">
+      <div>
+        <div class="unit-tag">Oxford Business Result · Elementary · Unit 1</div>
+        <div class="exam-title">Jobs</div>
+        <div class="exam-sub">Countries &amp; nationalities · Verb to be · Possessives · Spelling · Greetings</div>
+      </div>
+      <div class="header-pills">
+        <div class="pill"><strong>25</strong> Questions</div>
+        <div class="pill"><strong>50</strong> Points</div>
+        <div class="pill"><strong>45</strong> Min</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDENT INFO -->
+  <div class="info-card">
+    <h3>Your Information</h3>
+    <div class="info-grid">
+      <div class="field">
+        <label>Full Name <span class="req-star">*</span></label>
+        <input type="text" id="sName" placeholder="Enter your full name" oninput="clearErr('sName','nameErr'); updateProgress()">
+        <div class="err-msg" id="nameErr">⚠ Please enter your full name.</div>
+      </div>
+      <div class="field">
+        <label>Class / Group <span class="req-star">*</span></label>
+        <input type="text" id="sClass" placeholder="e.g. A1-B" oninput="clearErr('sClass','classErr'); updateProgress()">
+        <div class="err-msg" id="classErr">⚠ Please enter your class.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="instr">
+    <div class="ico">📋</div>
+    <div>Answer all questions carefully. Select, type, or choose your answers. Only questions 24 and 25 require a written answer. Click <strong>Submit Exam</strong> when finished — your teacher will receive your answers immediately.</div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION A — MULTIPLE CHOICE (Q1–Q6)
+       Topic: Countries, nationalities & job titles
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">A</div>
+      <div class="sec-info">
+        <div class="sec-type">Multiple Choice</div>
+        <div class="sec-title">Countries, Nationalities &amp; Job Titles</div>
+      </div>
+      <div class="sec-pts"><strong>12</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">1</div>
+          <div class="q-text">Maria is from Brazil. What is her nationality?</div>
+        </div>
+        <div class="mc" id="mc1">
+          <label class="mc-opt" onclick="pickMC('q1','British',this,'mc1')"><div class="radio"></div>a) British</label>
+          <label class="mc-opt" onclick="pickMC('q1','Brazilian',this,'mc1')"><div class="radio"></div>b) Brazilian</label>
+          <label class="mc-opt" onclick="pickMC('q1','Polish',this,'mc1')"><div class="radio"></div>c) Polish</label>
+          <label class="mc-opt" onclick="pickMC('q1','Italian',this,'mc1')"><div class="radio"></div>d) Italian</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">2</div>
+          <div class="q-text">Yuko works in Tokyo. She is from Japan. What is her nationality?</div>
+        </div>
+        <div class="mc" id="mc2">
+          <label class="mc-opt" onclick="pickMC('q2','American',this,'mc2')"><div class="radio"></div>a) American</label>
+          <label class="mc-opt" onclick="pickMC('q2','Indian',this,'mc2')"><div class="radio"></div>b) Indian</label>
+          <label class="mc-opt" onclick="pickMC('q2','Japanese',this,'mc2')"><div class="radio"></div>c) Japanese</label>
+          <label class="mc-opt" onclick="pickMC('q2','South African',this,'mc2')"><div class="radio"></div>d) South African</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">3</div>
+          <div class="q-text">The person at the front desk who welcomes visitors is the _____ .</div>
+        </div>
+        <div class="mc" id="mc3">
+          <label class="mc-opt" onclick="pickMC('q3','Financial Director',this,'mc3')"><div class="radio"></div>a) Financial Director</label>
+          <label class="mc-opt" onclick="pickMC('q3','Receptionist',this,'mc3')"><div class="radio"></div>b) Receptionist</label>
+          <label class="mc-opt" onclick="pickMC('q3','Technician',this,'mc3')"><div class="radio"></div>c) Technician</label>
+          <label class="mc-opt" onclick="pickMC('q3','Team Leader',this,'mc3')"><div class="radio"></div>d) Team Leader</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">4</div>
+          <div class="q-text">The most senior person in a company is usually the _____ .</div>
+        </div>
+        <div class="mc" id="mc4">
+          <label class="mc-opt" onclick="pickMC('q4','Sales Rep',this,'mc4')"><div class="radio"></div>a) Sales Rep</label>
+          <label class="mc-opt" onclick="pickMC('q4','Personal Assistant',this,'mc4')"><div class="radio"></div>b) Personal Assistant</label>
+          <label class="mc-opt" onclick="pickMC('q4','Chief Executive Officer',this,'mc4')"><div class="radio"></div>c) Chief Executive Officer</label>
+          <label class="mc-opt" onclick="pickMC('q4','Technician',this,'mc4')"><div class="radio"></div>d) Technician</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">5</div>
+          <div class="q-text">Which article is correct? "She is _____ HR Manager."</div>
+        </div>
+        <div class="mc" id="mc5">
+          <label class="mc-opt" onclick="pickMC('q5','a',this,'mc5')"><div class="radio"></div>a) a</label>
+          <label class="mc-opt" onclick="pickMC('q5','an',this,'mc5')"><div class="radio"></div>b) an</label>
+          <label class="mc-opt" onclick="pickMC('q5','the',this,'mc5')"><div class="radio"></div>c) the</label>
+          <label class="mc-opt" onclick="pickMC('q5','—',this,'mc5')"><div class="radio"></div>d) no article needed</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">6</div>
+          <div class="q-text">Charlotte is from the UK. What is the correct nationality?</div>
+        </div>
+        <div class="mc" id="mc6">
+          <label class="mc-opt" onclick="pickMC('q6','American',this,'mc6')"><div class="radio"></div>a) American</label>
+          <label class="mc-opt" onclick="pickMC('q6','Polish',this,'mc6')"><div class="radio"></div>b) Polish</label>
+          <label class="mc-opt" onclick="pickMC('q6','British',this,'mc6')"><div class="radio"></div>c) British</label>
+          <label class="mc-opt" onclick="pickMC('q6','Italian',this,'mc6')"><div class="radio"></div>d) Italian</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION B — FILL IN THE BLANK (Q7–Q13)
+       Topic: Verb to be & Possessives (one word)
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">B</div>
+      <div class="sec-info">
+        <div class="sec-type">Fill in the Blank — One Word Only</div>
+        <div class="sec-title">Verb To Be &amp; Possessives</div>
+      </div>
+      <div class="sec-pts"><strong>14</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="ctx">
+        <span class="ctx-lbl">📌 Instruction</span>
+        Write the correct form of the verb <em>to be</em> or the correct possessive adjective. One word only.<br>
+        <strong>Possessives:</strong> my · your · his · her · its · our · their
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">7</div>
+          <div class="q-text">Hello. My name _____ Sofia Aguilera. I'm the Managing Director.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q7" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Form of the verb "to be" — he/she/it</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">8</div>
+          <div class="q-text">Antonio and Emma _____ the Chief Executive Officers of the company.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q8" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Form of the verb "to be" — they</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">9</div>
+          <div class="q-text">The company _____ not small. It has 7,000 employees around the world.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q9" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Negative form — he/she/it</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">10</div>
+          <div class="q-text">I work in the Sales Department. _____ manager is Mr Tanaka.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q10" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Possessive — belongs to me (first person singular)</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">11</div>
+          <div class="q-text">This is Emma. _____ brother Antonio is also CEO of the company.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q11" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Possessive — belongs to her (female)</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">12</div>
+          <div class="q-text">Marcegaglia is an Italian company. _____ head office is near Milan.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q12" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Possessive — belongs to it (a company)</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">13</div>
+          <div class="q-text">_____ you a Financial Director or a Team Leader?</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q13" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Question form of "to be" — you</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION C — MATCHING (Q14–Q18)
+       Topic: Saying hello & goodbye expressions
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">C</div>
+      <div class="sec-info">
+        <div class="sec-type">Matching</div>
+        <div class="sec-title">Saying Hello &amp; Goodbye — Expressions &amp; Responses</div>
+      </div>
+      <div class="sec-pts"><strong>10</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="ctx">
+        <span class="ctx-lbl">📌 Instruction</span>
+        Match each expression on the left to the most appropriate response on the right. Select from the dropdown.
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">14</div>
+          <div class="q-text">"Hello. My name is Alek Gorski."</div>
+        </div>
+        <div class="match-wrap">
+          <select class="match-select" id="q14" onchange="updateProgress()">
+            <option value="">— Select the correct response —</option>
+            <option>How do you do, Mr Gorski?</option>
+            <option>Have a good journey.</option>
+            <option>It's good to see you again.</option>
+            <option>Nice meeting you, too.</option>
+            <option>And you.</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">15</div>
+          <div class="q-text">"How are you?"</div>
+        </div>
+        <div class="match-wrap">
+          <select class="match-select" id="q15" onchange="updateProgress()">
+            <option value="">— Select the correct response —</option>
+            <option>How do you do, Mr Gorski?</option>
+            <option>Have a good journey.</option>
+            <option>I'm fine. And you.</option>
+            <option>Nice meeting you, too.</option>
+            <option>Pleased to meet you.</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">16</div>
+          <div class="q-text">"This is my colleague, Elzbieta Wozniak."</div>
+        </div>
+        <div class="match-wrap">
+          <select class="match-select" id="q16" onchange="updateProgress()">
+            <option value="">— Select the correct response —</option>
+            <option>How do you do, Mr Gorski?</option>
+            <option>Pleased to meet you.</option>
+            <option>I'm fine. And you.</option>
+            <option>Nice meeting you, too.</option>
+            <option>See you soon.</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">17</div>
+          <div class="q-text">"Nice meeting you."</div>
+        </div>
+        <div class="match-wrap">
+          <select class="match-select" id="q17" onchange="updateProgress()">
+            <option value="">— Select the correct response —</option>
+            <option>How do you do, Mr Gorski?</option>
+            <option>Have a good journey.</option>
+            <option>I'm fine. And you.</option>
+            <option>Nice meeting you, too.</option>
+            <option>Pleased to meet you.</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">18</div>
+          <div class="q-text">"Goodbye. Have a safe trip!"</div>
+        </div>
+        <div class="match-wrap">
+          <select class="match-select" id="q18" onchange="updateProgress()">
+            <option value="">— Select the correct response —</option>
+            <option>How do you do, Mr Gorski?</option>
+            <option>Thanks. See you soon.</option>
+            <option>I'm fine. And you.</option>
+            <option>Nice meeting you, too.</option>
+            <option>Pleased to meet you.</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION D — MATCHING (Q19–Q21)
+       Topic: Country → Nationality matching
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">D</div>
+      <div class="sec-info">
+        <div class="sec-type">Matching</div>
+        <div class="sec-title">Practically Speaking — Spelling &amp; Country / Nationality</div>
+      </div>
+      <div class="sec-pts"><strong>6</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="ctx">
+        <span class="ctx-lbl">📌 Instruction</span>
+        Match each country to the correct nationality word.
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">19</div>
+          <div class="q-text">Poland →</div>
+        </div>
+        <div class="match-wrap">
+          <select class="match-select" id="q19" onchange="updateProgress()">
+            <option value="">— Select the nationality —</option>
+            <option>American</option>
+            <option>Brazilian</option>
+            <option>Indian</option>
+            <option>Italian</option>
+            <option>Japanese</option>
+            <option>Polish</option>
+            <option>South African</option>
+            <option>British</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">20</div>
+          <div class="q-text">South Africa →</div>
+        </div>
+        <div class="match-wrap">
+          <select class="match-select" id="q20" onchange="updateProgress()">
+            <option value="">— Select the nationality —</option>
+            <option>American</option>
+            <option>Brazilian</option>
+            <option>Indian</option>
+            <option>Italian</option>
+            <option>Japanese</option>
+            <option>Polish</option>
+            <option>South African</option>
+            <option>British</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">21</div>
+          <div class="q-text">Italy →</div>
+        </div>
+        <div class="match-wrap">
+          <select class="match-select" id="q21" onchange="updateProgress()">
+            <option value="">— Select the nationality —</option>
+            <option>American</option>
+            <option>Brazilian</option>
+            <option>Indian</option>
+            <option>Italian</option>
+            <option>Japanese</option>
+            <option>Polish</option>
+            <option>South African</option>
+            <option>British</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION E — MULTIPLE CHOICE (Q22–Q23)
+       Topic: Spelling & how to spell at work
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">E</div>
+      <div class="sec-info">
+        <div class="sec-type">Multiple Choice</div>
+        <div class="sec-title">Practically Speaking — How to Spell</div>
+      </div>
+      <div class="sec-pts"><strong>4</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">22</div>
+          <div class="q-text">A colleague spells their name for you: "A-N-D-A-C." What is the name?</div>
+        </div>
+        <div class="mc" id="mc22">
+          <label class="mc-opt" onclick="pickMC('q22','Andac',this,'mc22')"><div class="radio"></div>a) Andac</label>
+          <label class="mc-opt" onclick="pickMC('q22','Andace',this,'mc22')"><div class="radio"></div>b) Andace</label>
+          <label class="mc-opt" onclick="pickMC('q22','Andeck',this,'mc22')"><div class="radio"></div>c) Andeck</label>
+          <label class="mc-opt" onclick="pickMC('q22','Andak',this,'mc22')"><div class="radio"></div>d) Andak</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">23</div>
+          <div class="q-text">Someone asks: "How do you spell your company's name?" You work for <em>Webmex Solutions</em>. Which is the correct way to spell it in English?</div>
+        </div>
+        <div class="mc" id="mc23">
+          <label class="mc-opt" onclick="pickMC('q23','W-E-B-M-E-X',this,'mc23')"><div class="radio"></div>a) W-E-B-M-E-X</label>
+          <label class="mc-opt" onclick="pickMC('q23','V-E-B-M-E-X',this,'mc23')"><div class="radio"></div>b) V-E-B-M-E-X</label>
+          <label class="mc-opt" onclick="pickMC('q23','W-E-B-M-A-X',this,'mc23')"><div class="radio"></div>c) W-E-B-M-A-X</label>
+          <label class="mc-opt" onclick="pickMC('q23','U-E-B-M-E-X',this,'mc23')"><div class="radio"></div>d) U-E-B-M-E-X</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION F — OPEN ENDED (Q24–Q25)
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">F</div>
+      <div class="sec-info">
+        <div class="sec-type">Open-Ended Writing</div>
+        <div class="sec-title">Introducing Yourself &amp; Others</div>
+      </div>
+      <div class="sec-pts"><strong>4</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">24</div>
+          <div class="q-text">
+            Write a short introduction about yourself for a business meeting. Include:
+            <br>• Your name &amp; nationality
+            <br>• Your job title
+            <br>• Your company name &amp; what country it is from
+            <br><em>Write 3–4 sentences. Use the verb "to be" and possessives correctly.</em>
+          </div>
+        </div>
+        <div class="open-wrap">
+          <textarea class="open-textarea" id="q24" placeholder="Hello. My name is ... I'm a ... I'm from ..." oninput="wc('q24','wc24'); updateProgress()"></textarea>
+          <div class="word-count" id="wc24">0 words</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">25</div>
+          <div class="q-text">
+            You meet a new business contact at a conference. Write a short conversation of <strong>4–5 lines</strong> where you:
+            <br>• Say hello and introduce yourself
+            <br>• Introduce a colleague
+            <br>• Say goodbye at the end
+            <br><em>Use expressions from the unit: Pleased to meet you, Nice meeting you, See you soon, etc.</em>
+          </div>
+        </div>
+        <div class="open-wrap">
+          <textarea class="open-textarea" id="q25" placeholder="You: Hello. My name is ...&#10;Contact: ...&#10;You: This is my colleague ...&#10;..." oninput="wc('q25','wc25'); updateProgress()"></textarea>
+          <div class="word-count" id="wc25">0 words</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-zone" id="submitZone">
+    <p>Please review all your answers before submitting.<br>Once submitted, your teacher receives your answers immediately and <strong>you cannot change them</strong>.</p>
+    <button class="submit-btn" id="submitBtn" onclick="submitExam()">📤 &nbsp;Submit Exam</button>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success" id="successScreen">
+    <div class="success-icon">✅</div>
+    <h2>Exam Submitted!</h2>
+    <p>Your answers have been sent to your teacher successfully.<br>You will receive your grade and feedback soon.<br><br><strong>Well done! 🎉</strong></p>
+  </div>
+
+</div>
+
+<script>
+// ── REPLACE with your Apps Script URL ──
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxpupoUkWhDuARR8RxtmKAV81V_P237hHcWrjZ7om4KbMDXFckonm76UTl8YsNgSSypGA/exec';
+
+// ── TIMER ──
+let timeLeft = 45 * 60;
+const timerEl = document.getElementById('timer');
+const timerInt = setInterval(() => {
+  timeLeft--;
+  const m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+  timerEl.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  if (timeLeft <= 300) timerEl.classList.add('warn');
+  if (timeLeft <= 0) { clearInterval(timerInt); submitExam(); }
+}, 1000);
+
+// ── ANSWERS ──
+const A = {};
+
+// ── MC ──
+function pickMC(qid, val, el, gridId) {
+  document.querySelectorAll(`#${gridId} .mc-opt`).forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+  A[qid] = val;
+  updateProgress();
+}
+
+// ── WORD COUNT ──
+function wc(inputId, countId) {
+  const words = document.getElementById(inputId).value.trim().split(/\s+/).filter(w => w.length).length;
+  document.getElementById(countId).textContent = `${words} word${words !== 1 ? 's' : ''}`;
+}
+
+// ── PROGRESS ──
+function updateProgress() {
+  let done = 0;
+  // MC: q1-q6, q22, q23
+  ['q1','q2','q3','q4','q5','q6','q22','q23'].forEach(q => { if (A[q]) done++; });
+  // Fill: q7-q13
+  ['q7','q8','q9','q10','q11','q12','q13'].forEach(q => { if (document.getElementById(q)?.value.trim()) done++; });
+  // Matching dropdowns: q14-q21
+  ['q14','q15','q16','q17','q18','q19','q20','q21'].forEach(q => { if (document.getElementById(q)?.value) done++; });
+  // Open: q24-q25
+  ['q24','q25'].forEach(q => { if (document.getElementById(q)?.value.trim()) done++; });
+  document.getElementById('pFill').style.width = (done / 25 * 100) + '%';
+  document.getElementById('pLabel').textContent = `${done} / 25`;
+}
+
+// ── CLEAR ERROR ──
+function clearErr(inputId, errId) {
+  document.getElementById(inputId).classList.remove('err');
+  document.getElementById(errId).classList.remove('show');
+}
+
+// ── GET ALL ──
+function getAll() {
+  const g = id => document.getElementById(id)?.value.trim() || '';
+  return {
+    name:  document.getElementById('sName').value.trim(),
+    class: document.getElementById('sClass').value.trim(),
+    date:  new Date().toLocaleDateString('en-GB'),
+    q1:A.q1||'', q2:A.q2||'', q3:A.q3||'', q4:A.q4||'', q5:A.q5||'', q6:A.q6||'',
+    q7:g('q7'), q8:g('q8'), q9:g('q9'), q10:g('q10'), q11:g('q11'), q12:g('q12'), q13:g('q13'),
+    q14:g('q14'), q15:g('q15'), q16:g('q16'), q17:g('q17'), q18:g('q18'),
+    q19:g('q19'), q20:g('q20'), q21:g('q21'),
+    q22:A.q22||'', q23:A.q23||'',
+    q24:g('q24'), q25:g('q25'),
+    timestamp: new Date().toLocaleString()
+  };
+}
+
+// ── SUBMIT ──
+async function submitExam() {
+  const data = getAll();
+  let valid = true;
+  if (!data.name) {
+    document.getElementById('sName').classList.add('err');
+    document.getElementById('nameErr').classList.add('show');
+    valid = false;
+  }
+  if (!data.class) {
+    document.getElementById('sClass').classList.add('err');
+    document.getElementById('classErr').classList.add('show');
+    valid = false;
+  }
+  if (!valid) { window.scrollTo({ top:0, behavior:'smooth' }); return; }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ &nbsp;Submitting...';
+
+  try {
+    const fd = new FormData();
+    Object.entries(data).forEach(([k,v]) => fd.append(k, v));
+    await fetch(SCRIPT_URL, { method:'POST', body:fd, mode:'no-cors' });
+    clearInterval(timerInt);
+    document.getElementById('submitZone').style.display = 'none';
+    document.querySelectorAll('.section, .info-card, .instr, .exam-header').forEach(e => e.style.display = 'none');
+    document.getElementById('successScreen').style.display = 'block';
+    document.querySelector('.sticky-bar').style.background = '#166534';
+  } catch(e) {
+    btn.disabled = false;
+    btn.innerHTML = '📤 &nbsp;Submit Exam';
+    alert('Submission failed. Please check your internet connection and try again.');
+  }
+}
+
+updateProgress();
+</script>
+</body>
+</html>
