@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 Exam — Technology</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f2044; --oxford: #001a3a; --gold: #c8963e; --gold-light: #fef3dc;
+  --cream: #f8f6f1; --white: #fff; --gray: #6b7280; --light-gray: #e8e4dc;
+  --text: #1a1a2e; --border: #d4cfc4;
+  --green: #16a34a; --green-bg: #dcfce7; --green-border: #86efac;
+  --red: #dc2626; --red-bg: #fee2e2; --red-border: #fca5a5;
+  --blue-bg: #eff6ff; --amber: #d97706; --amber-bg: #fffbeb;
+  --purple: #7c3aed; --purple-bg: #f5f3ff; --purple-border: #c4b5fd;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); font-size: 14px; line-height: 1.7; min-height: 100vh; }
+
+.sticky-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--oxford); padding: 0 24px; height: 52px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+.sticky-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); }
+.sticky-title span { color: var(--gold); }
+.sticky-right { display: flex; align-items: center; gap: 12px; }
+.progress-track { width: 130px; height: 5px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 5px; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+.progress-label { font-size: 12px; color: rgba(255,255,255,0.55); }
+.timer { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 4px 12px; font-size: 13px; font-weight: 600; color: white; font-variant-numeric: tabular-nums; }
+.timer.warn { background: rgba(220,38,38,0.3); border-color: rgba(220,38,38,0.5); color: #fca5a5; }
+
+.main { max-width: 740px; margin: 0 auto; padding: 72px 18px 60px; }
+
+.exam-header { background: var(--navy); border-radius: 16px; overflow: hidden; margin-bottom: 22px; box-shadow: 0 8px 28px rgba(15,32,68,0.22); }
+.header-stripe { background: var(--gold); height: 5px; }
+.header-body { padding: 26px 30px; display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; }
+.unit-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+.exam-title { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: white; line-height: 1.1; }
+.exam-sub { font-size: 12.5px; color: rgba(255,255,255,0.45); margin-top: 5px; }
+.header-pills { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; flex-shrink: 0; }
+.pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.13); border-radius: 7px; padding: 5px 13px; font-size: 12px; color: rgba(255,255,255,0.65); white-space: nowrap; }
+.pill strong { color: white; }
+
+.info-card { background: white; border-radius: 12px; border: 1px solid var(--border); padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.info-card h3 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 14px; }
+.info-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
+.field label { display: block; font-size: 11px; font-weight: 600; color: var(--gray); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 5px; }
+.req-star { color: #ef4444; }
+.field input { width: 100%; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--cream); transition: border-color 0.2s; outline: none; }
+.field input:focus { border-color: var(--navy); background: white; }
+.field input.err { border-color: #ef4444; background: #fef2f2; }
+.err-msg { font-size: 11px; color: #ef4444; margin-top: 4px; display: none; }
+.err-msg.show { display: block; }
+
+.instr { background: var(--blue-bg); border: 1px solid #bfdbfe; border-radius: 10px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; color: #1e3a6e; display: flex; gap: 10px; }
+.instr .ico { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+
+.section { background: white; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.sec-head { background: var(--navy); padding: 13px 20px; display: flex; align-items: center; gap: 13px; }
+.sec-badge { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: var(--oxford); font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sec-info { flex: 1; }
+.sec-type { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1px; }
+.sec-title { font-family: 'Playfair Display', serif; font-size: 15px; color: white; }
+.sec-pts { font-size: 11px; color: rgba(255,255,255,0.4); text-align: right; }
+.sec-pts strong { color: var(--gold); font-size: 15px; display: block; }
+.sec-body { padding: 18px 20px; }
+
+.q { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--light-gray); }
+.q:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.q-row { display: flex; gap: 11px; align-items: flex-start; margin-bottom: 10px; }
+.q-num { width: 23px; height: 23px; border-radius: 50%; background: var(--gold-light); color: var(--oxford); font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.q-text { font-size: 14px; color: var(--text); line-height: 1.65; flex: 1; }
+.q-text em { color: var(--gray); font-size: 12.5px; }
+
+/* TRUE / FALSE */
+.tf { display: flex; gap: 10px; padding-left: 34px; }
+.tf-opt { display: flex; align-items: center; gap: 8px; padding: 8px 22px; border: 1.5px solid var(--border); border-radius: 9px; cursor: pointer; transition: all 0.15s; font-size: 13.5px; font-weight: 600; background: var(--cream); user-select: none; }
+.tf-opt:hover { border-color: var(--navy); background: white; }
+.tf-opt.sel-t { border-color: var(--green); background: var(--green-bg); color: var(--green); }
+.tf-opt.sel-f { border-color: var(--red); background: var(--red-bg); color: var(--red); }
+.tf-box { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--border); flex-shrink: 0; transition: all 0.15s; }
+.tf-opt.sel-t .tf-box { border-color: var(--green); background: var(--green); }
+.tf-opt.sel-f .tf-box { border-color: var(--red); background: var(--red); }
+
+/* FILL */
+.fill-wrap { padding-left: 34px; }
+.fill-input { width: 100%; max-width: 240px; padding: 8px 13px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--cream); outline: none; transition: border-color 0.2s; }
+.fill-input:focus { border-color: var(--navy); background: white; }
+.fill-hint { font-size: 11px; color: var(--gray); margin-top: 5px; font-style: italic; }
+
+/* MATCHING */
+.match-wrap { padding-left: 34px; }
+.match-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.match-left { background: var(--purple-bg); border: 1px solid var(--purple-border); border-radius: 8px; padding: 7px 12px; font-size: 13px; color: var(--purple); font-weight: 500; min-width: 160px; flex-shrink: 0; }
+.match-arrow { color: var(--gray); font-size: 16px; flex-shrink: 0; }
+.match-select { flex: 1; max-width: 320px; padding: 8px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); background: var(--cream); outline: none; cursor: pointer; transition: border-color 0.2s; }
+.match-select:focus { border-color: var(--navy); background: white; }
+
+/* OPEN */
+.open-wrap { padding-left: 34px; }
+.open-textarea { width: 100%; min-height: 105px; padding: 10px 13px; border: 1.5px solid var(--border); border-radius: 9px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--cream); resize: vertical; line-height: 1.7; outline: none; transition: border-color 0.2s; }
+.open-textarea:focus { border-color: var(--navy); background: white; }
+.word-count { font-size: 11px; color: var(--gray); margin-top: 5px; }
+
+.ctx { background: var(--amber-bg); border: 1px solid #fde68a; border-radius: 8px; padding: 11px 15px; font-size: 12.5px; color: #78350f; margin-bottom: 14px; line-height: 1.8; }
+.ctx-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 4px; }
+
+.submit-zone { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 26px 24px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.submit-zone p { font-size: 13px; color: var(--gray); margin-bottom: 16px; line-height: 1.6; }
+.submit-btn { background: var(--navy); color: white; border: none; padding: 13px 44px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 9px; }
+.submit-btn:hover { background: var(--oxford); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(15,32,68,0.28); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.success { display: none; text-align: center; padding: 56px 28px; background: white; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
+.success-icon { font-size: 58px; margin-bottom: 18px; }
+.success h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 8px; }
+.success p { font-size: 13.5px; color: var(--gray); max-width: 380px; margin: 0 auto; line-height: 1.8; }
+
+@media (max-width: 560px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .header-body { flex-direction: column; }
+  .tf, .fill-wrap, .match-wrap, .open-wrap { padding-left: 0; }
+  .match-left { min-width: 120px; font-size: 12px; }
+  .progress-track { width: 80px; }
+}
+</style>
+</head>
+<body>
+
+<div class="sticky-bar">
+  <div class="sticky-title">Unit 4 · <span>Technology Exam</span></div>
+  <div class="sticky-right">
+    <div class="progress-track"><div class="progress-fill" id="pFill"></div></div>
+    <div class="progress-label" id="pLabel">0 / 25</div>
+    <div class="timer" id="timer">45:00</div>
+  </div>
+</div>
+
+<div class="main" id="examMain">
+
+  <div class="exam-header">
+    <div class="header-stripe"></div>
+    <div class="header-body">
+      <div>
+        <div class="unit-tag">Oxford Business Result · Elementary · Unit 4</div>
+        <div class="exam-title">Technology</div>
+        <div class="exam-sub">Tech vocabulary · Adverbs of frequency · Sequencing · Asking for help</div>
+      </div>
+      <div class="header-pills">
+        <div class="pill"><strong>25</strong> Questions</div>
+        <div class="pill"><strong>50</strong> Points</div>
+        <div class="pill"><strong>45</strong> Min</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h3>Your Information</h3>
+    <div class="info-grid">
+      <div class="field">
+        <label>Full Name <span class="req-star">*</span></label>
+        <input type="text" id="sName" placeholder="Enter your full name" oninput="clearErr('sName','nameErr'); updateProgress()">
+        <div class="err-msg" id="nameErr">⚠ Please enter your full name.</div>
+      </div>
+      <div class="field">
+        <label>Class / Group <span class="req-star">*</span></label>
+        <input type="text" id="sClass" placeholder="e.g. A1-B" oninput="clearErr('sClass','classErr'); updateProgress()">
+        <div class="err-msg" id="classErr">⚠ Please enter your class.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="instr">
+    <div class="ico">📋</div>
+    <div>Answer all questions. Use the True/False buttons, dropdowns, and text fields. Only questions 24 and 25 require a written answer. Click <strong>Submit Exam</strong> when finished — your teacher receives your answers immediately.</div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION A — MATCHING (Q1–Q7)
+       Topic: Tech vocabulary — verb + noun phrases
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">A</div>
+      <div class="sec-info">
+        <div class="sec-type">Matching</div>
+        <div class="sec-title">Working with Words — Technology Verbs &amp; Nouns</div>
+      </div>
+      <div class="sec-pts"><strong>14</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="ctx">
+        <span class="ctx-lbl">📌 Instruction</span>
+        Match each verb on the left to the correct noun or phrase on the right. Select from the dropdown.
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">1</div><div class="q-text">download →</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q1" onchange="updateProgress()">
+            <option value="">— Select the correct noun —</option>
+            <option>a battery / a phone</option>
+            <option>an app / a file</option>
+            <option>a contact / an account</option>
+            <option>a button / a link</option>
+            <option>a text message / money</option>
+            <option>an account / a device</option>
+            <option>a website / an account</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">2</div><div class="q-text">charge / recharge →</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q2" onchange="updateProgress()">
+            <option value="">— Select the correct noun —</option>
+            <option>a battery / a phone</option>
+            <option>an app / a file</option>
+            <option>a contact / an account</option>
+            <option>a button / a link</option>
+            <option>a text message / money</option>
+            <option>an account / a device</option>
+            <option>a website / an account</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">3</div><div class="q-text">log in to / log out of →</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q3" onchange="updateProgress()">
+            <option value="">— Select the correct noun —</option>
+            <option>a battery / a phone</option>
+            <option>an app / a file</option>
+            <option>a contact / an account</option>
+            <option>a button / a link</option>
+            <option>a text message / money</option>
+            <option>an account / a device</option>
+            <option>a website / an account</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">4</div><div class="q-text">send / receive →</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q4" onchange="updateProgress()">
+            <option value="">— Select the correct noun —</option>
+            <option>a battery / a phone</option>
+            <option>an app / a file</option>
+            <option>a contact / an account</option>
+            <option>a button / a link</option>
+            <option>a text message / money</option>
+            <option>an account / a device</option>
+            <option>a website / an account</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">5</div><div class="q-text">register →</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q5" onchange="updateProgress()">
+            <option value="">— Select the correct noun —</option>
+            <option>a battery / a phone</option>
+            <option>an app / a file</option>
+            <option>a contact / an account</option>
+            <option>a button / a link</option>
+            <option>a text message / money</option>
+            <option>an account / a device</option>
+            <option>a website / an account</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">6</div><div class="q-text">click on →</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q6" onchange="updateProgress()">
+            <option value="">— Select the correct noun —</option>
+            <option>a battery / a phone</option>
+            <option>an app / a file</option>
+            <option>a contact / an account</option>
+            <option>a button / a link</option>
+            <option>a text message / money</option>
+            <option>an account / a device</option>
+            <option>a website / an account</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">7</div><div class="q-text">select →</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q7" onchange="updateProgress()">
+            <option value="">— Select the correct noun —</option>
+            <option>a battery / a phone</option>
+            <option>an app / a file</option>
+            <option>a contact / an account</option>
+            <option>a button / a link</option>
+            <option>a text message / money</option>
+            <option>an account / a device</option>
+            <option>a website / an account</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION B — TRUE / FALSE (Q8–Q13)
+       Topic: Adverbs of frequency & question words
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">B</div>
+      <div class="sec-info">
+        <div class="sec-type">True or False</div>
+        <div class="sec-title">Language at Work — Adverbs of Frequency &amp; Question Words</div>
+      </div>
+      <div class="sec-pts"><strong>12</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">8</div>
+          <div class="q-text">"Always" means 100% of the time — more frequent than "usually".</div>
+        </div>
+        <div class="tf">
+          <label class="tf-opt" onclick="pickTF('q8','True',this)"><div class="tf-box"></div>True</label>
+          <label class="tf-opt" onclick="pickTF('q8','False',this)"><div class="tf-box"></div>False</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">9</div>
+          <div class="q-text">In the sentence "She is always late", the adverb "always" goes AFTER the verb "is".</div>
+        </div>
+        <div class="tf">
+          <label class="tf-opt" onclick="pickTF('q9','True',this)"><div class="tf-box"></div>True</label>
+          <label class="tf-opt" onclick="pickTF('q9','False',this)"><div class="tf-box"></div>False</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">10</div>
+          <div class="q-text">In the sentence "They rarely take breaks", the adverb goes BEFORE the verb "take".</div>
+        </div>
+        <div class="tf">
+          <label class="tf-opt" onclick="pickTF('q10','True',this)"><div class="tf-box"></div>True</label>
+          <label class="tf-opt" onclick="pickTF('q10','False',this)"><div class="tf-box"></div>False</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">11</div>
+          <div class="q-text">"Never" is more frequent than "rarely".</div>
+        </div>
+        <div class="tf">
+          <label class="tf-opt" onclick="pickTF('q11','True',this)"><div class="tf-box"></div>True</label>
+          <label class="tf-opt" onclick="pickTF('q11','False',this)"><div class="tf-box"></div>False</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">12</div>
+          <div class="q-text">The question word "Where" asks about a place.</div>
+        </div>
+        <div class="tf">
+          <label class="tf-opt" onclick="pickTF('q12','True',this)"><div class="tf-box"></div>True</label>
+          <label class="tf-opt" onclick="pickTF('q12','False',this)"><div class="tf-box"></div>False</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">13</div>
+          <div class="q-text">"How often do you use your phone?" is asking about frequency.</div>
+        </div>
+        <div class="tf">
+          <label class="tf-opt" onclick="pickTF('q13','True',this)"><div class="tf-box"></div>True</label>
+          <label class="tf-opt" onclick="pickTF('q13','False',this)"><div class="tf-box"></div>False</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION C — FILL IN THE BLANK (Q14–Q18)
+       Topic: Adverbs + sequencing words (one word)
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">C</div>
+      <div class="sec-info">
+        <div class="sec-type">Fill in the Blank — One Word Only</div>
+        <div class="sec-title">Adverbs of Frequency &amp; Sequencing Words</div>
+      </div>
+      <div class="sec-pts"><strong>10</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="ctx">
+        <span class="ctx-lbl">📌 Word bank — use each word once</span>
+        <strong>always · never · finally · then · sometimes</strong>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">14</div>
+          <div class="q-text">The robots _____ work 16 hours a day — they do it every single day without exception.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q14" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">100% frequency</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">15</div>
+          <div class="q-text">I _____ forget my password — it happens maybe once or twice a month.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q15" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Not often but it happens occasionally</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">16</div>
+          <div class="q-text">The robots _____ leave the warehouse — they stay inside all the time.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q16" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">0% frequency</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">17</div>
+          <div class="q-text">First of all, open the app. _____, enter your username and password.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q17" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Second step in a sequence</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">18</div>
+          <div class="q-text">After that, select the person you want to send money to. Next, enter the amount. _____, press the Pay button to complete the transfer.</div>
+        </div>
+        <div class="fill-wrap">
+          <input class="fill-input" type="text" id="q18" placeholder="Type one word..." oninput="updateProgress()">
+          <div class="fill-hint">Last step in a sequence</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION D — MATCHING (Q19–Q23)
+       Topic: Asking for and offering help
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">D</div>
+      <div class="sec-info">
+        <div class="sec-type">Matching — Expression to Category</div>
+        <div class="sec-title">Business Communication — Asking for &amp; Offering Help</div>
+      </div>
+      <div class="sec-pts"><strong>10</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="ctx">
+        <span class="ctx-lbl">📌 Instruction</span>
+        Match each expression to the correct category: <strong>Asking for help · Offering help · Responding to offer · Responding to thanks</strong>.
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">19</div><div class="q-text">"Can you give me a hand?"</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q19" onchange="updateProgress()">
+            <option value="">— Select the category —</option>
+            <option>Asking for help</option>
+            <option>Offering help</option>
+            <option>Responding to an offer of help</option>
+            <option>Responding to thanks</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">20</div><div class="q-text">"Do you want a hand?"</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q20" onchange="updateProgress()">
+            <option value="">— Select the category —</option>
+            <option>Asking for help</option>
+            <option>Offering help</option>
+            <option>Responding to an offer of help</option>
+            <option>Responding to thanks</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">21</div><div class="q-text">"That would be great, thanks."</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q21" onchange="updateProgress()">
+            <option value="">— Select the category —</option>
+            <option>Asking for help</option>
+            <option>Offering help</option>
+            <option>Responding to an offer of help</option>
+            <option>Responding to thanks</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">22</div><div class="q-text">"You're welcome."</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q22" onchange="updateProgress()">
+            <option value="">— Select the category —</option>
+            <option>Asking for help</option>
+            <option>Offering help</option>
+            <option>Responding to an offer of help</option>
+            <option>Responding to thanks</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">23</div><div class="q-text">"I don't know how to do that."</div></div>
+        <div class="match-wrap">
+          <select class="match-select" id="q23" onchange="updateProgress()">
+            <option value="">— Select the category —</option>
+            <option>Asking for help</option>
+            <option>Offering help</option>
+            <option>Responding to an offer of help</option>
+            <option>Responding to thanks</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION E — OPEN ENDED (Q24–Q25)
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-badge">E</div>
+      <div class="sec-info">
+        <div class="sec-type">Open-Ended Writing</div>
+        <div class="sec-title">Technology at Work</div>
+      </div>
+      <div class="sec-pts"><strong>4</strong>pts · 2 each</div>
+    </div>
+    <div class="sec-body">
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">24</div>
+          <div class="q-text">
+            Write <strong>3–4 sentences</strong> about how you use technology at work or in your daily life.<br>
+            • What technology do you use? (phone, laptop, app, etc.)<br>
+            • How often do you use it? Use adverbs of frequency.<br>
+            • What do you use it for? (send emails, download files, log in to…)
+          </div>
+        </div>
+        <div class="open-wrap">
+          <textarea class="open-textarea" id="q24" placeholder="Example: I always use my smartphone for work. I usually log in to my email every morning. I sometimes download reports from our company system..." oninput="wc('q24','wc24'); updateProgress()"></textarea>
+          <div class="word-count" id="wc24">0 words</div>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="q-row"><div class="q-num">25</div>
+          <div class="q-text">
+            Write a short workplace conversation of <strong>4–5 lines</strong> where one colleague asks another for help with a technology problem.<br>
+            • Use expressions for asking for help, offering help, and responding.<br>
+            <em>Example problems: can't log in, low battery, can't find a file, can't download an app.</em>
+          </div>
+        </div>
+        <div class="open-wrap">
+          <textarea class="open-textarea" id="q25" placeholder="A: Can you help me? I don't know how to...&#10;B: Of course! Do you want a hand?&#10;A: ..." oninput="wc('q25','wc25'); updateProgress()"></textarea>
+          <div class="word-count" id="wc25">0 words</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="submit-zone" id="submitZone">
+    <p>Please review all your answers before submitting.<br>Once submitted, your teacher receives your answers immediately and <strong>you cannot change them</strong>.</p>
+    <button class="submit-btn" id="submitBtn" onclick="submitExam()">📤 &nbsp;Submit Exam</button>
+  </div>
+
+  <div class="success" id="successScreen">
+    <div class="success-icon">✅</div>
+    <h2>Exam Submitted!</h2>
+    <p>Your answers have been sent to your teacher successfully.<br>You will receive your grade and feedback soon.<br><br><strong>Well done! 🎉</strong></p>
+  </div>
+
+</div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxpupoUkWhDuARR8RxtmKAV81V_P237hHcWrjZ7om4KbMDXFckonm76UTl8YsNgSSypGA/exec';
+
+let timeLeft = 45 * 60;
+const timerEl = document.getElementById('timer');
+const timerInt = setInterval(() => {
+  timeLeft--;
+  const m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+  timerEl.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  if (timeLeft <= 300) timerEl.classList.add('warn');
+  if (timeLeft <= 0) { clearInterval(timerInt); submitExam(); }
+}, 1000);
+
+const A = {};
+
+function pickTF(qid, val, el) {
+  el.closest('.tf').querySelectorAll('.tf-opt').forEach(o => o.classList.remove('sel-t','sel-f'));
+  el.classList.add(val === 'True' ? 'sel-t' : 'sel-f');
+  A[qid] = val;
+  updateProgress();
+}
+
+function wc(inputId, countId) {
+  const words = document.getElementById(inputId).value.trim().split(/\s+/).filter(w => w.length).length;
+  document.getElementById(countId).textContent = `${words} word${words !== 1 ? 's' : ''}`;
+}
+
+function updateProgress() {
+  let done = 0;
+  // Matching dropdowns: q1-q7, q19-q23
+  ['q1','q2','q3','q4','q5','q6','q7','q19','q20','q21','q22','q23'].forEach(q => { if (document.getElementById(q)?.value) done++; });
+  // True/False: q8-q13
+  ['q8','q9','q10','q11','q12','q13'].forEach(q => { if (A[q]) done++; });
+  // Fill: q14-q18
+  ['q14','q15','q16','q17','q18'].forEach(q => { if (document.getElementById(q)?.value.trim()) done++; });
+  // Open: q24-q25
+  ['q24','q25'].forEach(q => { if (document.getElementById(q)?.value.trim()) done++; });
+  document.getElementById('pFill').style.width = (done / 25 * 100) + '%';
+  document.getElementById('pLabel').textContent = `${done} / 25`;
+}
+
+function clearErr(inputId, errId) {
+  document.getElementById(inputId).classList.remove('err');
+  document.getElementById(errId).classList.remove('show');
+}
+
+function getAll() {
+  const g = id => document.getElementById(id)?.value || '';
+  return {
+    name: document.getElementById('sName').value.trim(),
+    class: document.getElementById('sClass').value.trim(),
+    date: new Date().toLocaleDateString('en-GB'),
+    q1:g('q1'), q2:g('q2'), q3:g('q3'), q4:g('q4'), q5:g('q5'), q6:g('q6'), q7:g('q7'),
+    q8:A.q8||'', q9:A.q9||'', q10:A.q10||'', q11:A.q11||'', q12:A.q12||'', q13:A.q13||'',
+    q14:g('q14').trim(), q15:g('q15').trim(), q16:g('q16').trim(), q17:g('q17').trim(), q18:g('q18').trim(),
+    q19:g('q19'), q20:g('q20'), q21:g('q21'), q22:g('q22'), q23:g('q23'),
+    q24:g('q24').trim(), q25:g('q25').trim(),
+    timestamp: new Date().toLocaleString()
+  };
+}
+
+async function submitExam() {
+  const data = getAll();
+  let valid = true;
+  if (!data.name) {
+    document.getElementById('sName').classList.add('err');
+    document.getElementById('nameErr').classList.add('show');
+    valid = false;
+  }
+  if (!data.class) {
+    document.getElementById('sClass').classList.add('err');
+    document.getElementById('classErr').classList.add('show');
+    valid = false;
+  }
+  if (!valid) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ &nbsp;Submitting...';
+
+  try {
+    const fd = new FormData();
+    Object.entries(data).forEach(([k, v]) => fd.append(k, v));
+    await fetch(SCRIPT_URL, { method: 'POST', body: fd, mode: 'no-cors' });
+    clearInterval(timerInt);
+    document.getElementById('submitZone').style.display = 'none';
+    document.querySelectorAll('.section, .info-card, .instr, .exam-header').forEach(e => e.style.display = 'none');
+    document.getElementById('successScreen').style.display = 'block';
+    document.querySelector('.sticky-bar').style.background = '#166534';
+  } catch (e) {
+    btn.disabled = false;
+    btn.innerHTML = '📤 &nbsp;Submit Exam';
+    alert('Submission failed. Please check your internet connection and try again.');
+  }
+}
+
+updateProgress();
+</script>
+</body>
+</html>
