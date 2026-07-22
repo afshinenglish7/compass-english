@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening Practice — Units 10–12</title>
+<style>
+  :root {
+    --navy:#1A3557;--blue:#2E6DA4;--orange:#C55A11;
+    --lblue:#D6E4F0;--yellow:#FFF2CC;--white:#FFFFFF;
+    --light:#F7FBFF;--border:#BBBBBB;--text:#1A1A1A;--muted:#555555;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Calibri,Arial,sans-serif;font-size:13px;background:#edf2f7;color:var(--text);}
+  header{background:var(--navy);color:white;padding:22px 32px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+  header h1{font-size:22px;letter-spacing:.5px;}
+  header p{font-size:12px;opacity:.75;margin-top:2px;}
+  .tab-bar{display:flex;gap:4px;background:var(--navy);padding:0 32px 0;border-top:1px solid rgba(255,255,255,.15);}
+  .tab-btn{padding:10px 22px;background:transparent;border:none;border-bottom:3px solid transparent;color:rgba(255,255,255,.65);cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+  .tab-btn:hover{color:white;}
+  .tab-btn.active{color:white;border-bottom-color:var(--orange);}
+  .unit-panel{display:none;max-width:900px;margin:28px auto;padding:0 16px 60px;}
+  .unit-panel.active{display:block;}
+  .unit-banner{background:var(--navy);color:white;padding:16px 24px;border-radius:6px 6px 0 0;font-size:18px;font-weight:700;letter-spacing:.4px;}
+  .section{background:white;border:1px solid var(--border);border-top:none;padding:20px 24px;}
+  .section:last-child{border-radius:0 0 6px 6px;}
+  .section-bar{display:flex;align-items:center;gap:10px;background:var(--lblue);margin:-20px -24px 16px;padding:10px 16px;border-bottom:1px solid #b8d4eb;}
+  .section-icon{color:var(--orange);font-size:15px;font-weight:700;}
+  .section-title{color:var(--navy);font-size:14px;font-weight:700;}
+  .instruction{background:var(--yellow);border-left:3px solid var(--orange);padding:8px 14px;font-style:italic;color:var(--muted);margin-bottom:16px;border-radius:0 4px 4px 0;font-size:12px;}
+  .pre-q{margin-bottom:14px;}
+  .pre-q label{display:block;font-weight:600;color:var(--orange);margin-bottom:6px;}
+  .pre-q textarea{width:100%;min-height:60px;padding:8px 10px;border:1px solid var(--border);border-radius:4px;font-family:inherit;font-size:13px;resize:vertical;color:var(--text);}
+  .pre-q textarea:focus{outline:none;border-color:var(--blue);}
+  .vocab-item{background:var(--light);border:1px solid var(--border);border-radius:6px;padding:12px 16px;margin-bottom:10px;}
+  .vocab-item .num{color:var(--orange);font-weight:700;margin-right:6px;}
+  .vocab-item .sentence{margin-bottom:8px;line-height:1.6;}
+  .vocab-item .keyword{color:var(--navy);font-weight:700;text-decoration:underline dotted;}
+  .vocab-item .options{display:flex;flex-wrap:wrap;gap:8px;}
+  .vocab-item .opt-btn{padding:5px 14px;border:1px solid var(--blue);background:white;border-radius:20px;cursor:pointer;font-size:12px;color:var(--blue);transition:all .15s;}
+  .vocab-item .opt-btn:hover{background:var(--blue);color:white;}
+  .vocab-item .opt-btn.selected{background:var(--blue);color:white;font-weight:600;}
+  .gist-q{font-weight:600;margin-bottom:12px;}
+  .mc-option{display:flex;align-items:flex-start;gap:10px;padding:9px 14px;margin-bottom:8px;border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;background:white;}
+  .mc-option:hover{border-color:var(--blue);background:var(--light);}
+  .mc-option.selected{border-color:var(--blue);background:var(--lblue);}
+  .mc-letter{color:var(--orange);font-weight:700;min-width:20px;}
+  .sc-item{margin-bottom:14px;}
+  .sc-item .stem{font-weight:500;margin-bottom:5px;line-height:1.6;color:var(--navy);}
+  .sc-item input[type=text]{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:4px;font-family:inherit;font-size:13px;}
+  .sc-item input:focus{outline:none;border-color:var(--blue);}
+  .sc-num{color:var(--orange);font-weight:700;margin-right:6px;}
+  .gap-text{line-height:2.4;font-size:13.5px;}
+  .gap-input{display:inline-block;border:none;border-bottom:2px solid var(--orange);width:130px;padding:0 4px;font-family:inherit;font-size:13px;text-align:center;color:var(--navy);font-weight:600;background:transparent;}
+  .gap-input:focus{outline:none;border-bottom-color:var(--blue);}
+  .word-bank{background:var(--yellow);border:1px solid #e8d88a;border-radius:6px;padding:10px 16px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .word-bank strong{color:var(--navy);margin-right:4px;}
+  .wb-word{background:white;border:1px solid var(--orange);color:var(--orange);font-weight:600;padding:3px 12px;border-radius:16px;cursor:pointer;font-size:12px;transition:all .15s;user-select:none;}
+  .wb-word:hover{background:var(--orange);color:white;}
+  .wb-word.used{opacity:.38;pointer-events:none;}
+  .wb-word.selected-word{outline:2px solid var(--navy);background:var(--orange);color:white;}
+  .ccw-item{margin-bottom:12px;line-height:1.8;}
+  .ccw-item .ccw-num{color:var(--orange);font-weight:700;margin-right:4px;}
+  .word-choice{display:inline-flex;border:1px solid var(--blue);border-radius:16px;overflow:hidden;margin:0 4px;vertical-align:middle;}
+  .word-choice span{padding:2px 12px;cursor:pointer;font-weight:600;font-size:12px;color:var(--blue);transition:all .15s;}
+  .word-choice span:first-child{border-right:1px solid var(--blue);}
+  .word-choice span:hover{background:var(--lblue);}
+  .word-choice span.chosen{background:var(--blue);color:white;}
+  .pc-table{width:100%;border-collapse:collapse;}
+  .pc-table th{padding:10px 14px;font-size:13px;font-weight:700;text-align:left;border:1px solid var(--border);}
+  .pc-table th.pros-h{background:#E2EFDA;color:#375623;}
+  .pc-table th.cons-h{background:#FCE4D6;color:#833C00;}
+  .pc-table td{padding:0;border:1px solid var(--border);vertical-align:top;}
+  .pc-table td textarea{width:100%;min-height:110px;padding:10px 12px;border:none;resize:vertical;font-family:inherit;font-size:13px;background:transparent;}
+  .pc-table td textarea:focus{outline:none;background:var(--light);}
+  .disc-item{margin-bottom:16px;}
+  .disc-item .disc-num{color:var(--orange);font-weight:700;}
+  .disc-item p{margin-bottom:6px;line-height:1.6;}
+  .disc-item textarea{width:100%;min-height:65px;padding:8px 10px;border:1px solid var(--border);border-radius:4px;font-family:inherit;font-size:13px;resize:vertical;}
+  .disc-item textarea:focus{outline:none;border-color:var(--blue);}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎧 LISTENING PRACTICE — Advanced Level</h1>
+  <p>Units 10 – 12 &nbsp;|&nbsp; New York City &nbsp;•&nbsp; Michael Jordan &nbsp;•&nbsp; The Ford Pinto Case</p>
+</header>
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showUnit(10)">Unit 10 — New York City</button>
+  <button class="tab-btn"        onclick="showUnit(11)">Unit 11 — Michael Jordan</button>
+  <button class="tab-btn"        onclick="showUnit(12)">Unit 12 — Ford Pinto Case</button>
+</div>
+
+<!-- ══════════════════════════ UNIT 10 ══════════════════════════ -->
+<div id="unit-10" class="unit-panel active">
+  <div class="unit-banner">UNIT 10 — NEW YORK CITY</div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">🎧</span><span class="section-title">A | PRE-LISTENING</span></div>
+    <div class="instruction">Think about the following questions before you listen. Share your ideas with a partner.</div>
+    <div class="pre-q"><label>1. What do you already know about New York City? What images or associations come to mind?</label><textarea placeholder="Write your ideas here..."></textarea></div>
+    <div class="pre-q"><label>2. Why do you think large cities attract millions of immigrants? What do they offer that smaller places cannot?</label><textarea placeholder="Write your ideas here..."></textarea></div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">📖</span><span class="section-title">B | VOCABULARY PREVIEW — Contextual Definition</span></div>
+    <div class="instruction">Each sentence below is taken from the audio. The key word is underlined. Select the option that best matches its meaning in context.</div>
+
+    <!-- 1 → correct = A -->
+    <div class="vocab-item">
+      <span class="num">1.</span><div class="sentence">New York is known as one of the world's leading centres of <span class="keyword">financial</span>, artistic, and media activities.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. relating to money, banking and economic activity</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. relating to entertainment and the arts</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. relating to government and political power</button>
+      </div>
+    </div>
+
+    <!-- 2 → correct = B -->
+    <div class="vocab-item">
+      <span class="num">2.</span><div class="sentence">The first permanent <span class="keyword">settlements</span> were established during the 17th century, by settlers from the Netherlands.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. legal agreements between two countries</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. communities established by people who come to live in a new place</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. trading routes between ports and harbours</button>
+      </div>
+    </div>
+
+    <!-- 3 → correct = C -->
+    <div class="vocab-item">
+      <span class="num">3.</span><div class="sentence">The colony was taken over by English settlers, who <span class="keyword">renamed</span> the city "New York".</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. demolished and rebuilt from the ground up</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. officially discovered and claimed for the first time</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. gave a new name to something that already existed</button>
+      </div>
+    </div>
+
+    <!-- 4 → correct = A -->
+    <div class="vocab-item">
+      <span class="num">4.</span><div class="sentence">One of the most famous features of New York City is its dramatic <span class="keyword">skyline</span>.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. the outline of tall buildings seen against the sky</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. the busy road and transport network of a city</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. the underground metro system running beneath the city</button>
+      </div>
+    </div>
+
+    <!-- 5 → correct = C -->
+    <div class="vocab-item">
+      <span class="num">5.</span><div class="sentence">Visitors to New York are struck by the extremes of <span class="keyword">wealth and poverty</span> that surround it.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. great variety in architectural styles across the city</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. a vibrant mix of old traditions and modern lifestyles</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. strong differences between the very rich and the very poor</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">▶</span><span class="section-title">C | FIRST LISTEN — Gist</span></div>
+    <div class="instruction">Play the audio ONCE. Do not take notes. Then select the statement that best describes the main idea.</div>
+    <div class="gist-q">What is this listening mainly about?</div>
+    <div class="mc-option" onclick="selectMC(this)"><span class="mc-letter">A)</span><span>An overview of New York City — its history, population, landmarks and cultural significance</span></div>
+    <div class="mc-option" onclick="selectMC(this)"><span class="mc-letter">B)</span><span>The history of immigration to New York City from European countries in the 19th century</span></div>
+    <div class="mc-option" onclick="selectMC(this)"><span class="mc-letter">C)</span><span>A comparison of New York City with other large cities such as London, Tokyo and Paris</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">▶▶</span><span class="section-title">D | SECOND LISTEN — Sentence Completion</span></div>
+    <div class="instruction">Listen again. Complete each sentence based on what you hear. Write only the missing information.</div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">1.</span>The first settlers in New York came from <strong>_________________________</strong> and named their town <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">2.</span>By the 19th century, New York had become <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">3.</span>In the early 20th century, two large immigrant groups in New York were <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">4.</span>New York has more <strong>_________________________</strong> than any other city in the world.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">5.</span>Wall Street is New York's <strong>_________________________</strong> district, while Broadway is its <strong>_________________________</strong> district.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">6.</span>The United Nations has its headquarters in <strong>_________________________</strong>, and the <strong>_________________________</strong> stands on an island in the harbour.</div><input type="text" placeholder="Type your answer..."></div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">✏️</span><span class="section-title">E | THIRD LISTEN — Fill in the Blank</span></div>
+    <div class="instruction">Listen to the extract. Click a word from the Word Bank, then click the blank where it belongs.</div>
+    <div class="word-bank" id="wb-10">
+      <strong>Word Bank:</strong>
+      <span class="wb-word" onclick="selectWord(this,'wb-10')">young</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-10')">17th</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-10')">Netherlands</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-10')">New Amsterdam</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-10')">renamed</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-10')">19th</span>
+    </div>
+    <div class="gap-text">
+      Compared with most of the great cities of the world, New York is very <input class="gap-input" data-bank="wb-10" onclick="fillGap(this)" placeholder="___" readonly>.
+      The first permanent settlements were established during the <input class="gap-input" data-bank="wb-10" onclick="fillGap(this)" placeholder="___" readonly> century,
+      by settlers from the <input class="gap-input" data-bank="wb-10" onclick="fillGap(this)" placeholder="___" readonly>.
+      Those people named their town "<input class="gap-input" data-bank="wb-10" onclick="fillGap(this)" placeholder="___" readonly>".
+      Soon, the colony was taken over by English settlers, who <input class="gap-input" data-bank="wb-10" onclick="fillGap(this)" placeholder="___" readonly> the city "New York".
+      New York grew quickly, and by the <input class="gap-input" data-bank="wb-10" onclick="fillGap(this)" placeholder="___" readonly> century it was the largest city of the United States.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">✔</span><span class="section-title">F | CHOOSE THE CORRECT WORD</span></div>
+    <div class="instruction">Click the word you heard in the audio to complete each sentence correctly.</div>
+    <div class="ccw-item"><span class="ccw-num">1.</span> New York City has a population of over <div class="word-choice"><span onclick="chooseWord(this)">seventeen</span><span onclick="chooseWord(this)">seven</span></div> million people.</div>
+    <div class="ccw-item"><span class="ccw-num">2.</span> The Brooklyn Bridge is the most <div class="word-choice"><span onclick="chooseWord(this)">famous</span><span onclick="chooseWord(this)">modern</span></div> of New York's old bridges.</div>
+    <div class="ccw-item"><span class="ccw-num">3.</span> The Statue of Liberty stands on an island in the <div class="word-choice"><span onclick="chooseWord(this)">river</span><span onclick="chooseWord(this)">harbour</span></div> of New York.</div>
+    <div class="ccw-item"><span class="ccw-num">4.</span> Many of the tallest buildings were constructed during the <div class="word-choice"><span onclick="chooseWord(this)">early</span><span onclick="chooseWord(this)">late</span></div> decades of the 20th century.</div>
+    <div class="ccw-item"><span class="ccw-num">5.</span> Central Park is described as one of the world's great <div class="word-choice"><span onclick="chooseWord(this)">royal</span><span onclick="chooseWord(this)">urban</span></div> parks.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">⚖️</span><span class="section-title">G | PROS & CONS</span></div>
+    <div class="instruction">Based on the audio and your own ideas, complete the table. What are the advantages and disadvantages of living in a city like New York?</div>
+    <table class="pc-table">
+      <tr><th class="pros-h">✅ Advantages of living in New York</th><th class="cons-h">❌ Disadvantages of living in New York</th></tr>
+      <tr><td><textarea placeholder="e.g. Access to world-class culture and arts..."></textarea></td><td><textarea placeholder="e.g. Extreme wealth inequality..."></textarea></td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">💬</span><span class="section-title">H | POST-LISTENING DISCUSSION</span></div>
+    <div class="instruction">Discuss with a partner or group. You may also write your thoughts below.</div>
+    <div class="disc-item"><p><span class="disc-num">1.</span> The audio describes New York as a city of "extremes of wealth and poverty." What causes such inequality in major cities, and what responsibilities do governments have to address it?</p><textarea placeholder="Your thoughts..."></textarea></div>
+    <div class="disc-item"><p><span class="disc-num">2.</span> New York has been shaped by waves of immigration for centuries. How does immigration enrich a city culturally and economically? Are there tensions that come with it?</p><textarea placeholder="Your thoughts..."></textarea></div>
+    <div class="disc-item"><p><span class="disc-num">3.</span> The audio says that even people who would not want to live in New York agree it is a very interesting place. What makes a city "interesting" versus "liveable"? Are they the same thing?</p><textarea placeholder="Your thoughts..."></textarea></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ UNIT 11 ══════════════════════════ -->
+<div id="unit-11" class="unit-panel">
+  <div class="unit-banner">UNIT 11 — MICHAEL JORDAN</div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">🎧</span><span class="section-title">A | PRE-LISTENING</span></div>
+    <div class="instruction">Think about the following questions before you listen. Share your ideas with a partner.</div>
+    <div class="pre-q"><label>1. What makes an athlete famous beyond their sport? Think of an example from any country.</label><textarea placeholder="Write your ideas here..."></textarea></div>
+    <div class="pre-q"><label>2. To what extent do you think a sports star's fame is built on skill versus marketing and image?</label><textarea placeholder="Write your ideas here..."></textarea></div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">📖</span><span class="section-title">B | VOCABULARY PREVIEW — Contextual Definition</span></div>
+    <div class="instruction">Each sentence is taken from the audio. The key word is underlined. Select the option that best matches its meaning in context.</div>
+
+    <!-- 1 → correct = C -->
+    <div class="vocab-item">
+      <span class="num">1.</span><div class="sentence">To understand the <span class="keyword">breadth</span> of his fame, it's best to think of Jordan in two senses.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. the speed at which something grows or spreads</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. the depth and sincerity behind something</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. the wide range or extent of something</button>
+      </div>
+    </div>
+
+    <!-- 2 → correct = A -->
+    <div class="vocab-item">
+      <span class="num">2.</span><div class="sentence">Jordan's fame was quickly <span class="keyword">accelerated</span> with the help of his agent and a marketing firm.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. made to increase much more quickly</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. reduced and carefully managed over time</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. created entirely from nothing through advertising</button>
+      </div>
+    </div>
+
+    <!-- 3 → correct = B -->
+    <div class="vocab-item">
+      <span class="num">3.</span><div class="sentence">Jordan established himself as a <span class="keyword">marketable commodity</span>.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. a highly skilled athlete respected by fellow professionals</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. someone or something that can be sold or promoted commercially</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. a public figure who donates money to charitable causes</button>
+      </div>
+    </div>
+
+    <!-- 4 → correct = A -->
+    <div class="vocab-item">
+      <span class="num">4.</span><div class="sentence">The relationship elevated Jordan to international <span class="keyword">prominence</span>.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. the state of being widely known and respected</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. great financial wealth and a luxurious lifestyle</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. legal protection of a person's public image and brand</button>
+      </div>
+    </div>
+
+    <!-- 5 → correct = C -->
+    <div class="vocab-item">
+      <span class="num">5.</span><div class="sentence">Jordan's athletic status was aided by the fact that his was a career with relatively little <span class="keyword">controversy</span>.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. serious injury or physical setback</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. significant financial difficulty or debt</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. public disagreement or scandal</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">▶</span><span class="section-title">C | FIRST LISTEN — Gist</span></div>
+    <div class="instruction">Play the audio ONCE. Do not take notes. Then select the statement that best describes the main idea.</div>
+    <div class="gist-q">What is this listening mainly about?</div>
+    <div class="mc-option" onclick="selectMC(this)"><span class="mc-letter">A)</span><span>The career statistics and tournament records of Michael Jordan in the NBA</span></div>
+    <div class="mc-option" onclick="selectMC(this)"><span class="mc-letter">B)</span><span>The marketing strategies used by Nike Corporation to promote basketball worldwide</span></div>
+    <div class="mc-option" onclick="selectMC(this)"><span class="mc-letter">C)</span><span>Michael Jordan as both an athletic legend and a global commercial and cultural icon</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">▶▶</span><span class="section-title">D | SECOND LISTEN — Sentence Completion</span></div>
+    <div class="instruction">Listen again. Complete each sentence based on what you hear.</div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">1.</span>Jordan was drafted to the NBA's Chicago Bulls after attending <strong>_________________________</strong> from 1981 to 1984.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">2.</span>Nike built much of its marketing strategy around Jordan, eventually giving him his own line of <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">3.</span>The relationship between Nike and Jordan was described as mutually beneficial because it helped push Nike to <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">4.</span>At the 1992 Olympics, Jordan refused to wear Reebok's warm-up suits because <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">5.</span>In 1993, Jordan surprised everyone by announcing his <strong>_________________________</strong> from the NBA at the age of thirty.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">6.</span>After retiring, Jordan signed with the Chicago White Sox to play <strong>_________________________</strong>, but performed unsuccessfully.</div><input type="text" placeholder="Type your answer..."></div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">✏️</span><span class="section-title">E | THIRD LISTEN — Fill in the Blank</span></div>
+    <div class="instruction">Listen to the extract. Click a word from the Word Bank, then click the blank where it belongs.</div>
+    <div class="word-bank" id="wb-11">
+      <strong>Word Bank:</strong>
+      <span class="wb-word" onclick="selectWord(this,'wb-11')">iconic</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-11')">marketing</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-11')">Rookie</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-11')">contracts</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-11')">Nike</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-11')">commodity</span>
+    </div>
+    <div class="gap-text">
+      After winning the NBA's <input class="gap-input" data-bank="wb-11" onclick="fillGap(this)" placeholder="___" readonly> of the Year distinction,
+      Jordan quickly began signing a series of <input class="gap-input" data-bank="wb-11" onclick="fillGap(this)" placeholder="___" readonly> contracts
+      that would eventually create the <input class="gap-input" data-bank="wb-11" onclick="fillGap(this)" placeholder="___" readonly> image known throughout the world.
+      The most notable <input class="gap-input" data-bank="wb-11" onclick="fillGap(this)" placeholder="___" readonly> endorsement contract came with <input class="gap-input" data-bank="wb-11" onclick="fillGap(this)" placeholder="___" readonly> Corporation.
+      With his own line of Nike-produced basketball shoes and clothing, Jordan established himself as a marketable <input class="gap-input" data-bank="wb-11" onclick="fillGap(this)" placeholder="___" readonly>.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">✔</span><span class="section-title">F | CHOOSE THE CORRECT WORD</span></div>
+    <div class="instruction">Click the word you heard in the audio to complete each sentence correctly.</div>
+    <div class="ccw-item"><span class="ccw-num">1.</span> Jordan was born in <div class="word-choice"><span onclick="chooseWord(this)">1963</span><span onclick="chooseWord(this)">1936</span></div>, one of three sons of a corporate executive.</div>
+    <div class="ccw-item"><span class="ccw-num">2.</span> Jordan co-captained the U.S.A. basketball team to gold at the <div class="word-choice"><span onclick="chooseWord(this)">1988</span><span onclick="chooseWord(this)">1984</span></div> Summer Olympic Games.</div>
+    <div class="ccw-item"><span class="ccw-num">3.</span> The Nike-Jordan relationship helped push Nike to <div class="word-choice"><span onclick="chooseWord(this)">number one</span><span onclick="chooseWord(this)">number two</span></div> status as world sports merchandiser.</div>
+    <div class="ccw-item"><span class="ccw-num">4.</span> Jordan and his teammates used the U.S. <div class="word-choice"><span onclick="chooseWord(this)">jersey</span><span onclick="chooseWord(this)">flag</span></div> to cover the Reebok logo.</div>
+    <div class="ccw-item"><span class="ccw-num">5.</span> After retiring from the NBA, Jordan played <div class="word-choice"><span onclick="chooseWord(this)">minor league</span><span onclick="chooseWord(this)">major league</span></div> baseball.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">⚖️</span><span class="section-title">G | PROS & CONS</span></div>
+    <div class="instruction">Based on the audio and your own ideas, complete the table. What are the advantages and disadvantages of athletes becoming major commercial brands?</div>
+    <table class="pc-table">
+      <tr><th class="pros-h">✅ Advantages of athletes becoming commercial brands</th><th class="cons-h">❌ Disadvantages of athletes becoming commercial brands</th></tr>
+      <tr><td><textarea placeholder="e.g. Raises the profile of the sport globally..."></textarea></td><td><textarea placeholder="e.g. The athlete's image may overshadow their actual skill..."></textarea></td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">💬</span><span class="section-title">H | POST-LISTENING DISCUSSION</span></div>
+    <div class="instruction">Discuss with a partner or group. You may also write your thoughts below.</div>
+    <div class="disc-item"><p><span class="disc-num">1.</span> The audio suggests Jordan's fame was as much about marketing as athletic skill. Does this diminish his legacy, or is the ability to build a global brand simply another form of achievement?</p><textarea placeholder="Your thoughts..."></textarea></div>
+    <div class="disc-item"><p><span class="disc-num">2.</span> Jordan refused to wear Reebok's logo at the Olympics, putting his Nike contract above his national team's obligations. Was this ethically justifiable? Where should the line be drawn?</p><textarea placeholder="Your thoughts..."></textarea></div>
+    <div class="disc-item"><p><span class="disc-num">3.</span> The audio describes Jordan's career as having "relatively little controversy." Do you think the media treats famous athletes differently based on their commercial value?</p><textarea placeholder="Your thoughts..."></textarea></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ UNIT 12 ══════════════════════════ -->
+<div id="unit-12" class="unit-panel">
+  <div class="unit-banner">UNIT 12 — THE FORD PINTO CASE</div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">🎧</span><span class="section-title">A | PRE-LISTENING</span></div>
+    <div class="instruction">Think about the following questions before you listen. Share your ideas with a partner.</div>
+    <div class="pre-q"><label>1. Should businesses be held legally responsible for harm caused by their products? What limits, if any, should exist?</label><textarea placeholder="Write your ideas here..."></textarea></div>
+    <div class="pre-q"><label>2. Do you think profit and public safety are compatible goals for a company? Why or why not?</label><textarea placeholder="Write your ideas here..."></textarea></div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">📖</span><span class="section-title">B | VOCABULARY PREVIEW — Contextual Definition</span></div>
+    <div class="instruction">Each sentence is taken from the audio. The key word is underlined. Select the option that best matches its meaning in context.</div>
+
+    <!-- 1 → correct = C -->
+    <div class="vocab-item">
+      <span class="num">1.</span><div class="sentence">There is <span class="keyword">ample</span> evidence that consideration for public safety is not always a priority in business decisions.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. very little or barely enough to make a case</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. conflicting or contradictory in nature</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. more than enough; abundant</button>
+      </div>
+    </div>
+
+    <!-- 2 → correct = B -->
+    <div class="vocab-item">
+      <span class="num">2.</span><div class="sentence">In 1978, the Ford Motor Company was <span class="keyword">indicted</span> on the charge of homicide.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. investigated privately by government inspectors</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. formally accused of a serious crime</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. found guilty and sentenced by a criminal court</button>
+      </div>
+    </div>
+
+    <!-- 3 → correct = A -->
+    <div class="vocab-item">
+      <span class="num">3.</span><div class="sentence">Ford produced a <span class="keyword">cost-benefit analysis</span> to justify their position.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. a calculation comparing the financial cost of action versus inaction</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. a public statement issued to apologise for a mistake</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. a legal document formally admitting responsibility for harm</button>
+      </div>
+    </div>
+
+    <!-- 4 → correct = C -->
+    <div class="vocab-item">
+      <span class="num">4.</span><div class="sentence">Ford executives were <span class="keyword">acquitted</span> on the charge of homicide.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. ordered by the court to pay a large financial penalty</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. given a reduced sentence in exchange for cooperation</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. found not guilty and formally cleared of all charges</button>
+      </div>
+    </div>
+
+    <!-- 5 → correct = A -->
+    <div class="vocab-item">
+      <span class="num">5.</span><div class="sentence">Although Ford made a lot of money on the Pinto, their <span class="keyword">reputation</span> was tarnished.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this)">A. the general opinion others have of a person or organisation</button>
+        <button class="opt-btn" onclick="selectOpt(this)">B. the stock market value and overall financial standing</button>
+        <button class="opt-btn" onclick="selectOpt(this)">C. the legal rights a company holds over its products</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">▶</span><span class="section-title">C | FIRST LISTEN — Gist</span></div>
+    <div class="instruction">Play the audio ONCE. Do not take notes. Then select the statement that best describes the main idea.</div>
+    <div class="gist-q">What is this listening mainly about?</div>
+    <div class="mc-option" onclick="selectMC(this)"><span class="mc-letter">A)</span><span>The engineering failures that caused the Ford Pinto to become commercially unsuccessful</span></div>
+    <div class="mc-option" onclick="selectMC(this)"><span class="mc-letter">B)</span><span>How the Ford Pinto case illustrates why government regulation of business safety is necessary</span></div>
+    <div class="mc-option" onclick="selectMC(this)"><span class="mc-letter">C)</span><span>The legal history of corporate homicide charges in the United States since the 1970s</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">▶▶</span><span class="section-title">D | SECOND LISTEN — Sentence Completion</span></div>
+    <div class="instruction">Listen again. Complete each sentence based on what you hear.</div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">1.</span>The Ford Pinto case was historically significant because it was the first time <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">2.</span>The prosecution charged that Ford had knowingly manufactured a dangerous car because <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">3.</span>Ford calculated that fixing the gas tank would cost an additional <strong>_________________________</strong> per car.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">4.</span>In its cost-benefit analysis, Ford valued each potential death from the faulty design at <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">5.</span>Although acquitted of homicide, Ford still had to pay <strong>_________________________</strong> to families who had lost relatives in Pinto accidents.</div><input type="text" placeholder="Type your answer..."></div>
+    <div class="sc-item"><div class="stem"><span class="sc-num">6.</span>The audio argues that governments must oversee public safety because most businesses are <strong>_________________________</strong>.</div><input type="text" placeholder="Type your answer..."></div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">✏️</span><span class="section-title">E | THIRD LISTEN — Fill in the Blank</span></div>
+    <div class="instruction">Listen to the extract. Click a word from the Word Bank, then click the blank where it belongs.</div>
+    <div class="word-bank" id="wb-12">
+      <strong>Word Bank:</strong>
+      <span class="wb-word" onclick="selectWord(this,'wb-12')">regulate</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-12')">safety</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-12')">profits</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-12')">priority</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-12')">motivated</span>
+      <span class="wb-word" onclick="selectWord(this,'wb-12')">oversee</span>
+    </div>
+    <div class="gap-text">
+      History has proven that it is necessary to <input class="gap-input" data-bank="wb-12" onclick="fillGap(this)" placeholder="___" readonly> business in at least one area — public <input class="gap-input" data-bank="wb-12" onclick="fillGap(this)" placeholder="___" readonly>.
+      There is ample evidence that consideration for the safety of the public is not always a <input class="gap-input" data-bank="wb-12" onclick="fillGap(this)" placeholder="___" readonly> in business decisions.
+      Commercial companies are seldom <input class="gap-input" data-bank="wb-12" onclick="fillGap(this)" placeholder="___" readonly> to look closely at product safety.
+      This is especially true when the "bottom line" in business — <input class="gap-input" data-bank="wb-12" onclick="fillGap(this)" placeholder="___" readonly> — is seen as a justification for every decision.
+      For this reason, governments have to <input class="gap-input" data-bank="wb-12" onclick="fillGap(this)" placeholder="___" readonly> issues of public safety.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">✔</span><span class="section-title">F | CHOOSE THE CORRECT WORD</span></div>
+    <div class="instruction">Click the word you heard in the audio to complete each sentence correctly.</div>
+    <div class="ccw-item"><span class="ccw-num">1.</span> The Ford Pinto homicide charge was brought in <div class="word-choice"><span onclick="chooseWord(this)">1987</span><span onclick="chooseWord(this)">1978</span></div>.</div>
+    <div class="ccw-item"><span class="ccw-num">2.</span> The faulty design was estimated to cause <div class="word-choice"><span onclick="chooseWord(this)">180</span><span onclick="chooseWord(this)">108</span></div> additional deaths.</div>
+    <div class="ccw-item"><span class="ccw-num">3.</span> Ford lobbied the government for more than <div class="word-choice"><span onclick="chooseWord(this)">eighteen</span><span onclick="chooseWord(this)">eight</span></div> years not to tighten safety standards.</div>
+    <div class="ccw-item"><span class="ccw-num">4.</span> Ford valued each potential death in its analysis at <div class="word-choice"><span onclick="chooseWord(this)">$200,000</span><span onclick="chooseWord(this)">$2,000,000</span></div> per person.</div>
+    <div class="ccw-item"><span class="ccw-num">5.</span> The Titanic disaster is mentioned as an example of a company <div class="word-choice"><span onclick="chooseWord(this)">ignoring warnings</span><span onclick="chooseWord(this)">prioritising speed</span></div> over passenger safety.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">⚖️</span><span class="section-title">G | PROS & CONS</span></div>
+    <div class="instruction">Based on the audio and your own ideas, complete the table. What are the arguments for and against strict government regulation of business?</div>
+    <table class="pc-table">
+      <tr><th class="pros-h">✅ Arguments FOR government regulation of business</th><th class="cons-h">❌ Arguments AGAINST government regulation of business</th></tr>
+      <tr><td><textarea placeholder="e.g. Protects the public from dangerous products..."></textarea></td><td><textarea placeholder="e.g. Too many regulations can slow innovation..."></textarea></td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-bar"><span class="section-icon">💬</span><span class="section-title">H | POST-LISTENING DISCUSSION</span></div>
+    <div class="instruction">Discuss with a partner or group. You may also write your thoughts below.</div>
+    <div class="disc-item"><p><span class="disc-num">1.</span> Ford calculated the cost of human lives against the cost of fixing the car. Is it ever ethically acceptable to put a financial value on a human life? When, if ever, might such calculations be unavoidable?</p><textarea placeholder="Your thoughts..."></textarea></div>
+    <div class="disc-item"><p><span class="disc-num">2.</span> Ford was acquitted of criminal homicide but paid millions in civil settlements. Do you think corporations should face criminal prosecution for decisions that lead to deaths?</p><textarea placeholder="Your thoughts..."></textarea></div>
+    <div class="disc-item"><p><span class="disc-num">3.</span> The audio argues that businesses will rarely prioritise safety over profit without government intervention. Do you agree? Or can market forces — such as reputational damage — be enough?</p><textarea placeholder="Your thoughts..."></textarea></div>
+  </div>
+</div>
+
+<script>
+function showUnit(num){
+  document.querySelectorAll('.unit-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('unit-'+num).classList.add('active');
+  document.querySelectorAll('.tab-btn')[num-10].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function selectOpt(btn){
+  btn.closest('.options').querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+function selectMC(el){
+  el.closest('.section').querySelectorAll('.mc-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function chooseWord(span){
+  span.closest('.word-choice').querySelectorAll('span').forEach(s=>s.classList.remove('chosen'));
+  span.classList.add('chosen');
+}
+let selectedWord=null,selectedWordEl=null;
+function selectWord(el,bankId){
+  document.querySelectorAll(`#${bankId} .wb-word`).forEach(w=>{w.style.outline='none';w.classList.remove('selected-word');});
+  if(selectedWordEl===el){selectedWord=null;selectedWordEl=null;return;}
+  selectedWord=el.textContent.trim();selectedWordEl=el;
+  el.classList.add('selected-word');
+}
+function fillGap(input){
+  if(!selectedWord){
+    if(input.value){
+      const bankId=input.dataset.bank;
+      document.querySelectorAll(`#${bankId} .wb-word`).forEach(w=>{if(w.textContent.trim()===input.value){w.classList.remove('used');}});
+      input.value='';input.placeholder='___';
+    }
+    return;
+  }
+  if(input.value){
+    const prev=input.value,bankId=input.dataset.bank;
+    document.querySelectorAll(`#${bankId} .wb-word`).forEach(w=>{if(w.textContent.trim()===prev)w.classList.remove('used');});
+  }
+  input.value=selectedWord;input.placeholder='';
+  if(selectedWordEl){selectedWordEl.classList.add('used');selectedWordEl.style.outline='none';selectedWordEl.classList.remove('selected-word');}
+  selectedWord=null;selectedWordEl=null;
+}
+</script>
+</body>
+</html>
